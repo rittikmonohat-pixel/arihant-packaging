@@ -1,0 +1,257 @@
+// 8 product types — each becomes /products/[slug] with full SEO page.
+
+export type Product = {
+  slug: string;
+  title: string;
+  shortTitle: string;       // for cards / nav
+  oneLiner: string;         // hero subtitle
+  description: string;      // 1–2 sentence H1 description
+  metaDescription: string;
+  keywords: string[];
+  image: string;            // /public path
+  gallery: string[];
+  specs: { label: string; value: string }[];
+  finish: string[];
+  applicationsSlugs: string[];
+  faq: { q: string; a: string }[];
+};
+
+export const PRODUCTS: Product[] = [
+  {
+    slug: 'transparent-window-roll',
+    title: 'Transparent Window Packaging Rolls & Pouches',
+    shortTitle: 'Transparent Window Roll',
+    oneLiner: 'See-through pouches that show your product and brand together.',
+    description:
+      'Two-layer multi-layer flexible packaging rolls with a transparent window — ideal when you want the customer to see what is inside while keeping a printed branding panel on the front.',
+    metaDescription:
+      'Transparent window packaging rolls and pouches manufacturer in Kolkata. PET + LDPE laminated, 2-layer, customizable up to 8 colors. MOQ 300 kg.',
+    keywords: ['transparent window pouch', 'see through packaging roll', 'window pouch manufacturer Kolkata'],
+    image: '/images/products/transparent-window-roll.jpg',
+    gallery: [
+      '/images/products/transparent-window-roll.jpg',
+      '/images/products/transparent-window-roll-2.jpg',
+    ],
+    specs: [
+      { label: 'MOQ', value: '300 kg' },
+      { label: 'Layers', value: '2 (PET + Transparent LDPE)' },
+      { label: 'Material', value: 'PET + Transparent LDPE' },
+      { label: 'LDPE Type', value: 'Natural or N/F (for FFS machines)' },
+      { label: 'Finish', value: 'Window with non-glossy surround' },
+      { label: 'Print Colors', value: 'Up to 8 colors (rotogravure)' },
+      { label: 'Size', value: 'Customized' },
+    ],
+    finish: ['Window', 'Non-glossy'],
+    applicationsSlugs: ['chira-packaging-pouch', 'namkeen-packaging-pouch', 'whole-spices-packaging-pouch'],
+    faq: [
+      { q: 'What products is a transparent window pouch best for?', a: 'Chira, namkeen, rice, whole spices, sugar, seeds — any product where the visual appearance helps sell.' },
+      { q: 'What is the minimum order?', a: '300 kg per design. We can run smaller trial batches on request.' },
+      { q: 'Do you provide samples before bulk order?', a: 'Yes. Free physical samples are dispatched after design approval and against a refundable plate cost.' },
+    ],
+  },
+  {
+    slug: 'aluminium-laminated-roll',
+    title: 'Aluminium / Metal Polyester Laminated Rolls',
+    shortTitle: 'Aluminium Laminated Roll',
+    oneLiner: 'Premium glossy 3-layer laminate with metal polyester for longer shelf life.',
+    description:
+      'Three-layer laminated packaging rolls with PET + MET PET + LDPE — high gloss, full barrier, and protection from sunlight. The premium finish for products where shelf life and visual impact both matter.',
+    metaDescription:
+      'Aluminium / metal polyester laminated rolls and pouches — PET + MET PET + LDPE 3-layer construction. Glossy finish. Manufactured in Kolkata.',
+    keywords: ['aluminium foil laminated pouch', 'metal polyester laminated roll', 'MET PET pouch manufacturer'],
+    image: '/images/products/aluminium-laminated-roll.jpg',
+    gallery: [
+      '/images/products/aluminium-laminated-roll.jpg',
+      '/images/products/aluminium-laminated-roll-2.jpg',
+    ],
+    specs: [
+      { label: 'MOQ', value: '300 kg' },
+      { label: 'Layers', value: '3 (PET + MET PET + LDPE)' },
+      { label: 'Finish', value: 'Glossy' },
+      { label: 'LDPE Type', value: 'Natural or N/F (for FFS)' },
+      { label: 'Print Colors', value: 'Up to 8' },
+      { label: 'Size', value: 'Customized' },
+    ],
+    finish: ['Glossy'],
+    applicationsSlugs: ['namkeen-packaging-pouch', 'masala-packaging-pouch', 'tea-packaging-pouch', 'fertilizer-packaging-pouch'],
+    faq: [
+      { q: 'Why choose 3-layer over 2-layer?', a: '3-layer with metal polyester gives a complete barrier against light, oxygen, and moisture — essential for spices, tea, snacks, and pharma.' },
+      { q: 'Is the foil food-safe?', a: 'Yes. We use food-grade MET PET and LDPE compliant with FSSAI requirements.' },
+    ],
+  },
+  {
+    slug: 'met-bopp-laminated-roll',
+    title: 'MET BOPP Laminated Rolls',
+    shortTitle: 'MET BOPP Laminated Roll',
+    oneLiner: '2-layer high-yield glossy laminate for low-cost premium-look packaging.',
+    description:
+      'PET + MET BOPP laminated rolls — glossy finish at a lower cost than 3-layer. Best for small pack sizes where high yield and visual impact matter more than maximum strength.',
+    metaDescription:
+      'MET BOPP 2-layer laminated rolls — high gloss, high yield, lower cost. Manufacturer Kolkata. Suitable for snacks and small pack sizes.',
+    keywords: ['MET BOPP laminated pouch', 'BOPP packaging roll manufacturer'],
+    image: '/images/products/met-bopp-laminated-roll.jpg',
+    gallery: [
+      '/images/products/met-bopp-laminated-roll.jpg',
+      '/images/products/met-bopp-laminated-roll-2.jpg',
+    ],
+    specs: [
+      { label: 'MOQ', value: '300 kg' },
+      { label: 'Layers', value: '2 (PET + MET BOPP)' },
+      { label: 'Finish', value: 'Glossy' },
+      { label: 'Print Colors', value: 'Up to 8' },
+      { label: 'Size', value: 'Customized' },
+    ],
+    finish: ['Glossy'],
+    applicationsSlugs: ['namkeen-packaging-pouch', 'fryums-packaging-pouch'],
+    faq: [
+      { q: 'What is MET BOPP?', a: 'Metalized Bi-axially Oriented Polypropylene — gives a glossy metallic appearance at lower cost than aluminium foil.' },
+      { q: 'For which products is this not suitable?', a: 'Heavy products (>1 kg) or anything needing very long shelf life — use 3-layer instead.' },
+    ],
+  },
+  {
+    slug: 'milky-roll',
+    title: 'Milky LDPE Laminated Rolls',
+    shortTitle: 'Milky Roll',
+    oneLiner: 'Two-layer milky-finish laminate with strong yield and good cost-quality balance.',
+    description:
+      'PET + Milky LDPE laminated rolls — non-transparent, non-glossy finish. Ideal when you need a printed pouch with good strength but do not need either a window or premium glossy look.',
+    metaDescription:
+      'Milky LDPE laminated rolls and pouches — PET + Milky LDPE 2-layer, non-glossy. Manufactured in Kolkata for atta, soya chunks, batter, fertilizer.',
+    keywords: ['milky LDPE pouch', 'PET milky laminated roll'],
+    image: '/images/products/milky-roll.jpg',
+    gallery: [
+      '/images/products/milky-roll.jpg',
+      '/images/products/milky-roll-2.jpg',
+    ],
+    specs: [
+      { label: 'MOQ', value: '300 kg' },
+      { label: 'Layers', value: '2 (PET + Milky LDPE)' },
+      { label: 'Finish', value: 'Non-glossy, milky white' },
+      { label: 'Print Colors', value: 'Up to 8' },
+    ],
+    finish: ['Milky', 'Non-glossy'],
+    applicationsSlugs: ['atta-packaging-pouch', 'soya-bari-packaging-pouch', 'idly-dosa-batter-packaging-pouch', 'fertilizer-packaging-pouch'],
+    faq: [
+      { q: 'What does "milky" mean?', a: 'A milky-white tint inside the LDPE layer — gives a clean opaque background that prints look great on.' },
+    ],
+  },
+  {
+    slug: 'stand-up-pouch',
+    title: 'Stand-Up Pouches (with optional Zipper)',
+    shortTitle: 'Stand Up Pouch',
+    oneLiner: 'Premium shelf-ready pouches that stand on their own — with or without zipper.',
+    description:
+      'Stand-up zipper pouches — the most retail-friendly format. Available in window, milky, or fully glossy finish. Optional resealable zipper for premium shelf appeal.',
+    metaDescription:
+      'Stand-up zipper pouch manufacturer Kolkata. PET + MET PET + LDPE construction. Optional zipper. Up to 8-color rotogravure printing.',
+    keywords: ['stand up pouch manufacturer', 'zipper pouch Kolkata', 'standup zipper bag'],
+    image: '/images/products/stand-up-pouch.jpg',
+    gallery: [
+      '/images/products/stand-up-pouch.jpg',
+      '/images/products/stand-up-pouch-2.jpg',
+      '/images/products/stand-up-pouch-3.jpg',
+    ],
+    specs: [
+      { label: 'MOQ', value: '500 kg' },
+      { label: 'Material', value: 'PET + MET PET (optional) + LDPE' },
+      { label: 'Finish', value: 'Window / Milky / Glossy' },
+      { label: 'Zipper', value: 'Optional resealable zipper' },
+      { label: 'Print Colors', value: 'Up to 8' },
+    ],
+    finish: ['Glossy', 'Milky', 'Window'],
+    applicationsSlugs: ['namkeen-packaging-pouch', 'tea-packaging-pouch', 'idly-dosa-batter-packaging-pouch', 'dried-fruits-packaging-pouch', 'makhana-packaging-pouch'],
+    faq: [
+      { q: 'Is the zipper resealable?', a: 'Yes — standard plastic resealable zipper that customers can open and close many times.' },
+      { q: 'Can I get stand-up pouches without a zipper?', a: 'Absolutely — the zipper is optional and reduces cost when removed.' },
+    ],
+  },
+  {
+    slug: 'center-seal-pouch',
+    title: 'Center Seal Packaging Pouches',
+    shortTitle: 'Center Seal Pouch',
+    oneLiner: 'Classic back-seal pouches for hand-fill or semi-auto sealing operations.',
+    description:
+      'Center seal (back seal) pouches — pre-made, ready for filling and hand sealing. The most common format for snacks, namkeen, and small spice packs.',
+    metaDescription:
+      'Center seal packaging pouches — PET + MET PET (optional) + LDPE laminated. Hand-seal ready. Manufactured in Kolkata.',
+    keywords: ['center seal pouch manufacturer', 'back seal packaging'],
+    image: '/images/products/center-seal-pouch.jpg',
+    gallery: [
+      '/images/products/center-seal-pouch.jpg',
+      '/images/products/center-seal-pouch-2.jpg',
+    ],
+    specs: [
+      { label: 'MOQ', value: '300 kg' },
+      { label: 'Material', value: 'PET + MET PET (optional) + LDPE' },
+      { label: 'Finish', value: 'Window / Milky / Glossy' },
+      { label: 'Print Colors', value: 'Up to 8' },
+    ],
+    finish: ['Window', 'Milky', 'Glossy'],
+    applicationsSlugs: ['namkeen-packaging-pouch', 'tea-packaging-pouch', 'masala-packaging-pouch', 'atta-packaging-pouch', 'ice-cream-packaging-pouch'],
+    faq: [
+      { q: 'Are center seal pouches FFS-compatible?', a: 'No — for FFS machines you need rolls. Center seal pouches are pre-made for hand-fill operations.' },
+    ],
+  },
+  {
+    slug: 'three-side-seal-pouch',
+    title: '3-Side Seal Pouches',
+    shortTitle: '3 Sides Seal Pouch',
+    oneLiner: 'Pre-sealed on three sides, open on one — fastest hand-fill format.',
+    description:
+      'Three-side sealed pouches — pre-sealed on three edges with one side open for filling. Available in 2, 2½, or 3-layer construction with multiple finish options.',
+    metaDescription:
+      'Three-side seal pouches manufacturer Kolkata. 2 / 2½ / 3-layer construction. Window, milky, glossy, or one-side window finishes.',
+    keywords: ['3 side seal pouch', 'three side sealed bag manufacturer'],
+    image: '/images/products/three-side-seal-pouch.jpg',
+    gallery: [
+      '/images/products/three-side-seal-pouch.jpg',
+      '/images/products/three-side-seal-pouch-2.jpg',
+    ],
+    specs: [
+      { label: 'MOQ', value: '300 kg' },
+      { label: 'Layers', value: '2 / 2½ / 3' },
+      { label: 'Finish', value: 'Window / Milky / Glossy / One-side window, one-side metallic' },
+      { label: 'Print Colors', value: 'Up to 8' },
+    ],
+    finish: ['Window', 'Milky', 'Glossy'],
+    applicationsSlugs: ['namkeen-packaging-pouch', 'tea-packaging-pouch', 'masala-packaging-pouch', 'atta-packaging-pouch'],
+    faq: [
+      { q: 'How many sides do I have to seal myself?', a: 'Just one. Three sides come pre-sealed; you only seal the top after filling.' },
+    ],
+  },
+  {
+    slug: 'pouch-with-handle',
+    title: 'Pouches with D-Cut Handle',
+    shortTitle: 'Pouch with Handle',
+    oneLiner: 'Three-side sealed pouches with a punched D-cut handle for easy carrying.',
+    description:
+      'Three-side sealed pouches with a die-cut handle on top — adds a carrying option, perfect for snacks, atta, namkeen retail packs that customers walk home with.',
+    metaDescription:
+      'Pouches with D-cut handle — manufacturer in Kolkata. 2 / 2½ / 3-layer laminated. Customizable in window, milky, or glossy finish.',
+    keywords: ['pouch with handle', 'D-cut handle pouch manufacturer'],
+    image: '/images/products/pouch-with-handle.jpg',
+    gallery: [
+      '/images/products/pouch-with-handle.jpg',
+      '/images/products/pouch-with-handle-2.jpg',
+    ],
+    specs: [
+      { label: 'MOQ', value: '300 kg' },
+      { label: 'Layers', value: '2 / 2½ / 3' },
+      { label: 'Handle', value: 'D-cut die punched' },
+      { label: 'Print Colors', value: 'Up to 8' },
+    ],
+    finish: ['Window', 'Milky', 'Glossy'],
+    applicationsSlugs: ['namkeen-packaging-pouch', 'tea-packaging-pouch', 'masala-packaging-pouch'],
+    faq: [
+      { q: 'How much weight can the handle hold?', a: 'Up to 2 kg comfortably with a 3-layer laminate.' },
+    ],
+  },
+];
+
+export function getProduct(slug: string): Product | undefined {
+  return PRODUCTS.find((p) => p.slug === slug);
+}
+
+export function getRelatedProducts(slug: string, count = 3): Product[] {
+  return PRODUCTS.filter((p) => p.slug !== slug).slice(0, count);
+}

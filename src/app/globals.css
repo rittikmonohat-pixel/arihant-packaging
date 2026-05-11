@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-brand: 146 76 0;          /* #924C00 RGB */
+  --color-accent: 194 14 26;        /* #C20E1A RGB */
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  @apply bg-white text-ink-800 font-sans;
+}
+
+/* Improve focus rings for accessibility (WCAG AA) */
+:focus-visible {
+  outline: 2px solid #924C00;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Prevent layout shift on images that haven't loaded yet */
+img { max-width: 100%; height: auto; }
+
+/* Component layer */
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+  }
+  .btn-primary {
+    @apply btn bg-brand-500 text-white hover:bg-brand-600 active:bg-brand-700 focus-visible:ring-brand-500 shadow-sm;
+  }
+  .btn-secondary {
+    @apply btn bg-white text-brand-700 border border-brand-200 hover:bg-brand-50 hover:border-brand-300 focus-visible:ring-brand-500;
+  }
+  .btn-accent {
+    @apply btn bg-accent-500 text-white hover:bg-accent-600 active:bg-accent-700 focus-visible:ring-accent-500 shadow-sm;
+  }
+  .btn-ghost {
+    @apply btn text-ink-700 hover:bg-ink-100;
+  }
+
+  .pill {
+    @apply inline-flex items-center rounded-full bg-brand-50 text-brand-700 px-3 py-1 text-xs font-semibold tracking-wide uppercase;
+  }
+
+  .card {
+    @apply bg-white rounded-2xl shadow-card border border-ink-100/70 transition-all duration-300 hover:shadow-cardHover hover:-translate-y-0.5;
+  }
+
+  .heading-xl {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-ink-900;
+  }
+  .heading-lg {
+    @apply text-3xl sm:text-4xl font-bold tracking-tight text-ink-900;
+  }
+  .heading-md {
+    @apply text-2xl sm:text-3xl font-bold tracking-tight text-ink-900;
+  }
+  .heading-sm {
+    @apply text-xl sm:text-2xl font-semibold text-ink-900;
+  }
+  .lede {
+    @apply text-lg sm:text-xl text-ink-600 leading-relaxed;
+  }
+
+  .input-field {
+    @apply w-full rounded-lg border border-ink-200 bg-white px-3.5 py-2.5 text-base text-ink-900 placeholder-ink-400 transition focus:border-brand-500 focus:ring-2 focus:ring-brand-500/20 focus:outline-none;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-ink-700 mb-1.5;
+  }
+
+  .prose-brand a {
+    @apply text-brand-600 hover:text-brand-700 underline underline-offset-2 decoration-brand-300;
+  }
+}
+
+/* Utility for hiding overflow but allowing children to peek (gallery rows) */
+.snap-row {
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 1rem;
+}
+.snap-row > * { scroll-snap-align: start; }
