@@ -18,8 +18,9 @@ const fadeUp = {
 export default function Hero() {
   return (
     <section className="relative">
-      <div className="container-x relative pt-12 lg:pt-20 pb-10 lg:pb-14">
-        <div className="max-w-4xl">
+      <div className="container-x relative grid lg:grid-cols-12 gap-10 lg:gap-12 items-center pt-12 lg:pt-20 pb-12 lg:pb-24">
+        {/* Left: Headline + CTAs */}
+        <div className="lg:col-span-6 xl:col-span-7">
           <motion.span className="pill" initial="hidden" animate="show" variants={fadeUp} custom={0}>
             <span className="w-2 h-2 rounded-full bg-success animate-pulse-soft" />
             Manufacturing in Kolkata since {SITE.foundedYear}
@@ -30,7 +31,7 @@ export default function Hero() {
             <span className="serif-accent">engineered</span> in Kolkata.
           </motion.h1>
 
-          <motion.p className="lede mt-5 max-w-2xl" initial="hidden" animate="show" variants={fadeUp} custom={2}>
+          <motion.p className="lede mt-5 max-w-xl" initial="hidden" animate="show" variants={fadeUp} custom={2}>
             Rotogravure-printed pouches and rolls for atta, namkeen, tea, masala, dairy and more -
             built in West Bengal, shipped across India. MOQ from {SITE.stats.minOrderKg}&nbsp;kg.
           </motion.p>
@@ -62,48 +63,50 @@ export default function Hero() {
           </motion.div>
         </div>
 
+        {/* Right: Hero image (landscape, fills the right side) */}
         <motion.div
-          className="mt-10 lg:mt-12 relative"
-          initial={{ opacity: 0, scale: 0.98, y: 20 }}
+          className="lg:col-span-6 xl:col-span-5 relative"
+          initial={{ opacity: 0, scale: 0.96, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="relative aspect-[16/9] sm:aspect-[1.91/1] rounded-3xl overflow-hidden glass p-2 shadow-glass">
+          <div className="relative aspect-[4/3] sm:aspect-[5/4] lg:aspect-[4/3] rounded-3xl overflow-hidden glass p-2 shadow-glass">
             <div className="relative w-full h-full rounded-2xl overflow-hidden">
               <Image
                 src="/images/hero/hero-1.jpg"
                 alt="Arihant Packaging - custom flexible packaging manufactured in Kolkata"
                 fill
                 priority
-                sizes="(min-width:1280px) 1200px, 100vw"
+                sizes="(min-width:1280px) 540px, (min-width:1024px) 50vw, 100vw"
                 className="object-cover"
               />
             </div>
           </div>
 
+          {/* Floating glass cards over hero image */}
           <motion.div
-            className="hidden md:flex absolute bottom-6 left-6 items-center gap-3 px-4 py-3 rounded-2xl glass-strong animate-floaty"
+            className="hidden md:flex absolute bottom-5 left-5 items-center gap-3 px-4 py-3 rounded-2xl glass-strong animate-floaty"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.9, duration: 0.6 }}
           >
-            <div className="w-10 h-10 rounded-xl grid place-items-center text-white text-sm font-bold" style={{ backgroundImage: 'linear-gradient(135deg, #1F4E79, #2F6FB0)' }}>8</div>
+            <div className="w-9 h-9 rounded-xl grid place-items-center text-white text-xs font-bold" style={{ backgroundImage: 'linear-gradient(135deg, #1F4E79, #2F6FB0)' }}>8</div>
             <div>
-              <div className="font-bold text-ink-900 leading-none">Up to 8 colours</div>
-              <div className="text-[11px] uppercase tracking-wider text-ink-700 mt-1">Rotogravure</div>
+              <div className="font-bold text-ink-900 leading-none text-sm">Up to 8 colours</div>
+              <div className="text-[10px] uppercase tracking-wider text-ink-700 mt-1">Rotogravure</div>
             </div>
           </motion.div>
           <motion.div
-            className="hidden md:flex absolute top-6 right-6 items-center gap-3 px-4 py-3 rounded-2xl glass-strong animate-floaty"
+            className="hidden md:flex absolute top-5 right-5 items-center gap-3 px-4 py-3 rounded-2xl glass-strong animate-floaty"
             style={{ animationDelay: '-3s' }}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.1, duration: 0.6 }}
           >
-            <div className="w-10 h-10 rounded-xl bg-brand-50 border border-brand-100 grid place-items-center text-brand-600 text-sm font-bold">kg</div>
+            <div className="w-9 h-9 rounded-xl bg-brand-50 border border-brand-100 grid place-items-center text-brand-600 text-xs font-bold">kg</div>
             <div>
-              <div className="font-bold text-ink-900 leading-none">From 300 kg</div>
-              <div className="text-[11px] uppercase tracking-wider text-ink-700 mt-1">Minimum order</div>
+              <div className="font-bold text-ink-900 leading-none text-sm">From 300 kg</div>
+              <div className="text-[10px] uppercase tracking-wider text-ink-700 mt-1">Minimum order</div>
             </div>
           </motion.div>
         </motion.div>
