@@ -76,7 +76,7 @@ export const POSTS: BlogPost[] = [
     ),
     faq: [
       { q: 'How many times can a zipper pouch be reopened?', a: 'A typical resealable zipper holds for 50–100 reopen cycles before it loosens.' },
-      { q: 'Are zipper pouches food safe?', a: 'Yes — the zipper itself is food-grade, and the pouch material is FSSAI compliant.' },
+      { q: 'How many times can the zipper be reused?', a: 'A typical resealable zipper holds for many open/close cycles, depending on use. We can advise on the best zipper grade for your product.' },
     ],
   },
   {

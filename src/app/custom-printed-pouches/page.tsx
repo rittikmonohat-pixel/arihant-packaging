@@ -26,22 +26,22 @@ export default function CustomPrintedPouches() {
             <span className="pill">Custom printed pouches</span>
             <h1 className="heading-xl mt-3">High-quality custom printed pouches for your brand.</h1>
             <p className="lede mt-5">
-              Make your product stand out on crowded shelves. We combine state-of-the-art rotogravure printing with food-grade laminated materials to deliver pouches that protect your product and elevate your brand.
+              Make your product stand out on crowded shelves. We combine state-of-the-art rotogravure printing with multi-layer laminated materials to deliver pouches that protect your product and elevate your brand.
             </p>
             <ul className="mt-6 grid sm:grid-cols-2 gap-2 text-sm text-ink-700">
               {[
-                'Up to 8-color photo-quality printing',
+                'Up to 8-colour photo-quality printing',
                 'Stand-up, zipper, 3-side, center seal formats',
                 'Window / glossy / milky finishes',
-                'Free design support — bring artwork or sketches',
+                'Bring your artwork (AI / EPS / PDF) or rough sketches',
                 'MOQ 300 kg per design',
-                'Pan-India delivery, GST invoice',
+                'Pan-India delivery',
               ].map((b) => (
                 <li key={b} className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-success" />{b}</li>
               ))}
             </ul>
             <div className="mt-7 flex gap-3">
-              <Link href="#quote" className="btn-primary">Get a Free Quote</Link>
+              <Link href="#quote" className="btn-primary">Get a Quote</Link>
               <Link href="/products" className="btn-secondary">Browse Pouch Types</Link>
             </div>
           </div>
@@ -74,7 +74,7 @@ export default function CustomPrintedPouches() {
 
       <section id="quote" className="container-x py-16 grid lg:grid-cols-2 gap-10">
         <div>
-          <span className="pill">Get a free quote</span>
+          <span className="pill">Get a quote</span>
           <h2 className="heading-md mt-3">Ready to discuss your packaging?</h2>
           <p className="lede mt-3">Tell us about your product, target pack size, and design — we'll come back with a competitive quote.</p>
         </div>

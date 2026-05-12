@@ -15,7 +15,7 @@ const Schema = z.object({
   quantity: z.string().optional(),
   message: z.string().optional(),
   context: z.string().optional(),
-  hp: z.string().max(0).optional(), // honeypot
+  hp: z.string().max(0).optional(),
 });
 
 type FormValues = z.infer<typeof Schema>;
@@ -23,8 +23,8 @@ type FormValues = z.infer<typeof Schema>;
 export default function QuoteForm({
   context = 'general inquiry',
   compact = false,
-  title = 'Get Best Price',
-  subtitle = 'Reply within 4 working hours.',
+  title = 'Request a Quote',
+  subtitle = 'Our team will get back to you with a competitive price.',
 }: {
   context?: string;
   compact?: boolean;
@@ -62,14 +62,11 @@ export default function QuoteForm({
 
   if (status === 'success') {
     return (
-      <div className="rounded-xl border border-success/30 bg-success/5 p-6 text-center">
+      <div className="card p-6 text-center">
         <CheckCircle2 className="w-10 h-10 text-success mx-auto mb-2" />
         <h3 className="text-lg font-semibold text-ink-900">Thanks — we got your inquiry.</h3>
-        <p className="mt-1 text-sm text-ink-600">Our team will reply within 4 working hours.</p>
-        <button
-          onClick={() => setStatus('idle')}
-          className="mt-4 text-sm font-semibold text-brand-600 hover:text-brand-700"
-        >
+        <p className="mt-1 text-sm text-ink-500">Our team will be in touch shortly.</p>
+        <button onClick={() => setStatus('idle')} className="mt-4 text-sm font-semibold text-brand-600 hover:text-brand-700">
           Send another inquiry
         </button>
       </div>
@@ -77,13 +74,12 @@ export default function QuoteForm({
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="bg-white rounded-2xl border border-ink-100 shadow-card p-5 sm:p-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="card p-5 sm:p-6">
       <div className="mb-5">
         <h3 className="heading-sm text-brand-700">{title}</h3>
         <p className="text-sm text-ink-500 mt-1">{subtitle}</p>
       </div>
 
-      {/* honeypot */}
       <input type="text" tabIndex={-1} autoComplete="off" {...register('hp')} className="hidden" aria-hidden="true" />
       <input type="hidden" {...register('context')} />
 
@@ -119,16 +115,12 @@ export default function QuoteForm({
 
       <div className="mt-4">
         <label className="label" htmlFor="qf-msg">Message</label>
-        <textarea id="qf-msg" {...register('message')} className="input-field min-h-[88px]" placeholder="Pouch size, material, finish, sample needed?" />
+        <textarea id="qf-msg" {...register('message')} className="input-field min-h-[88px]" placeholder="Pouch size, material, finish, application?" />
       </div>
 
-      <p className="text-xs text-ink-400 mt-3">No spam — your details are used only to respond to this inquiry.</p>
+      <p className="text-xs text-ink-400 mt-3">Your details are used only to respond to this inquiry.</p>
 
-      <button
-        type="submit"
-        disabled={status === 'submitting'}
-        className="btn-primary w-full mt-5 text-base"
-      >
+      <button type="submit" disabled={status === 'submitting'} className="btn-primary w-full mt-5 text-base">
         {status === 'submitting' ? (<><Loader2 className="w-4 h-4 animate-spin" /> Sending…</>) : 'Send Inquiry'}
       </button>
 

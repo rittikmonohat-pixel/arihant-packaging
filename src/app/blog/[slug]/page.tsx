@@ -96,7 +96,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
           <div className="mt-12 rounded-2xl bg-brand-50 border border-brand-100 p-6 sm:p-8">
             <h2 className="font-semibold text-lg text-ink-900">Need flexible packaging for your brand?</h2>
-            <p className="text-ink-700 text-sm mt-2">Get a free quote within 4 working hours. MOQ from 300 kg.</p>
+            <p className="text-ink-700 text-sm mt-2">Get a quote from our team. MOQ from 300 kg.</p>
             <Link href="/contact" className="btn-primary mt-4">Get Best Price <ArrowRight className="w-4 h-4" /></Link>
           </div>
         </div>

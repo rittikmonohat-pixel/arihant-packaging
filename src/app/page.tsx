@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { ArrowRight, Award, Factory, Palette, ShieldCheck, Sparkles, Truck, Users } from 'lucide-react';
+import { ArrowRight, Award, Factory, Palette, Sparkles, Truck, Layers } from 'lucide-react';
 import Hero from '@/components/Hero';
 import TrustStrip from '@/components/TrustStrip';
 import ProductCard from '@/components/ProductCard';
@@ -22,15 +22,15 @@ export default function HomePage() {
           <span className="pill">Why Arihant Packaging</span>
           <h2 className="heading-lg mt-4">Built for India's growing FMCG brands</h2>
           <p className="lede mt-4">
-            From a 1 kg sample order to lakhs of pouches per month — we deliver the print quality, barrier protection, and reliability your product deserves.
+            From small runs to lakhs of pouches per month, we deliver the print quality, barrier protection, and reliability your product deserves.
           </p>
         </div>
         <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { icon: Palette, title: 'Up to 8-Color Print', desc: 'Photo-quality rotogravure printing for vibrant brand graphics.' },
-            { icon: Factory, title: 'Full In-House Capability', desc: 'Printing, lamination (solvent + solventless), slitting, pouching all under one roof.' },
-            { icon: ShieldCheck, title: 'Food-Grade Materials', desc: 'PET, MET PET, BOPP, LDPE — FSSAI compliant for direct food contact.' },
-            { icon: Truck, title: 'Pan-India Delivery', desc: 'We ship to clients across India and accept GST invoice requirements.' },
+            { icon: Palette, title: 'Up to 8-Colour Print', desc: 'Photo-quality rotogravure printing for vibrant brand graphics.' },
+            { icon: Factory, title: 'Full In-House Capability', desc: 'Printing, lamination (solvent + solventless), slitting, pouching — all under one roof.' },
+            { icon: Layers, title: 'Multi-Layer Lamination', desc: 'PET, MET PET, BOPP, LDPE — engineered for moisture and oxygen barrier.' },
+            { icon: Truck, title: 'Pan-India Delivery', desc: 'Shipped to clients across India.' },
           ].map((f) => (
             <div key={f.title} className="card p-6">
               <div className="w-12 h-12 rounded-xl bg-brand-50 text-brand-600 grid place-items-center mb-4">
@@ -86,14 +86,14 @@ export default function HomePage() {
             <span className="inline-block pill bg-white/10 text-white">Why brands trust us</span>
             <h2 className="heading-lg text-white mt-4">A manufacturer that grows with you</h2>
             <p className="text-lg text-brand-50/90 mt-4 leading-relaxed">
-              We have been making flexible packaging in Kolkata since 2016. Whether it's your first 300 kg trial order or your fifth ton this month, we treat every order with the same care.
+              We have been making flexible packaging in Kolkata since 2016, working with growing FMCG brands across India.
             </p>
             <div className="mt-8 grid grid-cols-2 gap-6">
               {[
-                { icon: Users, label: 'Clients across India', value: '500+' },
                 { icon: Award, label: 'MSME / Udyam', value: 'Registered' },
-                { icon: Factory, label: 'Monthly capacity', value: '120+ MT' },
-                { icon: Sparkles, label: 'Print colors', value: 'Up to 8' },
+                { icon: Factory, label: 'Capability', value: 'In-house' },
+                { icon: Layers, label: 'Lamination', value: '2 / 2½ / 3 layer' },
+                { icon: Sparkles, label: 'Print colours', value: 'Up to 8' },
               ].map((s) => (
                 <div key={s.label} className="flex items-start gap-3">
                   <s.icon className="w-6 h-6 text-accent-300 flex-shrink-0 mt-0.5" />
@@ -127,7 +127,7 @@ export default function HomePage() {
         <div className="rounded-3xl bg-gradient-to-br from-brand-50 to-sky-50 p-10 sm:p-16 text-center border border-brand-100">
           <h2 className="heading-lg max-w-3xl mx-auto">Ready to discuss your packaging?</h2>
           <p className="lede mt-4 max-w-2xl mx-auto">
-            Tell us about your product, quantity, and timeline — we'll come back with a competitive quote and free samples.
+            Tell us about your product, quantity, and timeline — we&apos;ll come back with a competitive quote.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link href="/contact" className="btn-primary text-base">

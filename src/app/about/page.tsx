@@ -2,12 +2,12 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumbs';
-import { Award, Calendar, Factory, Globe2, MapPin, Users } from 'lucide-react';
+import { Award, Calendar, Factory, Globe2, MapPin } from 'lucide-react';
 import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'About Us — Arihant Packaging, Kolkata',
-  description: `Arihant Packaging — manufacturer of custom flexible packaging since ${SITE.foundedYear}. Located in Madhyamgram, Kolkata. Serving 500+ FMCG brands across India.`,
+  description: `Arihant Packaging — manufacturer of custom flexible packaging since ${SITE.foundedYear}. Located in Madhyamgram, Kolkata. Serving FMCG brands across India.`,
   alternates: { canonical: '/about' },
 };
 
@@ -37,13 +37,12 @@ export default function AboutPage() {
               Arihant Packaging was founded in 2016 in Madhyamgram, Kolkata with one mission — bring vibrant rotogravure-printed flexible packaging within reach of every Indian brand, big or small.
             </p>
             <p className="text-ink-700 mt-4 leading-relaxed">
-              From a 1 kg sample order to lakhs of pouches per month, we deliver the print quality, barrier protection, and reliability your product deserves. Today we proudly serve over 500 brands across India in foods, snacks, spices, dairy, personal care, detergents, and agriculture.
+              From small first runs to lakhs of pouches per month, we deliver the print quality, barrier protection, and reliability your product deserves. We serve brands across India in foods, snacks, spices, dairy, personal care, detergents, and agriculture.
             </p>
-            <div className="mt-7 grid grid-cols-2 sm:grid-cols-4 gap-4">
+            <div className="mt-7 grid grid-cols-3 gap-4">
               {[
                 { icon: Calendar, label: `${SITE.stats.yearsInBusiness}+ yrs` },
-                { icon: Users, label: `${SITE.stats.clients} clients` },
-                { icon: Factory, label: `${SITE.stats.monthlyCapacityTons}/mo` },
+                { icon: Factory, label: 'In-house' },
                 { icon: Globe2, label: 'Pan-India' },
               ].map((s) => (
                 <div key={s.label} className="flex items-center gap-2 text-sm">
@@ -96,7 +95,7 @@ export default function AboutPage() {
             </div>
             <div className="flex items-center gap-2 text-ink-700">
               <Award className="w-4 h-4 text-brand-600" />
-              <span>MSME / Udyam Registered · GST invoice provided</span>
+              <span>MSME / Udyam Registered</span>
             </div>
           </div>
           <Link href="/contact" className="btn-primary mt-7">Schedule a visit</Link>

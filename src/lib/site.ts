@@ -6,13 +6,13 @@ export const SITE = {
   domain: 'arihantpackagingindia.com',
   url: 'https://www.arihantpackagingindia.com',
   description:
-    'Leading manufacturer of custom flexible packaging pouches, laminated rolls, and stand-up zipper pouches in Kolkata, West Bengal.',
+    'Manufacturer of custom flexible packaging pouches, laminated rolls, and stand-up zipper pouches in Kolkata, West Bengal.',
   foundedYear: 2016,
 
   contact: {
     phone: '+917980620389',
     phoneDisplay: '+91 79806 20389',
-    whatsapp: '917980620389', // for wa.me/<number>
+    whatsapp: '917980620389',
     email: 'info@arihantpackagingindia.com',
   },
 
@@ -50,11 +50,9 @@ export const SITE = {
       'https://www.justdial.com/Kolkata/Arihant-Packaging-Madhyamgram-Badu/033PXX33-XX33-170716001014-V6H4_BZDET',
   },
 
-  // Quick stats shown on home/about
+  // Quick stats shown on home/about — only verifiable, non-claim items
   stats: {
     yearsInBusiness: new Date().getFullYear() - 2016,
-    clients: '500+',
-    monthlyCapacityTons: '120+ MT',
     printColors: 'up to 8',
     minOrderKg: 300,
   },

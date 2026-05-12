@@ -4,7 +4,7 @@ import { Award, BadgeCheck, FlaskConical, Layers, ShieldCheck } from 'lucide-rea
 
 export const metadata: Metadata = {
   title: 'Quality, Materials & QC',
-  description: 'How Arihant Packaging guarantees food-grade quality across PET, MET PET, BOPP, MET BOPP, and LDPE laminated packaging materials. FSSAI, MSME, and Udyam compliant.',
+  description: 'How Arihant Packaging engineers quality across PET, MET PET, BOPP, MET BOPP, and LDPE laminated packaging materials. MSME / Udyam registered.',
   alternates: { canonical: '/quality' },
 };
 
@@ -13,7 +13,7 @@ const materials = [
   { name: 'MET PET', use: 'Metalised polyester — full-spectrum light & oxygen barrier.', barrier: 'Excellent oxygen, moisture, and light barrier' },
   { name: 'BOPP', use: 'Bi-axially oriented polypropylene — clear glossy outer.', barrier: 'Moisture barrier (moderate)' },
   { name: 'MET BOPP', use: 'Metalised BOPP — premium glossy + barrier at lower cost.', barrier: 'Very good moisture and light barrier' },
-  { name: 'LDPE', use: 'Sealing layer that gives strength and food contact safety.', barrier: 'Heat-sealable, FSSAI compliant' },
+  { name: 'LDPE', use: 'Sealing layer that gives strength and reliable heat-seal.', barrier: 'Heat-sealable' },
 ];
 
 export default function QualityPage() {
@@ -35,7 +35,7 @@ export default function QualityPage() {
       <section className="bg-ink-50/50 py-16">
         <div className="container-x">
           <h2 className="heading-md">Materials we use</h2>
-          <p className="text-ink-600 mt-2 max-w-3xl">All materials are food-grade and sourced from established Indian and global suppliers. We blend layers based on your product's barrier and yield needs.</p>
+          <p className="text-ink-600 mt-2 max-w-3xl">All materials are sourced from established Indian and global suppliers. We blend layers based on your product&apos;s barrier and yield needs.</p>
           <div className="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {materials.map((m) => (
               <div key={m.name} className="rounded-xl bg-white border border-ink-100 p-5">
@@ -75,11 +75,10 @@ export default function QualityPage() {
       {/* Certifications */}
       <section className="container-x pb-24">
         <h2 className="heading-md">Certifications & registrations</h2>
-        <div className="mt-6 grid sm:grid-cols-3 gap-5">
+        <div className="mt-6 grid sm:grid-cols-2 gap-5">
           {[
             { title: 'MSME / Udyam', sub: 'Registered Indian micro / small enterprise.' },
-            { title: 'GST Registered', sub: 'Full GST invoice provided with every order.' },
-            { title: 'FSSAI Compliant', sub: 'All food-contact materials FSSAI compliant.' },
+            { title: 'Established 2016', sub: 'Manufacturing flexible packaging in Kolkata.' },
           ].map((c) => (
             <div key={c.title} className="rounded-xl bg-white border border-ink-100 p-6 text-center">
               <Award className="w-8 h-8 mx-auto text-brand-600 mb-2" />

@@ -107,9 +107,9 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
           <div>
             <span className="pill">Get Best Price</span>
             <h2 className="heading-md mt-3">Tell us about your packaging needs</h2>
-            <p className="lede mt-3">Free physical samples on approved orders. We typically reply within 4 working hours.</p>
+            <p className="lede mt-3">Our team will get back to you with a competitive quote.</p>
             <ul className="mt-6 space-y-2.5 text-sm text-ink-700">
-              {['MOQ from 300 kg', 'GST invoice provided', 'Free design support', 'Pan-India delivery'].map((b) => (
+              {['MOQ from 300 kg', 'Up to 8-colour print', 'Pan-India delivery', 'Custom sizes'].map((b) => (
                 <li key={b} className="flex items-center gap-2"><CheckCircle2 className="w-4 h-4 text-success" />{b}</li>
               ))}
             </ul>

@@ -112,7 +112,7 @@ export default async function ApplicationPage({ params }: { params: Promise<{ sl
         <div>
           <span className="pill">Get Best Price</span>
           <h2 className="heading-md mt-3">Discuss your {app.shortTitle.toLowerCase()} project</h2>
-          <p className="lede mt-3">Free physical samples on approved orders. Reply within 4 working hours.</p>
+          <p className="lede mt-3">Our team will get back to you with a competitive quote.</p>
         </div>
         <QuoteForm context={`${app.title} — application page`} />
       </section>

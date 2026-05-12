@@ -51,7 +51,7 @@ export const APPLICATIONS: Application[] = [
     packSizes: ['25 g', '50 g', '100 g', '200 g', '500 g'],
     features: ['Oil barrier', 'Oxygen barrier', 'Premium glossy or window finish', 'Stand-up zipper option'],
     faq: [
-      { q: 'How long does namkeen stay crisp in your pouches?', a: 'With 3-layer aluminium laminate, 4–6 months from packing date in normal Indian retail conditions.' },
+      { q: 'What barrier does the laminate provide?', a: 'A 3-layer aluminium laminate provides a strong barrier against oxygen, light, and moisture — engineered to protect snack texture and flavour on shelf.' },
     ],
   },
   {
@@ -69,7 +69,7 @@ export const APPLICATIONS: Application[] = [
     packSizes: ['50 g', '100 g', '250 g', '500 g', '1 kg'],
     features: ['Aroma & moisture barrier', '3-layer laminate', 'Glossy or matte', 'Zipper option'],
     faq: [
-      { q: 'Does the pouch keep tea fresh for 12+ months?', a: 'Yes — properly sealed 3-layer aluminium laminate keeps tea fresh 12–18 months.' },
+      { q: 'Why a 3-layer laminate for tea?', a: 'Tea aroma is volatile and degrades fast with oxygen or light exposure. A 3-layer aluminium laminate is engineered as a barrier against both.' },
     ],
   },
   {
@@ -78,7 +78,7 @@ export const APPLICATIONS: Application[] = [
     shortTitle: 'Ice Cream Pouch',
     oneLiner: 'Freezer-tough pouches for ice cream and frozen desserts.',
     description:
-      'Ice cream packaging has to survive sub-zero temperatures, condensation, and rough handling in cold-chain logistics. Our laminated pouches use food-grade LDPE that stays flexible at -20 °C.',
+      'Ice cream packaging has to survive sub-zero temperatures, condensation, and rough handling in cold-chain logistics. Our laminated pouches use LDPE that stays flexible at low temperatures.',
     metaDescription: 'Ice cream packaging pouch manufacturer Kolkata — freezer-grade laminate, glossy print, custom sizes.',
     keywords: ['ice cream packaging pouch', 'frozen dessert pouch manufacturer'],
     image: '/images/applications/ice-cream.jpg',
@@ -86,7 +86,7 @@ export const APPLICATIONS: Application[] = [
     recommendedProductSlugs: ['center-seal-pouch', 'aluminium-laminated-roll'],
     packSizes: ['50 ml', '100 ml', '250 ml', '500 ml', '1 L'],
     features: ['Freezer-grade LDPE', 'Glossy print', 'Sealing reliability at low temperatures'],
-    faq: [{ q: 'Is the laminate FSSAI compliant?', a: 'Yes — all food-contact materials we use are food-grade and FSSAI compliant.' }],
+    faq: [{ q: 'Will the seal hold under freezer conditions?', a: 'Yes — our sealing is engineered to remain intact across cold-chain temperature ranges.' }],
   },
   {
     slug: 'masala-packaging-pouch',
@@ -111,14 +111,14 @@ export const APPLICATIONS: Application[] = [
     oneLiner: 'Stand-up pouches for fresh fermented batters that need to breathe.',
     description:
       'Fermented batters need to release CO₂ without leaking liquid. Our specialised stand-up zipper batter pouches handle this with a calibrated seal pattern, keeping batters fresh for 5–7 days refrigerated.',
-    metaDescription: 'Idly & dosa batter packaging pouch manufacturer in Kolkata. Stand-up, leak-proof, food-grade laminate.',
+    metaDescription: 'Idly & dosa batter packaging pouch manufacturer in Kolkata. Stand-up, leak-resistant laminate.',
     keywords: ['idly dosa batter pouch', 'batter packaging stand up pouch'],
     image: '/images/applications/idly-dosa.jpg',
     category: 'dairy-batter',
     recommendedProductSlugs: ['stand-up-pouch', 'milky-roll'],
     packSizes: ['500 ml', '1 L', '2 L'],
-    features: ['Leak-proof', 'Pressure-tolerant seal', 'Food-grade LDPE', 'Stand-up format'],
-    faq: [{ q: 'Will the pouch leak under fridge pressure?', a: 'No — our seal recipe is tested for fermenting batter conditions.' }],
+    features: ['Leak-resistant', 'Pressure-tolerant seal', 'Stand-up format'],
+    faq: [{ q: 'Is the seal designed for fermenting batter?', a: 'Our seal recipe is engineered for the pressure conditions typical of fermenting batter.' }],
   },
   {
     slug: 'chira-packaging-pouch',
@@ -239,13 +239,13 @@ export const APPLICATIONS: Application[] = [
     oneLiner: 'High-barrier vacuum pouches for fresh paneer and dairy curds.',
     description:
       'Paneer needs vacuum-sealed pouches that hold up under pressure and protect against off-flavours. Our 3-layer EVOH-blend pouches deliver the moisture and oxygen barrier dairy demands.',
-    metaDescription: 'Paneer vacuum packaging pouch manufacturer Kolkata. 3-layer EVOH laminate. FSSAI compliant.',
+    metaDescription: 'Paneer vacuum packaging pouch manufacturer Kolkata. 3-layer EVOH laminate. Vacuum-sealable.',
     keywords: ['paneer vacuum pouch', 'paneer packaging India'],
     image: '/images/applications/paneer.jpg',
     category: 'dairy-batter',
     recommendedProductSlugs: ['aluminium-laminated-roll', 'three-side-seal-pouch'],
     packSizes: ['100 g', '200 g', '500 g', '1 kg'],
-    features: ['Vacuum-sealable', 'Oxygen barrier', 'FSSAI compliant'],
+    features: ['Vacuum-sealable', 'Oxygen barrier', '3-layer construction'],
     faq: [{ q: 'Are the pouches vacuum-machine compatible?', a: 'Yes — compatible with both chamber vacuum machines and external vacuum sealers.' }],
   },
   {
@@ -294,7 +294,7 @@ export const APPLICATIONS: Application[] = [
     recommendedProductSlugs: ['stand-up-pouch', 'aluminium-laminated-roll'],
     packSizes: ['100 g', '200 g', '250 g', '500 g', '1 kg'],
     features: ['Stand-up zipper', 'Aluminium barrier', 'Premium glossy or matte'],
-    faq: [{ q: 'Are the pouches Amazon-listing ready?', a: 'Yes — we design barcodes, FSSAI symbols, and nutrition labels into the printable area.' }],
+    faq: [{ q: 'Are the pouches Amazon-listing ready?', a: 'Yes — we design barcodes, regulatory marks, and nutrition labels into the printable area as required by your category.' }],
   },
   {
     slug: 'makhana-packaging-pouch',
@@ -326,7 +326,7 @@ export const APPLICATIONS: Application[] = [
     recommendedProductSlugs: ['milky-roll', 'three-side-seal-pouch'],
     packSizes: ['500 g', '1 kg', '2 kg'],
     features: ['Moisture barrier', 'Free-flow protection', '8-color print'],
-    faq: [{ q: 'Does besan keep fresh in your pouch?', a: 'Yes — moisture-barrier laminate keeps besan free-flowing for 6+ months.' }],
+    faq: [{ q: 'Why is moisture barrier important for besan?', a: 'Besan absorbs humidity quickly and clumps when exposed to air. A moisture-barrier laminate is engineered to keep it free-flowing on shelf.' }],
   },
   {
     slug: 'tissue-packaging-pouch',

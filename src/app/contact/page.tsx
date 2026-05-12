@@ -6,7 +6,7 @@ import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Contact Us — Get a Quote',
-  description: `Contact Arihant Packaging — Madhyamgram, Kolkata. Phone ${SITE.contact.phoneDisplay}. We respond within 4 working hours.`,
+  description: `Contact Arihant Packaging — Madhyamgram, Kolkata. Phone ${SITE.contact.phoneDisplay}.`,
   alternates: { canonical: '/contact' },
 };
 
@@ -21,7 +21,7 @@ export default function ContactPage() {
         <div className="max-w-3xl">
           <h1 className="heading-xl">Get in touch</h1>
           <p className="lede mt-4">
-            Tell us what you need — pouch type, material, quantity, target launch date — and we'll get back within 4 working hours.
+            Tell us what you need — pouch type, material, quantity, target launch date — and our team will get back to you.
           </p>
         </div>
       </section>
@@ -84,7 +84,7 @@ export default function ContactPage() {
         </div>
 
         <div className="lg:col-span-2">
-          <QuoteForm context="Contact page" subtitle="We respond within 4 working hours. No spam." />
+          <QuoteForm context="Contact page" subtitle="Our team will be in touch shortly." />
         </div>
       </section>
     </>

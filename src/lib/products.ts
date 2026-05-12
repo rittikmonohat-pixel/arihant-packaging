@@ -46,7 +46,7 @@ export const PRODUCTS: Product[] = [
     faq: [
       { q: 'What products is a transparent window pouch best for?', a: 'Chira, namkeen, rice, whole spices, sugar, seeds — any product where the visual appearance helps sell.' },
       { q: 'What is the minimum order?', a: '300 kg per design. We can run smaller trial batches on request.' },
-      { q: 'Do you provide samples before bulk order?', a: 'Yes. Free physical samples are dispatched after design approval and against a refundable plate cost.' },
+      { q: 'Do you provide samples before bulk order?', a: 'Yes. Sample arrangements are discussed once artwork is approved — talk to us about your specifications.' },
     ],
   },
   {
@@ -76,7 +76,7 @@ export const PRODUCTS: Product[] = [
     applicationsSlugs: ['namkeen-packaging-pouch', 'masala-packaging-pouch', 'tea-packaging-pouch', 'fertilizer-packaging-pouch'],
     faq: [
       { q: 'Why choose 3-layer over 2-layer?', a: '3-layer with metal polyester gives a complete barrier against light, oxygen, and moisture — essential for spices, tea, snacks, and pharma.' },
-      { q: 'Is the foil food-safe?', a: 'Yes. We use food-grade MET PET and LDPE compliant with FSSAI requirements.' },
+      { q: 'Why MET PET as the barrier layer?', a: 'Metalised polyester gives a full barrier against light, oxygen, and moisture — preserving flavour and shelf appeal.' },
     ],
   },
   {
