@@ -23,7 +23,7 @@ export default function HomePage() {
       <section className="container-x py-16 sm:py-24">
         <div className="text-center max-w-3xl mx-auto">
           <span className="pill">Why Arihant Packaging</span>
-          <h2 className="heading-lg mt-4">Built for India's growing FMCG brands</h2>
+          <h2 className="heading-lg mt-4">Built for India&apos;s growing FMCG brands</h2>
           <p className="lede mt-4">
             From small runs to lakhs of pouches per month, we deliver the print quality, barrier protection, and reliability your product deserves.
           </p>
@@ -85,12 +85,12 @@ export default function HomePage() {
       <HowItWorks />
 
       {/* Trust block */}
-      <section className="bg-brand-700 text-white py-16 sm:py-20">
+      <section className="bg-brand-600 text-white py-16 sm:py-20" style={{ backgroundImage: 'linear-gradient(135deg, #1F4E79, #2F6FB0)' }}>
         <div className="container-x grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <span className="inline-block pill bg-white/10 text-white">Why brands trust us</span>
-            <h2 className="heading-lg text-white mt-4">A manufacturer that grows with you</h2>
-            <p className="text-lg text-brand-50/90 mt-4 leading-relaxed">
+            <span className="inline-block pill" style={{ background: 'rgba(255,255,255,0.12)', borderColor: 'rgba(255,255,255,0.2)', color: '#fff' }}>Why brands trust us</span>
+            <h2 className="heading-lg text-white mt-4">A manufacturer that <span className="font-serif italic font-normal text-brand-200">grows with you</span></h2>
+            <p className="text-lg text-white/85 mt-4 leading-relaxed">
               We have been making flexible packaging in Kolkata since 2016, working with growing FMCG brands across India.
             </p>
             <div className="mt-8 grid grid-cols-2 gap-6">
@@ -101,39 +101,41 @@ export default function HomePage() {
                 { icon: Sparkles, label: 'Print colours', value: 'Up to 8' },
               ].map((s) => (
                 <div key={s.label} className="flex items-start gap-3">
-                  <s.icon className="w-6 h-6 text-accent-300 flex-shrink-0 mt-0.5" />
+                  <s.icon className="w-6 h-6 text-brand-200 flex-shrink-0 mt-0.5" />
                   <div>
                     <div className="text-2xl font-bold text-white">{s.value}</div>
-                    <div className="text-sm text-brand-100">{s.label}</div>
+                    <div className="text-sm text-white/80">{s.label}</div>
                   </div>
                 </div>
               ))}
             </div>
             <div className="mt-8">
-              <Link href="/about" className="inline-flex items-center gap-2 text-accent-300 hover:text-accent-200 font-semibold">
+              <Link href="/about" className="inline-flex items-center gap-2 text-brand-200 hover:text-white font-semibold">
                 Read our story <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
           <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-            <Image
-              src="/images/factory/factory-1.jpg"
-              alt="Arihant Packaging factory floor — rotogravure printing"
-              fill
-              sizes="(min-width:1024px) 50vw, 100vw"
-              className="object-cover"
-            />
+            <Image src="/images/factory/factory-1.jpg" alt="Arihant Packaging factory floor" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
           </div>
         </div>
       </section>
 
       {/* CTA */}
       <section className="container-x py-16 sm:py-24">
-        <div className="rounded-3xl bg-gradient-to-br from-brand-50 to-sky-50 p-10 sm:p-16 text-center border border-brand-100">
-          <h2 className="heading-lg max-w-3xl mx-auto">Ready to discuss your packaging?</h2>
+        <div className="rounded-3xl bg-gradient-to-br from-brand-50 to-white p-10 sm:p-16 text-center border border-brand-100">
+          <h2 className="heading-lg max-w-3xl mx-auto">Ready to discuss your <span className="serif-accent">packaging?</span></h2>
           <p className="lede mt-4 max-w-2xl mx-auto">
-            Tell us about your product, quantity, and timeline — we&apos;ll come back with a competitive quote.
+            Tell us about your product, quantity, and timeline. We&apos;ll come back with a competitive quote.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link href="/contact" className="btn-primary text-base">
-              Get Best
+              Get a Quote <ArrowRight className="w-4 h-4" />
+            </Link>
+            <Link href="/products" className="btn-ghost text-base">Browse Products</Link>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
