@@ -105,7 +105,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
       <section className="bg-ink-50/50 py-16">
         <div className="container-x grid lg:grid-cols-2 gap-10 items-start">
           <div>
-            <span className="pill">Get Best Price</span>
+            <span className="pill">Get a Quote</span>
             <h2 className="heading-md mt-3">Tell us about your packaging needs</h2>
             <p className="lede mt-3">Our team will get back to you with a competitive quote.</p>
             <ul className="mt-6 space-y-2.5 text-sm text-ink-700">

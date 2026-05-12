@@ -85,7 +85,7 @@ export default function Footer() {
               ['TradeIndia', SITE.social.tradeindia],
               ['JustDial', SITE.social.justdial],
             ].map(([label, href]) => (
-              <a key={label} href={href} target="_blank" rel="noopener" className="px-3 py-1.5 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 transition text-white/95">
+              <a key={label} href={href} target="_blank" rel="noopener" className="px-3 py-1.5 rounded-full bg-white/15 hover:bg-white/25 border border-white/30 hover:border-white/50 transition text-white font-medium">
                 {label}
               </a>
             ))}
@@ -95,10 +95,5 @@ export default function Footer() {
         <div className="mt-10 pt-6 border-t border-white/20 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/80">
           <div>© {year} Arihant Packaging. All rights reserved.</div>
           <div className="flex items-center gap-4">
-            <span>MSME / Udyam Registered</span>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-}
+            <Link href="/privacy" className="hover:text-white">Privacy</Link>
+            <Link href="/ter

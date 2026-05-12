@@ -26,7 +26,7 @@ export default function TrustedBy() {
           transition={{ duration: 0.6 }}
           className="text-xs sm:text-sm font-semibold uppercase tracking-[0.18em] text-ink-500"
         >
-          Trusted by manufacturers and FMCG brands across India
+          Industries we serve — trusted by manufacturers and FMCG brands across India
         </motion.div>
 
         <div className="mt-8 overflow-hidden relative">
@@ -45,7 +45,4 @@ export default function TrustedBy() {
             ))}
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
+      </div

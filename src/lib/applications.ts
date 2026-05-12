@@ -51,7 +51,7 @@ export const APPLICATIONS: Application[] = [
     packSizes: ['25 g', '50 g', '100 g', '200 g', '500 g'],
     features: ['Oil barrier', 'Oxygen barrier', 'Premium glossy or window finish', 'Stand-up zipper option'],
     faq: [
-      { q: 'What barrier does the laminate provide?', a: 'A 3-layer aluminium laminate provides a strong barrier against oxygen, light, and moisture — engineered to protect snack texture and flavour on shelf.' },
+      { q: 'What barrier does the laminate provide?', a: 'A 3-layer aluminium laminate provides a strong barrier against oxygen, light, and moisture — designed to protect snack texture and flavour on shelf.' },
     ],
   },
   {
@@ -69,7 +69,7 @@ export const APPLICATIONS: Application[] = [
     packSizes: ['50 g', '100 g', '250 g', '500 g', '1 kg'],
     features: ['Aroma & moisture barrier', '3-layer laminate', 'Glossy or matte', 'Zipper option'],
     faq: [
-      { q: 'Why a 3-layer laminate for tea?', a: 'Tea aroma is volatile and degrades fast with oxygen or light exposure. A 3-layer aluminium laminate is engineered as a barrier against both.' },
+      { q: 'Why a 3-layer laminate for tea?', a: 'Tea aroma is volatile and degrades fast with oxygen or light exposure. A 3-layer aluminium laminate is designed as a barrier against both.' },
     ],
   },
   {
@@ -86,7 +86,7 @@ export const APPLICATIONS: Application[] = [
     recommendedProductSlugs: ['center-seal-pouch', 'aluminium-laminated-roll'],
     packSizes: ['50 ml', '100 ml', '250 ml', '500 ml', '1 L'],
     features: ['Freezer-grade LDPE', 'Glossy print', 'Sealing reliability at low temperatures'],
-    faq: [{ q: 'Will the seal hold under freezer conditions?', a: 'Yes — our sealing is engineered to remain intact across cold-chain temperature ranges.' }],
+    faq: [{ q: 'Will the seal hold under freezer conditions?', a: 'Yes — our sealing is designed to remain intact across cold-chain temperature ranges.' }],
   },
   {
     slug: 'masala-packaging-pouch',
@@ -118,7 +118,7 @@ export const APPLICATIONS: Application[] = [
     recommendedProductSlugs: ['stand-up-pouch', 'milky-roll'],
     packSizes: ['500 ml', '1 L', '2 L'],
     features: ['Leak-resistant', 'Pressure-tolerant seal', 'Stand-up format'],
-    faq: [{ q: 'Is the seal designed for fermenting batter?', a: 'Our seal recipe is engineered for the pressure conditions typical of fermenting batter.' }],
+    faq: [{ q: 'Is the seal designed for fermenting batter?', a: 'Our seal recipe is designed for the pressure conditions typical of fermenting batter.' }],
   },
   {
     slug: 'chira-packaging-pouch',
@@ -326,7 +326,7 @@ export const APPLICATIONS: Application[] = [
     recommendedProductSlugs: ['milky-roll', 'three-side-seal-pouch'],
     packSizes: ['500 g', '1 kg', '2 kg'],
     features: ['Moisture barrier', 'Free-flow protection', '8-color print'],
-    faq: [{ q: 'Why is moisture barrier important for besan?', a: 'Besan absorbs humidity quickly and clumps when exposed to air. A moisture-barrier laminate is engineered to keep it free-flowing on shelf.' }],
+    faq: [{ q: 'Why is moisture barrier important for besan?', a: 'Besan absorbs humidity quickly and clumps when exposed to air. A moisture-barrier laminate is designed to keep it free-flowing on shelf.' }],
   },
   {
     slug: 'tissue-packaging-pouch',

@@ -37,7 +37,7 @@ export default function Hero() {
 
           <motion.div className="mt-8 flex flex-wrap gap-3" initial="hidden" animate="show" variants={fadeUp} custom={3}>
             <Link href="/contact" className="btn-primary text-base">
-              Request a quote <ArrowRight className="w-4 h-4" />
+              Get a Quote <ArrowRight className="w-4 h-4" />
             </Link>
             <Link href="/products" className="btn-ghost text-base">Browse catalogue</Link>
             <a
@@ -51,13 +51,13 @@ export default function Hero() {
           </motion.div>
 
           <motion.div
-            className="mt-10 flex items-center flex-wrap gap-x-6 gap-y-2 text-sm text-ink-500"
+            className="mt-10 flex flex-col sm:flex-row sm:items-center flex-wrap gap-x-6 gap-y-2 text-sm text-ink-500"
             initial="hidden" animate="show" variants={fadeUp} custom={4}
           >
             <span><strong className="text-ink-900 font-semibold">{SITE.stats.yearsInBusiness}+</strong> years in business</span>
-            <span className="w-1 h-1 rounded-full bg-ink-400 opacity-50" />
+            <span className="hidden sm:block w-1 h-1 rounded-full bg-ink-400 opacity-50" />
             <span><strong className="text-ink-900 font-semibold">22+</strong> industries</span>
-            <span className="w-1 h-1 rounded-full bg-ink-400 opacity-50" />
+            <span className="hidden sm:block w-1 h-1 rounded-full bg-ink-400 opacity-50" />
             <span><strong className="text-ink-900 font-semibold">8-colour</strong> rotogravure</span>
           </motion.div>
         </div>
@@ -80,7 +80,7 @@ export default function Hero() {
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink-900/75 via-ink-900/10 to-transparent p-5">
                 <div className="text-white font-semibold">Stand-up zipper pouches</div>
-                <div className="text-white/80 text-sm">Premium retail-ready packaging</div>
+                <div className="text-white/80 text-sm">Retail-ready format</div>
               </div>
             </div>
           </div>
@@ -95,7 +95,7 @@ export default function Hero() {
             <div className="w-9 h-9 rounded-xl grid place-items-center text-white text-xs font-bold" style={{ backgroundImage: 'linear-gradient(135deg, #1F4E79, #2F6FB0)' }}>8</div>
             <div>
               <div className="font-bold text-ink-900 leading-none">Up to 8 colours</div>
-              <div className="text-[11px] uppercase tracking-wider text-ink-500 mt-1">Rotogravure</div>
+              <div className="text-[11px] uppercase tracking-wider text-ink-700 mt-1">Rotogravure</div>
             </div>
           </motion.div>
           <motion.div
@@ -108,11 +108,7 @@ export default function Hero() {
             <div className="w-9 h-9 rounded-xl bg-brand-50 border border-brand-100 grid place-items-center text-brand-600 text-sm font-bold">kg</div>
             <div>
               <div className="font-bold text-ink-900 leading-none">From 300 kg</div>
-              <div className="text-[11px] uppercase tracking-wider text-ink-500 mt-1">Minimum order</div>
+              <div className="text-[11px] uppercase tracking-wider text-ink-700 mt-1">Minimum order</div>
             </div>
           </motion.div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
+        </motion

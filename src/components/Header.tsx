@@ -72,8 +72,17 @@ export default function Header() {
                   className="relative"
                   onMouseEnter={() => setProductsOpen(true)}
                   onMouseLeave={() => setProductsOpen(false)}
+                  onFocus={() => setProductsOpen(true)}
+                  onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setProductsOpen(false); }}
+                  onKeyDown={(e) => { if (e.key === 'Escape') setProductsOpen(false); }}
                 >
-                  <Link href={item.href} className="px-3 py-2 text-sm font-medium text-ink-700 hover:text-brand-600 rounded-full hover:bg-brand-50/70 transition">
+                  <Link
+                    href={item.href}
+                    className="px-3 py-2 text-sm font-medium text-ink-700 hover:text-brand-600 rounded-full hover:bg-brand-50/70 transition"
+                    aria-haspopup="menu"
+                    aria-expanded={productsOpen}
+                    onClick={(e) => { if (!productsOpen) { e.preventDefault(); setProductsOpen(true); } }}
+                  >
                     {item.label}
                   </Link>
                   {productsOpen && (
@@ -132,18 +141,4 @@ export default function Header() {
                       <Link key={c.href} href={c.href} onClick={() => setOpen(false)} className="block px-3 py-2 text-sm text-ink-600 hover:bg-brand-50/80 hover:text-brand-700 rounded-xl">
                         {c.label}
                       </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
-            <div className="mt-3 pt-3 border-t border-brand-100/50 grid grid-cols-2 gap-2">
-              <a href={`tel:${SITE.contact.phone}`} className="btn-secondary justify-center"><Phone className="w-4 h-4" />Call</a>
-              <Link href="/contact" onClick={() => setOpen(false)} className="btn-primary justify-center">Get Quote</Link>
-            </div>
-          </div>
-        </div>
-      )}
-    </header>
-  );
-}
+             

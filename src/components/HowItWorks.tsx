@@ -27,9 +27,9 @@ export default function HowItWorks() {
           </h2>
         </div>
 
-        <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-y-8 gap-x-4 relative">
-          {/* Dashed connector line on lg+ */}
-          <div className="hidden lg:block absolute top-7 left-0 right-0 h-px border-t border-dashed border-brand-300/50 mx-[7%]" aria-hidden="true" />
+        <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-7 gap-y-8 gap-x-4 relative">
+          {/* Dashed connector line on xl+ */}
+          <div className="hidden xl:block absolute top-7 left-0 right-0 h-px border-t border-dashed border-brand-300/50 mx-[7%]" aria-hidden="true" />
 
           {STEPS.map((s, i) => (
             <motion.div

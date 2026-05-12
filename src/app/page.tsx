@@ -23,17 +23,17 @@ export default function HomePage() {
       <section className="container-x py-16 sm:py-24">
         <div className="text-center max-w-3xl mx-auto">
           <span className="pill">Why Arihant Packaging</span>
-          <h2 className="heading-lg mt-4">Built for India&apos;s growing FMCG brands</h2>
+          <h2 className="heading-lg mt-4">Built for ambitious <span className="serif-accent">Indian brands</span></h2>
           <p className="lede mt-4">
             From small runs to lakhs of pouches per month, we deliver the print quality, barrier protection, and reliability your product deserves.
           </p>
         </div>
         <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
-            { icon: Palette, title: 'Up to 8-Colour Print', desc: 'Photo-quality rotogravure printing for vibrant brand graphics.' },
-            { icon: Factory, title: 'Full In-House Capability', desc: 'Printing, lamination (solvent + solventless), slitting, pouching — all under one roof.' },
-            { icon: Layers, title: 'Multi-Layer Lamination', desc: 'PET, MET PET, BOPP, LDPE — engineered for moisture and oxygen barrier.' },
-            { icon: Truck, title: 'Pan-India Delivery', desc: 'Shipped to clients across India.' },
+            { icon: Palette, title: 'Up to 8-colour print', desc: 'Sharp rotogravure printing for vibrant brand graphics.' },
+            { icon: Factory, title: 'Full in-house capability', desc: 'Printing, lamination (solvent + solventless), slitting, pouching — all under one roof.' },
+            { icon: Layers, title: 'Multi-layer lamination', desc: 'PET, MET PET, BOPP, LDPE — designed for moisture and oxygen barrier.' },
+            { icon: Truck, title: 'Pan-India delivery', desc: 'Shipped to clients across India.' },
           ].map((f) => (
             <div key={f.title} className="card p-6">
               <div className="w-12 h-12 rounded-xl bg-brand-50 text-brand-600 grid place-items-center mb-4">
@@ -135,7 +135,4 @@ export default function HomePage() {
             <Link href="/products" className="btn-ghost text-base">Browse Products</Link>
           </div>
         </div>
-      </section>
-    </>
-  );
-}
+      </secti

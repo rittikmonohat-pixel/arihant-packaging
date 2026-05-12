@@ -110,7 +110,7 @@ export default async function ApplicationPage({ params }: { params: Promise<{ sl
       {/* Quote form */}
       <section className="container-x py-16 grid lg:grid-cols-2 gap-10 items-start">
         <div>
-          <span className="pill">Get Best Price</span>
+          <span className="pill">Get a Quote</span>
           <h2 className="heading-md mt-3">Discuss your {app.shortTitle.toLowerCase()} project</h2>
           <p className="lede mt-3">Our team will get back to you with a competitive quote.</p>
         </div>
