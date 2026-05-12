@@ -344,6 +344,24 @@ export const APPLICATIONS: Application[] = [
     features: ['Light barrier', 'Crisp print', 'Cost optimized'],
     faq: [{ q: 'Can I order in low MOQ?', a: 'Standard MOQ is 300 kg — but speak to us about smaller trial runs.' }],
   },
+  {
+    slug: 'dates-packaging-pouch',
+    title: 'Dates Packaging Pouches',
+    shortTitle: 'Dates Pouch',
+    oneLiner: 'Moisture-controlled stand-up zipper pouches for premium dates and date-based products.',
+    description:
+      'Dates need packaging that controls moisture and protects the natural softness without sticking together. Our stand-up zipper pouches with 3-layer aluminium laminate keep dates fresh and presentable while letting the brand stand out on shelf. Ideal for retail packs of khajur, Medjool dates, date balls, and similar products.',
+    metaDescription: 'Dates packaging pouch manufacturer in Kolkata. Stand-up zipper, 3-layer aluminium laminate, custom-printed for premium dates brands.',
+    keywords: ['dates packaging pouch', 'khajur pouch manufacturer', 'date packaging India'],
+    image: '/images/applications/dates.jpg',
+    category: 'foods',
+    recommendedProductSlugs: ['stand-up-pouch', 'aluminium-laminated-roll', 'three-side-seal-pouch'],
+    packSizes: ['100 g', '200 g', '250 g', '500 g', '1 kg'],
+    features: ['Moisture control', 'Aroma barrier', 'Stand-up zipper', 'Premium retail look'],
+    faq: [
+      { q: 'Why a 3-layer laminate for dates?', a: 'Dates are moisture-sensitive and the natural sugars attract air. A 3-layer aluminium laminate is designed as a barrier against moisture and oxygen.' },
+    ],
+  },
 ];
 
 export function getApplication(slug: string): Application | undefined {

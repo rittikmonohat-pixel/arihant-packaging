@@ -246,6 +246,84 @@ export const PRODUCTS: Product[] = [
       { q: 'How much weight can the handle hold?', a: 'Up to 2 kg comfortably with a 3-layer laminate.' },
     ],
   },
+  {
+    slug: 'ldpe-gusset-pouch',
+    title: 'LDPE Gusset Pouches',
+    shortTitle: 'LDPE Gusset Pouch',
+    oneLiner: 'Side-gusseted LDPE pouches with large fill volume and stand-on-shelf shape.',
+    description:
+      'LDPE gusset pouches expand at both sides to hold significantly more volume than flat pouches of the same width. The gusseted shape stands stably on shelf and pallets well. A great fit for snacks, dried foods, fertiliser, garments, and any product where pack volume needs to scale up without sacrificing footprint.',
+    metaDescription:
+      'LDPE gusset pouch manufacturer in Kolkata. Side-gusseted construction, custom sizes, up to 8-colour print. MOQ 300 kg.',
+    keywords: ['LDPE gusset pouch', 'gusseted pouch manufacturer', 'side gusset pouch India'],
+    image: '/images/products/ldpe-gusset-pouch.jpg',
+    gallery: ['/images/products/ldpe-gusset-pouch.jpg'],
+    specs: [
+      { label: 'MOQ', value: '300 kg' },
+      { label: 'Layers', value: '1 or 2 (LDPE / PET + LDPE)' },
+      { label: 'Construction', value: 'Side gusset' },
+      { label: 'Print Colours', value: 'Up to 8' },
+      { label: 'Size', value: 'Customised' },
+    ],
+    finish: ['Milky', 'Glossy', 'Matt'],
+    applicationsSlugs: ['namkeen-packaging-pouch', 'fryums-packaging-pouch', 'detergent-packaging-pouch'],
+    faq: [
+      { q: 'What is a gusset pouch?', a: 'A gusset pouch has folded panels on the sides that expand when the pouch is filled, giving more volume than a flat pouch of the same width.' },
+      { q: 'How tall can gusset pouches be made?', a: 'Standard heights up to about 600 mm. Speak to us for taller custom sizes.' },
+    ],
+  },
+  {
+    slug: 'registered-matt-pouch',
+    title: 'Registered Matt Pouches',
+    shortTitle: 'Registered Matt Pouch',
+    oneLiner: 'Selective matt + gloss finish — matt only where you specify, glossy everywhere else.',
+    description:
+      'Registered matt is a premium finish where only specified zones of the printed pouch carry a matt effect, while the rest stays glossy. The contrast between matt logo, matt brand panel, and surrounding gloss creates a distinct tactile and visual signature that buyers notice on shelf. Used by premium tea, dried fruits, and spice brands.',
+    metaDescription:
+      'Registered matt pouch manufacturer in Kolkata — selective matt + gloss finish for premium packaging. Custom designs, 8-colour rotogravure.',
+    keywords: ['registered matt pouch', 'spot matt pouch manufacturer', 'matt gloss combination pouch'],
+    image: '/images/products/registered-matt-pouch.jpg',
+    gallery: ['/images/products/registered-matt-pouch.jpg'],
+    specs: [
+      { label: 'MOQ', value: '500 kg' },
+      { label: 'Finish', value: 'Selective matt + gloss (registered)' },
+      { label: 'Material', value: 'PET + MET PET (optional) + LDPE' },
+      { label: 'Layers', value: '2 or 3' },
+      { label: 'Print Colours', value: 'Up to 8' },
+    ],
+    finish: ['Registered matt', 'Selective gloss'],
+    applicationsSlugs: ['tea-packaging-pouch', 'dried-fruits-packaging-pouch', 'masala-packaging-pouch'],
+    faq: [
+      { q: 'What does registered matt mean?', a: 'It means only specified areas (e.g., your logo or a brand panel) are matt while the rest of the pouch stays glossy. The matt zones are precisely registered to your artwork.' },
+      { q: 'Why is MOQ higher for this product?', a: 'Registered matt needs an extra coating cylinder during rotogravure and tighter print registration — making short runs less economical.' },
+    ],
+  },
+  {
+    slug: 'matt-pouch',
+    title: 'Matt Pouches',
+    shortTitle: 'Matt Pouch',
+    oneLiner: 'Fully matt-finish pouches for a soft, premium, non-reflective look.',
+    description:
+      'Matt pouches carry an all-over matt finish — soft to touch, low glare, and modern in feel. Increasingly preferred by premium organic, ayurvedic, and artisan brands that want to stand apart from the typical glossy shelf. The matt coating also reduces fingerprint marks and looks cleaner over time.',
+    metaDescription:
+      'Matt finish pouch manufacturer in Kolkata. Full matt coating, soft-touch feel, custom sizes, 8-colour print. MOQ 300 kg.',
+    keywords: ['matt pouch', 'matt finish pouch manufacturer', 'soft touch pouch India'],
+    image: '/images/products/matt-pouch.jpg',
+    gallery: ['/images/products/matt-pouch.jpg'],
+    specs: [
+      { label: 'MOQ', value: '300 kg' },
+      { label: 'Finish', value: 'Full matt (all-over)' },
+      { label: 'Material', value: 'PET + MET PET (optional) + LDPE' },
+      { label: 'Layers', value: '2 or 3' },
+      { label: 'Print Colours', value: 'Up to 8' },
+    ],
+    finish: ['Full matt'],
+    applicationsSlugs: ['tea-packaging-pouch', 'dried-fruits-packaging-pouch', 'masala-packaging-pouch'],
+    faq: [
+      { q: 'Will matt finish wear off?', a: 'Matt is a coating layer applied during rotogravure printing. Under normal handling and storage it remains stable throughout the product shelf life.' },
+      { q: 'Is matt or gloss more premium?', a: 'Neither is inherently more premium — it depends on positioning. Matt suits organic, ayurvedic, and artisan brands. Gloss suits mainstream FMCG.' },
+    ],
+  },
 ];
 
 export function getProduct(slug: string): Product | undefined {

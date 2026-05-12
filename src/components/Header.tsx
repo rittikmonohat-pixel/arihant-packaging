@@ -38,7 +38,7 @@ export default function Header() {
         scrolled ? 'shadow-sm' : '',
       )}
       style={{
-        background: scrolled ? 'rgba(255,255,255,0.75)' : 'rgba(255,255,255,0.5)',
+        background: scrolled ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.6)',
         backdropFilter: 'blur(20px) saturate(180%)',
         WebkitBackdropFilter: 'blur(20px) saturate(180%)',
         borderBottom: scrolled ? '1px solid rgba(186,230,253,0.6)' : '1px solid transparent',
@@ -59,8 +59,18 @@ export default function Header() {
 
       <div className="container-x">
         <div className="flex items-center justify-between py-3 lg:py-4">
-          <Link href="/" className="flex items-center gap-2 group" aria-label="Arihant Packaging - Home">
-            <Image src="/images/logo-wide.svg" alt="Arihant Packaging" width={220} height={110} priority className="h-11 sm:h-12 w-auto transition-transform group-hover:scale-105" />
+          <Link href="/" className="flex items-center gap-3 group" aria-label="Arihant Packaging - Home">
+            <Image
+              src="/images/logo-mark.svg"
+              alt="Arihant Packaging"
+              width={56}
+              height={56}
+              priority
+              className="h-12 sm:h-14 w-auto transition-transform group-hover:scale-105"
+            />
+            <span className="font-bold tracking-tight text-brand-600 text-xl sm:text-2xl leading-none">
+              Arihant <span className="text-brand-700">Packaging</span>
+            </span>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1" aria-label="Primary">

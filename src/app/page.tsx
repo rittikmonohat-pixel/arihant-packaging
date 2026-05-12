@@ -5,6 +5,7 @@ import Hero from '@/components/Hero';
 import TrustStrip from '@/components/TrustStrip';
 import TrustedBy from '@/components/TrustedBy';
 import HowItWorks from '@/components/HowItWorks';
+import MachinerySection from '@/components/MachinerySection';
 import ProductCard from '@/components/ProductCard';
 import ApplicationCard from '@/components/ApplicationCard';
 import { PRODUCTS } from '@/lib/products';
@@ -81,6 +82,8 @@ export default function HomePage() {
           {featuredApps.map((a) => <ApplicationCard key={a.slug} app={a} />)}
         </div>
       </section>
+
+      <MachinerySection />
 
       <HowItWorks />
 
