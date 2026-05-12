@@ -97,7 +97,7 @@ export default function HomePage() {
               {[
                 { icon: Award, label: 'MSME / Udyam', value: 'Registered' },
                 { icon: Factory, label: 'Capability', value: 'In-house' },
-                { icon: Layers, label: 'Lamination', value: '2 / 2½ / 3 layer' },
+                { icon: Layers, label: 'Lamination', value: '2 / 2 / 3 layer' },
                 { icon: Sparkles, label: 'Print colours', value: 'Up to 8' },
               ].map((s) => (
                 <div key={s.label} className="flex items-start gap-3">
@@ -135,4 +135,7 @@ export default function HomePage() {
             <Link href="/products" className="btn-ghost text-base">Browse Products</Link>
           </div>
         </div>
-      </secti
+      </section>
+    </>
+  );
+}
