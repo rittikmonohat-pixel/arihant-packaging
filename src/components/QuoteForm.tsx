@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { events } from '@/lib/analytics';
 
 const Schema = z.object({
   name: z.string().min(2, 'Name is required'),
@@ -52,6 +53,7 @@ export default function QuoteForm({
         const data = await res.json().catch(() => ({}));
         throw new Error(data.error || 'Could not send. Please WhatsApp us instead.');
       }
+      events.quoteSubmitted(values.context || 'unknown');
       setStatus('success');
       reset();
     } catch (e) {
