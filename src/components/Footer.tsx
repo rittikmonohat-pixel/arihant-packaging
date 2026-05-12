@@ -24,7 +24,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-sm text-white/85 leading-relaxed max-w-md">
-              Manufacturer of custom flexible packaging — laminated rolls, stand-up zipper pouches, and printed films. Serving brands across India since {SITE.foundedYear}.
+              Manufacturer of custom flexible packaging - laminated rolls, stand-up zipper pouches, and printed films. Serving brands across India since {SITE.foundedYear}.
             </p>
             <div className="mt-5 space-y-2 text-sm">
               <a href={`tel:${SITE.contact.phone}`} className="flex items-center gap-2 text-white/90 hover:text-brand-200">
@@ -55,7 +55,7 @@ export default function Footer() {
               {topApps.map((a) => (
                 <li key={a.slug}><Link href={`/applications/${a.slug}`} className="text-white/85 hover:text-white">{a.shortTitle}</Link></li>
               ))}
-              <li><Link href="/applications" className="text-brand-300 hover:text-white font-medium">View all →</Link></li>
+              <li><Link href="/applications" className="text-brand-300 hover:text-white font-medium">View all -&gt;</Link></li>
             </ul>
           </div>
 
@@ -63,7 +63,7 @@ export default function Footer() {
             <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-4">Company</h3>
             <ul className="space-y-2 text-sm">
               <li><Link href="/about" className="text-white/85 hover:text-white">About Us</Link></li>
-              <li><Link href="/quality" className="text-white/85 hover:text-white">Quality & QC</Link></li>
+              <li><Link href="/quality" className="text-white/85 hover:text-white">Quality &amp; QC</Link></li>
               <li><Link href="/custom-printed-pouches" className="text-white/85 hover:text-white">Custom Printed</Link></li>
               <li><Link href="/blog" className="text-white/85 hover:text-white">Blog</Link></li>
               <li><Link href="/faq" className="text-white/85 hover:text-white">FAQ</Link></li>
@@ -72,7 +72,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 pt-8 border-t border-brand-800/60">
+        <div className="mt-10 pt-8 border-t border-white/20">
           <h3 className="text-white font-semibold text-sm uppercase tracking-wider mb-3">Find us on</h3>
           <div className="flex flex-wrap gap-2 text-sm">
             {[
@@ -93,7 +93,14 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 pt-6 border-t border-white/20 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/80">
-          <div>© {year} Arihant Packaging. All rights reserved.</div>
+          <div>(c) {year} Arihant Packaging. All rights reserved.</div>
           <div className="flex items-center gap-4">
             <Link href="/privacy" className="hover:text-white">Privacy</Link>
-            <Link href="/ter
+            <Link href="/terms" className="hover:text-white">Terms</Link>
+            <span>MSME / Udyam Registered</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

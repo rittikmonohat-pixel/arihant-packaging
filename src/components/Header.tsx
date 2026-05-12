@@ -44,15 +44,14 @@ export default function Header() {
         borderBottom: scrolled ? '1px solid rgba(186,230,253,0.6)' : '1px solid transparent',
       }}
     >
-      {/* Thin top utility bar */}
       <div className="hidden lg:block text-white text-xs" style={{ background: 'linear-gradient(90deg, #163E61, #1F4E79 50%, #2F6FB0)' }}>
         <div className="container-x flex items-center justify-between py-1.5">
           <div className="flex items-center gap-4">
-            <span className="opacity-90">Custom flexible packaging · Kolkata since {SITE.foundedYear}</span>
+            <span className="opacity-90">Custom flexible packaging - Kolkata since {SITE.foundedYear}</span>
           </div>
           <div className="flex items-center gap-4">
             <a href={`mailto:${SITE.contact.email}`} className="hover:underline">{SITE.contact.email}</a>
-            <span className="opacity-50">·</span>
+            <span className="opacity-50">-</span>
             <a href={`tel:${SITE.contact.phone}`} className="hover:underline">{SITE.contact.phoneDisplay}</a>
           </div>
         </div>
@@ -60,7 +59,7 @@ export default function Header() {
 
       <div className="container-x">
         <div className="flex items-center justify-between py-3 lg:py-4">
-          <Link href="/" className="flex items-center gap-2 group" aria-label="Arihant Packaging — Home">
+          <Link href="/" className="flex items-center gap-2 group" aria-label="Arihant Packaging - Home">
             <Image src="/images/logo-wide.svg" alt="Arihant Packaging" width={220} height={110} priority className="h-11 sm:h-12 w-auto transition-transform group-hover:scale-105" />
           </Link>
 
@@ -119,7 +118,7 @@ export default function Header() {
               <Phone className="w-4 h-4" />
               <span className="hidden md:inline">{SITE.contact.phoneDisplay}</span>
             </a>
-            <Link href="/contact" className="hidden sm:inline-flex btn-primary text-xs sm:text-sm py-2 px-4">Get Quote</Link>
+            <Link href="/contact" className="hidden sm:inline-flex btn-primary text-xs sm:text-sm py-2 px-4">Get a Quote</Link>
             <button type="button" onClick={() => setOpen(!open)} className="lg:hidden p-2 -mr-2 text-ink-700 hover:bg-brand-50/80 rounded-full" aria-label="Toggle menu" aria-expanded={open}>
               {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -141,4 +140,18 @@ export default function Header() {
                       <Link key={c.href} href={c.href} onClick={() => setOpen(false)} className="block px-3 py-2 text-sm text-ink-600 hover:bg-brand-50/80 hover:text-brand-700 rounded-xl">
                         {c.label}
                       </Link>
-             
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+            <div className="mt-3 pt-3 border-t border-brand-100/50 grid grid-cols-2 gap-2">
+              <a href={`tel:${SITE.contact.phone}`} className="btn-secondary justify-center"><Phone className="w-4 h-4" />Call</a>
+              <Link href="/contact" onClick={() => setOpen(false)} className="btn-primary justify-center">Get a Quote</Link>
+            </div>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}

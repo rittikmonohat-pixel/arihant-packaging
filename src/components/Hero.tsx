@@ -31,7 +31,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p className="lede mt-5 max-w-2xl" initial="hidden" animate="show" variants={fadeUp} custom={2}>
-            Rotogravure-printed pouches and rolls for atta, namkeen, tea, masala, dairy and more —
+            Rotogravure-printed pouches and rolls for atta, namkeen, tea, masala, dairy and more -
             built in West Bengal, shipped across India. MOQ from {SITE.stats.minOrderKg}&nbsp;kg.
           </motion.p>
 
@@ -85,7 +85,6 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Floating glass cards positioned inside the image bounds */}
           <motion.div
             className="hidden lg:flex absolute bottom-24 -left-4 items-center gap-3 px-4 py-3 rounded-2xl glass-strong animate-floaty"
             initial={{ opacity: 0, x: -20 }}
@@ -111,4 +110,8 @@ export default function Hero() {
               <div className="text-[11px] uppercase tracking-wider text-ink-700 mt-1">Minimum order</div>
             </div>
           </motion.div>
-        </motion
+        </motion.div>
+      </div>
+    </section>
+  );
+}
