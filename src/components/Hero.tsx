@@ -78,9 +78,9 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Floating glass cards */}
+          {/* Floating glass cards — kept fully inside the image bounds to avoid hero text overlap */}
           <motion.div
-            className="hidden lg:flex absolute top-32 -left-6 items-center gap-3 px-4 py-3 rounded-2xl glass-strong shadow-card animate-floaty"
+            className="hidden lg:flex absolute bottom-24 -left-4 items-center gap-3 px-4 py-3 rounded-2xl glass-strong shadow-card animate-floaty"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.7, duration: 0.6 }}
@@ -92,7 +92,7 @@ export default function Hero() {
             </div>
           </motion.div>
           <motion.div
-            className="hidden lg:flex absolute bottom-12 -right-4 items-center gap-3 px-4 py-3 rounded-2xl glass-strong shadow-card animate-floaty"
+            className="hidden lg:flex absolute top-16 -right-4 items-center gap-3 px-4 py-3 rounded-2xl glass-strong shadow-card animate-floaty"
             style={{ animationDelay: '-3s' }}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -103,9 +103,4 @@ export default function Hero() {
               <div className="font-bold text-ink-900 leading-none">From 300 kg</div>
               <div className="text-[11px] uppercase tracking-wider text-ink-500 mt-1">Minimum order</div>
             </div>
-          </motion.div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
+          </mot

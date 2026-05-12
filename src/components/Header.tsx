@@ -48,9 +48,7 @@ export default function Header() {
       <div className="hidden lg:block text-white text-xs" style={{ background: 'linear-gradient(90deg, #163E61, #1F4E79 50%, #2F6FB0)' }}>
         <div className="container-x flex items-center justify-between py-1.5">
           <div className="flex items-center gap-4">
-            <span className="opacity-90">Custom flexible packaging since {SITE.foundedYear}</span>
-            <span className="opacity-50">·</span>
-            <span className="opacity-90">MOQ {SITE.stats.minOrderKg} kg · Up to 8-colour rotogravure</span>
+            <span className="opacity-90">Custom flexible packaging · Kolkata since {SITE.foundedYear}</span>
           </div>
           <div className="flex items-center gap-4">
             <a href={`mailto:${SITE.contact.email}`} className="hover:underline">{SITE.contact.email}</a>
@@ -62,14 +60,8 @@ export default function Header() {
 
       <div className="container-x">
         <div className="flex items-center justify-between py-3 lg:py-4">
-          <Link href="/" className="flex items-center gap-3 group" aria-label="Arihant Packaging — Home">
-            <div className="relative w-12 h-12 sm:w-14 sm:h-14 flex-shrink-0 transition-transform group-hover:scale-105">
-              <Image src="/images/logo.png" alt="Arihant Packaging logo" width={56} height={56} className="object-contain" priority />
-            </div>
-            <div className="leading-tight">
-              <div className="text-copper-500 font-bold text-lg sm:text-xl tracking-tight">ARIHANT</div>
-              <div className="text-accent-500 font-bold text-xs sm:text-sm tracking-[0.2em] -mt-0.5">PACKAGING</div>
-            </div>
+          <Link href="/" className="flex items-center gap-2 group" aria-label="Arihant Packaging — Home">
+            <Image src="/images/logo-wide.svg" alt="Arihant Packaging" width={220} height={110} priority className="h-11 sm:h-12 w-auto transition-transform group-hover:scale-105" />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-1" aria-label="Primary">
@@ -86,9 +78,18 @@ export default function Header() {
                   </Link>
                   {productsOpen && (
                     <div className="absolute left-0 top-full pt-2 w-72">
-                      <div className="glass rounded-2xl p-2 shadow-glass">
+                      <div
+                        className="rounded-2xl p-2"
+                        style={{
+                          background: 'rgba(255,255,255,0.96)',
+                          backdropFilter: 'blur(40px) saturate(180%)',
+                          WebkitBackdropFilter: 'blur(40px) saturate(180%)',
+                          border: '1px solid rgba(255,255,255,0.95)',
+                          boxShadow: '0 24px 60px -12px rgba(31,78,121,0.25), 0 4px 12px rgba(31,78,121,0.08)',
+                        }}
+                      >
                         {item.children.map((c) => (
-                          <Link key={c.href} href={c.href} className="block px-3 py-2 text-sm text-ink-700 hover:bg-brand-50/80 hover:text-brand-700 rounded-xl transition">
+                          <Link key={c.href} href={c.href} className="block px-3 py-2 text-sm text-ink-700 hover:bg-brand-50 hover:text-brand-700 rounded-xl transition">
                             {c.label}
                           </Link>
                         ))}

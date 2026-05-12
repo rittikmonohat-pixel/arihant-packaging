@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { ArrowRight, Award, Factory, Palette, Sparkles, Truck, Layers } from 'lucide-react';
 import Hero from '@/components/Hero';
 import TrustStrip from '@/components/TrustStrip';
+import TrustedBy from '@/components/TrustedBy';
+import HowItWorks from '@/components/HowItWorks';
 import ProductCard from '@/components/ProductCard';
 import ApplicationCard from '@/components/ApplicationCard';
 import { PRODUCTS } from '@/lib/products';
@@ -15,6 +17,7 @@ export default function HomePage() {
     <>
       <Hero />
       <TrustStrip />
+      <TrustedBy />
 
       {/* Why Arihant */}
       <section className="container-x py-16 sm:py-24">
@@ -49,7 +52,7 @@ export default function HomePage() {
           <div className="flex items-end justify-between flex-wrap gap-4 mb-10">
             <div>
               <span className="pill">Our Products</span>
-              <h2 className="heading-lg mt-3">8 packaging formats, all customisable</h2>
+              <h2 className="heading-lg mt-3">Packaging formats, <span className="serif-accent">all customisable</span></h2>
               <p className="lede mt-3 max-w-2xl">
                 Pick the format that fits your product, then customise material, layers, finish, and printing.
               </p>
@@ -67,7 +70,7 @@ export default function HomePage() {
         <div className="flex items-end justify-between flex-wrap gap-4 mb-10">
           <div>
             <span className="pill">Applications</span>
-            <h2 className="heading-lg mt-3">Trusted across 20+ industries</h2>
+            <h2 className="heading-lg mt-3">Custom packaging for <span className="serif-accent">every category</span></h2>
             <p className="lede mt-3 max-w-2xl">
               From atta and namkeen to dairy, detergent, and agri-fertiliser — our packaging powers brands across India.
             </p>
@@ -78,6 +81,8 @@ export default function HomePage() {
           {featuredApps.map((a) => <ApplicationCard key={a.slug} app={a} />)}
         </div>
       </section>
+
+      <HowItWorks />
 
       {/* Trust block */}
       <section className="bg-brand-700 text-white py-16 sm:py-20">
@@ -131,12 +136,4 @@ export default function HomePage() {
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link href="/contact" className="btn-primary text-base">
-              Get Best Price <ArrowRight className="w-4 h-4" />
-            </Link>
-            <Link href="/products" className="btn-secondary text-base">Browse Products</Link>
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}
+              Get Best
