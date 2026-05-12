@@ -28,7 +28,6 @@ body {
   border-radius: 4px;
 }
 
-/* Respect prefers-reduced-motion — disable ambient drift + hover floats */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
@@ -174,7 +173,6 @@ img { max-width: 100%; height: auto; }
     @apply block text-sm font-medium text-ink-700 mb-1.5;
   }
 
-  /* Ambient drifting blobs */
   .ambient {
     position: fixed; inset: 0;
     pointer-events: none;
@@ -190,4 +188,12 @@ img { max-width: 100%; height: auto; }
   }
   .blob-1 { width: 520px; height: 520px; left: -8%; top: 10%; background: #d6e7fa; animation-duration: 24s; }
   .blob-2 { width: 480px; height: 480px; right: -6%; top: 35%; background: #e0edfb; animation-duration: 28s; animation-delay: -6s; }
-  .blob-3 { width: 380px; height: 380px; left: 35%; top: 80%; background: #dbea
+  .blob-3 { width: 380px; height: 380px; left: 35%; top: 80%; background: #dbeaf8; animation-duration: 30s; animation-delay: -12s; }
+  .blob-4 { width: 320px; height: 320px; right: 20%; top: 5%; background: #e6f0fc; animation-duration: 26s; animation-delay: -3s; }
+
+  @keyframes drift {
+    0%   { transform: translate(0,0) scale(1); }
+    50%  { transform: translate(40px,-30px) scale(1.08); }
+    100% { transform: translate(-30px,40px) scale(0.96); }
+  }
+}
