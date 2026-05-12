@@ -12,7 +12,7 @@ const NAV = [
   { label: 'Home', href: '/' },
   { label: 'Products', href: '/products', children: PRODUCTS.map((p) => ({ label: p.shortTitle, href: `/products/${p.slug}` })) },
   { label: 'Applications', href: '/applications' },
-  { label: 'Custom Printed', href: '/custom-printed-pouches' },
+  { label: 'Custom', href: '/custom-printed-pouches' },
   { label: 'Quality', href: '/quality' },
   { label: 'About', href: '/about' },
   { label: 'Blog', href: '/blog' },
@@ -38,7 +38,7 @@ export default function Header() {
         scrolled ? 'shadow-sm' : '',
       )}
       style={{
-        background: scrolled ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.6)',
+        background: scrolled ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.7)',
         backdropFilter: 'blur(20px) saturate(180%)',
         WebkitBackdropFilter: 'blur(20px) saturate(180%)',
         borderBottom: scrolled ? '1px solid rgba(186,230,253,0.6)' : '1px solid transparent',
@@ -58,22 +58,22 @@ export default function Header() {
       </div>
 
       <div className="container-x">
-        <div className="flex items-center justify-between py-3 lg:py-4">
-          <Link href="/" className="flex items-center gap-3 group" aria-label="Arihant Packaging - Home">
+        <div className="flex items-center gap-4 lg:gap-6 justify-between py-3 lg:py-4">
+          <Link href="/" className="flex items-center gap-2.5 group flex-shrink-0" aria-label="Arihant Packaging - Home">
             <Image
               src="/images/logo-mark.svg"
               alt="Arihant Packaging"
               width={56}
               height={56}
               priority
-              className="h-12 sm:h-14 w-auto transition-transform group-hover:scale-105"
+              className="h-11 sm:h-12 w-auto transition-transform group-hover:scale-105 flex-shrink-0"
             />
-            <span className="font-bold tracking-tight text-brand-600 text-xl sm:text-2xl leading-none">
+            <span className="font-bold tracking-tight text-brand-600 text-lg sm:text-xl leading-tight whitespace-nowrap">
               Arihant <span className="text-brand-700">Packaging</span>
             </span>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-1" aria-label="Primary">
+          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 flex-1 justify-center" aria-label="Primary">
             {NAV.map((item) =>
               item.children ? (
                 <div
@@ -87,7 +87,7 @@ export default function Header() {
                 >
                   <Link
                     href={item.href}
-                    className="px-3 py-2 text-sm font-medium text-ink-700 hover:text-brand-600 rounded-full hover:bg-brand-50/70 transition"
+                    className="px-2.5 xl:px-3 py-2 text-[13px] xl:text-sm font-medium text-ink-700 hover:text-brand-600 rounded-full hover:bg-brand-50/70 transition whitespace-nowrap"
                     aria-haspopup="menu"
                     aria-expanded={productsOpen}
                     onClick={(e) => { if (!productsOpen) { e.preventDefault(); setProductsOpen(true); } }}
@@ -116,19 +116,23 @@ export default function Header() {
                   )}
                 </div>
               ) : (
-                <Link key={item.href} href={item.href} className="px-3 py-2 text-sm font-medium text-ink-700 hover:text-brand-600 rounded-full hover:bg-brand-50/70 transition">
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="px-2.5 xl:px-3 py-2 text-[13px] xl:text-sm font-medium text-ink-700 hover:text-brand-600 rounded-full hover:bg-brand-50/70 transition whitespace-nowrap"
+                >
                   {item.label}
                 </Link>
               ),
             )}
           </nav>
 
-          <div className="flex items-center gap-2">
-            <a href={`tel:${SITE.contact.phone}`} className="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-600" aria-label={`Call ${SITE.contact.phoneDisplay}`}>
+          <div className="flex items-center gap-2 flex-shrink-0">
+            <a href={`tel:${SITE.contact.phone}`} className="hidden xl:inline-flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-600 whitespace-nowrap" aria-label={`Call ${SITE.contact.phoneDisplay}`}>
               <Phone className="w-4 h-4" />
-              <span className="hidden md:inline">{SITE.contact.phoneDisplay}</span>
+              {SITE.contact.phoneDisplay}
             </a>
-            <Link href="/contact" className="hidden sm:inline-flex btn-primary text-xs sm:text-sm py-2 px-4">Get a Quote</Link>
+            <Link href="/contact" className="hidden sm:inline-flex btn-primary text-xs sm:text-sm py-2 px-4 whitespace-nowrap">Get a Quote</Link>
             <button type="button" onClick={() => setOpen(!open)} className="lg:hidden p-2 -mr-2 text-ink-700 hover:bg-brand-50/80 rounded-full" aria-label="Toggle menu" aria-expanded={open}>
               {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>

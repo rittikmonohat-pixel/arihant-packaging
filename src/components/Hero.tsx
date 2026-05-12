@@ -20,7 +20,7 @@ export default function Hero() {
     <section className="relative">
       <div className="container-x relative grid lg:grid-cols-12 gap-10 lg:gap-12 items-center pt-12 lg:pt-20 pb-12 lg:pb-24">
         {/* Left: Headline + CTAs */}
-        <div className="lg:col-span-6 xl:col-span-7">
+        <div className="lg:col-span-6 xl:col-span-6">
           <motion.span className="pill" initial="hidden" animate="show" variants={fadeUp} custom={0}>
             <span className="w-2 h-2 rounded-full bg-success animate-pulse-soft" />
             Manufacturing in Kolkata since {SITE.foundedYear}
@@ -57,33 +57,33 @@ export default function Hero() {
           >
             <span><strong className="text-ink-900 font-semibold">{SITE.stats.yearsInBusiness}+</strong> years in business</span>
             <span className="hidden sm:block w-1 h-1 rounded-full bg-ink-400 opacity-50" />
-            <span><strong className="text-ink-900 font-semibold">22+</strong> industries</span>
-            <span className="hidden sm:block w-1 h-1 rounded-full bg-ink-400 opacity-50" />
             <span><strong className="text-ink-900 font-semibold">8-colour</strong> rotogravure</span>
+            <span className="hidden sm:block w-1 h-1 rounded-full bg-ink-400 opacity-50" />
+            <span><strong className="text-ink-900 font-semibold">300 kg</strong> minimum order</span>
           </motion.div>
         </div>
 
-        {/* Right: Hero image (landscape, fills the right side) */}
+        {/* Right: Hero image with full landscape display */}
         <motion.div
-          className="lg:col-span-6 xl:col-span-5 relative"
+          className="lg:col-span-6 xl:col-span-6 relative"
           initial={{ opacity: 0, scale: 0.96, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="relative aspect-[4/3] sm:aspect-[5/4] lg:aspect-[4/3] rounded-3xl overflow-hidden glass p-2 shadow-glass">
+          <div className="relative aspect-[5/4] sm:aspect-[16/10] lg:aspect-[16/11] rounded-3xl overflow-hidden glass p-2 shadow-glass">
             <div className="relative w-full h-full rounded-2xl overflow-hidden">
               <Image
                 src="/images/hero/hero-1.jpg"
                 alt="Arihant Packaging - custom flexible packaging manufactured in Kolkata"
                 fill
                 priority
-                sizes="(min-width:1280px) 540px, (min-width:1024px) 50vw, 100vw"
-                className="object-cover"
+                sizes="(min-width:1280px) 640px, (min-width:1024px) 50vw, 100vw"
+                className="object-cover object-center"
               />
             </div>
           </div>
 
-          {/* Floating glass cards over hero image */}
+          {/* Floating glass cards */}
           <motion.div
             className="hidden md:flex absolute bottom-5 left-5 items-center gap-3 px-4 py-3 rounded-2xl glass-strong animate-floaty"
             initial={{ opacity: 0, x: -20 }}
