@@ -26,8 +26,8 @@ export default function BlogIndex() {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {POSTS.map((p) => (
             <Link key={p.slug} href={`/blog/${p.slug}`} className="card overflow-hidden flex flex-col group">
-              <div className="relative aspect-video bg-ink-100">
-                <Image src={p.image} alt={p.title} fill sizes="(min-width:1024px) 33vw, 100vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div className="relative aspect-video bg-white">
+                <Image src={p.image} alt={p.title} fill sizes="(min-width:1024px) 33vw, 100vw" className="object-contain p-2 group-hover:scale-105 transition-transform duration-500" />
               </div>
               <div className="p-5 flex-1 flex flex-col">
                 <div className="flex items-center gap-2 text-xs text-ink-500">

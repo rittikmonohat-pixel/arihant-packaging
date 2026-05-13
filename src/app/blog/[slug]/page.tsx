@@ -69,8 +69,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <span className="inline-flex items-center gap-1.5"><Calendar className="w-4 h-4" />{new Date(post.date).toLocaleDateString('en-IN', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
             <span className="inline-flex items-center gap-1.5"><Clock className="w-4 h-4" />{post.readingMinutes} min read</span>
           </div>
-          <div className="relative aspect-video rounded-2xl overflow-hidden border border-ink-100 mt-7">
-            <Image src={post.image} alt={post.title} fill priority sizes="(min-width:1024px) 768px, 100vw" className="object-cover" />
+          <div className="relative aspect-video rounded-2xl overflow-hidden border border-ink-100 bg-white mt-7">
+            <Image src={post.image} alt={post.title} fill priority sizes="(min-width:1024px) 768px, 100vw" className="object-contain p-3" />
           </div>
 
           <div className="prose prose-brand max-w-none mt-10">
@@ -107,8 +107,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div className="grid md:grid-cols-3 gap-6">
           {related.map((p) => (
             <Link key={p.slug} href={`/blog/${p.slug}`} className="card overflow-hidden group">
-              <div className="relative aspect-video bg-ink-100">
-                <Image src={p.image} alt={p.title} fill sizes="(min-width:1024px) 33vw, 100vw" className="object-cover group-hover:scale-105 transition-transform" />
+              <div className="relative aspect-video bg-white">
+                <Image src={p.image} alt={p.title} fill sizes="(min-width:1024px) 33vw, 100vw" className="object-contain p-2 group-hover:scale-105 transition-transform" />
               </div>
               <div className="p-4">
                 <h3 className="font-semibold text-ink-900 group-hover:text-brand-600 line-clamp-2">{p.title}</h3>

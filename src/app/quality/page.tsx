@@ -57,7 +57,7 @@ export default function QualityPage() {
             { icon: FlaskConical, title: 'Incoming Material Inspection', desc: 'LDPE film is tested for thickness, consistency and strength before it touches our line.' },
             { icon: Award, title: 'In-Line Print QC', desc: 'Reel is inspected for print registration and color match during rotogravure printing.' },
             { icon: ShieldCheck, title: 'Lamination Bond Test', desc: 'Bond strength tested per reel — both solvent and solventless laminates are verified before slitting.' },
-            { icon: BadgeCheck, title: 'Final Pouch QC + Sample Retention', desc: 'Random pouches per batch are seal-tested and retained for 6 months for any retrospective check.' },
+            { icon: BadgeCheck, title: 'Final Pouch QC + Sample Retention', desc: 'Random pouches per batch are seal-tested and retained for retrospective check.' },
           ].map((s) => (
             <div key={s.title} className="flex gap-4">
               <div className="w-12 h-12 rounded-xl bg-brand-50 text-brand-600 grid place-items-center flex-shrink-0">

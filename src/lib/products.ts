@@ -37,11 +37,11 @@ export const PRODUCTS: Product[] = [
       { label: 'Layers', value: '2 (PET + Transparent LDPE)' },
       { label: 'Material', value: 'PET + Transparent LDPE' },
       { label: 'LDPE Type', value: 'Natural or N/F (for FFS machines)' },
-      { label: 'Finish', value: 'Window with non-glossy surround' },
+      { label: 'Finish', value: 'Window with printing surround' },
       { label: 'Print Colors', value: 'Up to 8 colors (rotogravure)' },
       { label: 'Size', value: 'Customized' },
     ],
-    finish: ['Window', 'Non-glossy'],
+    finish: ['Window'],
     applicationsSlugs: ['chira-packaging-pouch', 'namkeen-packaging-pouch', 'whole-spices-packaging-pouch'],
     faq: [
       { q: 'What products is a transparent window pouch best for?', a: 'Chira, namkeen, rice, whole spices, sugar, seeds — any product where the visual appearance helps sell.' },
@@ -114,9 +114,9 @@ export const PRODUCTS: Product[] = [
     shortTitle: 'Milky Roll',
     oneLiner: 'Two-layer milky-finish laminate with strong yield and good cost-quality balance.',
     description:
-      'PET + Milky LDPE laminated rolls — non-transparent, non-glossy finish. Ideal when you need a printed pouch with good strength but do not need either a window or premium glossy look.',
+      'PET + Milky LDPE laminated rolls — non-transparent, glossy finish. Ideal when you need a printed pouch with good strength but do not need either a window or premium glossy look.',
     metaDescription:
-      'Milky LDPE laminated rolls and pouches — PET + Milky LDPE 2-layer, non-glossy. Manufactured in Kolkata for atta, soya chunks, batter, fertilizer.',
+      'Milky LDPE laminated rolls and pouches — PET + Milky LDPE 2-layer, glossy. Manufactured in Kolkata for atta, soya chunks, batter, fertilizer.',
     keywords: ['milky LDPE pouch', 'PET milky laminated roll'],
     image: '/images/products/milky-roll.jpg',
     gallery: [
@@ -126,10 +126,10 @@ export const PRODUCTS: Product[] = [
     specs: [
       { label: 'MOQ', value: '300 kg' },
       { label: 'Layers', value: '2 (PET + Milky LDPE)' },
-      { label: 'Finish', value: 'Non-glossy, milky white' },
+      { label: 'Finish', value: 'Glossy, milky white' },
       { label: 'Print Colors', value: 'Up to 8' },
     ],
-    finish: ['Milky', 'Non-glossy'],
+    finish: ['Milky', 'Glossy'],
     applicationsSlugs: ['atta-packaging-pouch', 'soya-bari-packaging-pouch', 'idly-dosa-batter-packaging-pouch', 'fertilizer-packaging-pouch'],
     faq: [
       { q: 'What does "milky" mean?', a: 'A milky-white tint inside the LDPE layer — gives a clean opaque background that prints look great on.' },
@@ -260,7 +260,7 @@ export const PRODUCTS: Product[] = [
     gallery: ['/images/products/ldpe-gusset-pouch.jpg'],
     specs: [
       { label: 'MOQ', value: '300 kg' },
-      { label: 'Layers', value: '1 or 2 (LDPE / PET + LDPE)' },
+      { label: 'Layers', value: '1 (LDPE)' },
       { label: 'Construction', value: 'Side gusset' },
       { label: 'Print Colours', value: 'Up to 8' },
       { label: 'Size', value: 'Customised' },

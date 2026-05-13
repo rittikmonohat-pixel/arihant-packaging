@@ -70,7 +70,7 @@ export default function Hero() {
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="relative aspect-[3/2] sm:aspect-[16/10] rounded-3xl overflow-hidden glass p-2 shadow-glass">
+          <div className="relative aspect-[16/10] sm:aspect-[16/10] rounded-3xl overflow-hidden glass p-2 shadow-glass">
             <div className="relative w-full h-full rounded-2xl overflow-hidden">
               <Image
                 src="/images/hero/hero-1.jpg"

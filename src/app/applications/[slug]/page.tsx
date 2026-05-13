@@ -91,8 +91,8 @@ export default async function ApplicationPage({ params }: { params: Promise<{ sl
               if (!p) return null;
               return (
                 <Link key={s} href={`/products/${s}`} className="card overflow-hidden group">
-                  <div className="relative aspect-[4/3] bg-ink-100">
-                    <Image src={p.image} alt={p.title} fill sizes="(min-width:1024px) 33vw, 100vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="relative aspect-square bg-white">
+                    <Image src={p.image} alt={p.title} fill sizes="(min-width:1024px) 33vw, 100vw" className="object-contain p-4 group-hover:scale-105 transition-transform duration-500" />
                   </div>
                   <div className="p-5">
                     <h3 className="font-semibold text-ink-900">{p.shortTitle}</h3>

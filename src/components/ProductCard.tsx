@@ -9,13 +9,13 @@ export default function ProductCard({ product }: { product: Product }) {
       href={`/products/${product.slug}`}
       className="group card overflow-hidden flex flex-col"
     >
-      <div className="relative aspect-square bg-ink-50 overflow-hidden">
+      <div className="relative aspect-square bg-white overflow-hidden">
         <Image
           src={product.image}
           alt={product.title}
           fill
           sizes="(min-width:1024px) 25vw, (min-width:640px) 50vw, 100vw"
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          className="object-contain p-3 group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute top-3 right-3 bg-white/95 backdrop-blur rounded-full p-2 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
           <ArrowUpRight className="w-4 h-4 text-brand-600" />

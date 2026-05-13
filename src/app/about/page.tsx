@@ -37,7 +37,7 @@ export default function AboutPage() {
               Arihant Packaging was founded in 2016 in Madhyamgram, Kolkata with one mission — bring vibrant rotogravure-printed flexible packaging within reach of every Indian brand, big or small.
             </p>
             <p className="text-ink-700 mt-4 leading-relaxed">
-              From small first runs to lakhs of pouches per month, we deliver the print quality, barrier protection, and reliability your product deserves. We serve brands across India in foods, snacks, spices, dairy, personal care, detergents, and agriculture.
+              We deliver the print quality, barrier protection, and reliability your product deserves. We serve brands across India in foods, snacks, spices, dairy, personal care, detergents, and agriculture.
             </p>
             <div className="mt-7 grid grid-cols-3 gap-4">
               {[
@@ -65,7 +65,7 @@ export default function AboutPage() {
             <span className="pill">Manufacturing capability</span>
             <h2 className="heading-lg mt-3">A one-stop flexible packaging facility</h2>
             <p className="lede mt-3">
-              Printing, lamination, slitting, and pouching — all under one roof in Madhyamgram. That means tighter QC, faster turnaround, and direct accountability.
+              Printing, lamination, slitting, and pouching — all under one roof in Madhyamgram. That means tighter QC and faster turnaround.
             </p>
           </div>
           <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -86,7 +86,7 @@ export default function AboutPage() {
           <span className="pill">Visit our factory</span>
           <h2 className="heading-md mt-3">Madhyamgram, Kolkata</h2>
           <p className="text-ink-700 mt-3 leading-relaxed">
-            We welcome customer visits. Plan with our team — we'll walk you through the printing floor, the lamination unit, and our QC bench so you can see for yourself.
+            We welcome customer visits. Connect with our team for guidance on choosing the right packaging for your product.
           </p>
           <div className="mt-5 space-y-2 text-sm">
             <div className="flex items-start gap-2 text-ink-700">
