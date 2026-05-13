@@ -14,8 +14,10 @@ export default function Footer() {
       <div className="container-x py-14">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
           <div className="col-span-2">
-            <Link href="/" className="flex items-center gap-2 mb-4 group" aria-label="Arihant Packaging — Home">
-              <Image src="/images/logo.svg" alt="Arihant Packaging" width={56} height={56} className="h-11 w-auto object-contain transition-transform group-hover:scale-105" />
+            <Link href="/" className="flex items-center gap-3 mb-4 group" aria-label="Arihant Packaging — Home">
+              <div className="bg-white rounded-2xl p-1.5 shadow-md transition-transform group-hover:scale-105">
+                <Image src="/images/logo.svg" alt="Arihant Packaging" width={48} height={48} className="h-10 w-10 object-contain" />
+              </div>
               <span className="text-white font-bold text-lg sm:text-xl whitespace-nowrap">Arihant Packaging</span>
             </Link>
             <p className="text-sm text-white leading-relaxed max-w-md">
