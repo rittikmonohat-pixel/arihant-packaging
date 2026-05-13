@@ -27,21 +27,21 @@ export default function ContactPage() {
       </section>
 
       <section className="container-x pb-24 grid lg:grid-cols-3 gap-10">
-        <div className="lg:col-span-1 space-y-3 flex flex-col">
-          <div className="rounded-2xl border border-ink-100 p-4">
+        <div className="lg:col-span-1 space-y-2 flex flex-col">
+          <div className="rounded-xl border border-ink-100 p-3">
             <div className="flex items-start gap-3">
-              <Phone className="w-5 h-5 text-brand-600 mt-0.5 flex-shrink-0" />
+              <Phone className="w-4 h-4 text-brand-600 mt-0.5 flex-shrink-0" />
               <div>
                 <div className="text-sm text-ink-500">Phone / WhatsApp</div>
-                <a href={`tel:${SITE.contact.phone}`} className="text-lg font-semibold text-ink-900 hover:text-brand-600">
+                <a href={`tel:${SITE.contact.phone}`} className="text-base font-semibold text-ink-900 hover:text-brand-600">
                   {SITE.contact.phoneDisplay}
                 </a>
               </div>
             </div>
           </div>
-          <div className="rounded-2xl border border-ink-100 p-4">
+          <div className="rounded-xl border border-ink-100 p-3">
             <div className="flex items-start gap-3">
-              <Mail className="w-5 h-5 text-brand-600 mt-0.5 flex-shrink-0" />
+              <Mail className="w-4 h-4 text-brand-600 mt-0.5 flex-shrink-0" />
               <div>
                 <div className="text-sm text-ink-500">Email</div>
                 <a href={`mailto:${SITE.contact.email}`} className="text-base font-semibold text-ink-900 hover:text-brand-600 break-all">
@@ -50,18 +50,18 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-          <div className="rounded-2xl border border-ink-100 p-4">
+          <div className="rounded-xl border border-ink-100 p-3">
             <div className="flex items-start gap-3">
-              <MapPin className="w-5 h-5 text-brand-600 mt-0.5 flex-shrink-0" />
+              <MapPin className="w-4 h-4 text-brand-600 mt-0.5 flex-shrink-0" />
               <div>
                 <div className="text-sm text-ink-500">Factory</div>
                 <p className="text-base font-semibold text-ink-900 leading-snug">{SITE.address.full}</p>
               </div>
             </div>
           </div>
-          <div className="rounded-2xl border border-ink-100 p-4">
+          <div className="rounded-xl border border-ink-100 p-3">
             <div className="flex items-start gap-3">
-              <Clock className="w-5 h-5 text-brand-600 mt-0.5 flex-shrink-0" />
+              <Clock className="w-4 h-4 text-brand-600 mt-0.5 flex-shrink-0" />
               <div>
                 <div className="text-sm text-ink-500">Working hours</div>
                 <p className="text-sm text-ink-900">Mon–Sat: {SITE.hours.monSat}<br />Sun: {SITE.hours.sun}</p>
@@ -69,7 +69,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="rounded-2xl overflow-hidden border border-ink-100 flex-1 min-h-[260px]">
+          <div className="rounded-xl overflow-hidden border border-ink-100 flex-1 min-h-[200px]">
             <iframe
               title="Arihant Packaging — Google Maps"
               src="https://www.google.com/maps?q=Arihant+Packaging+Madhyamgram+Kolkata&output=embed"
