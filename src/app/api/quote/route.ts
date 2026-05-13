@@ -51,13 +51,12 @@ ${data.message || ''}`;
           to: TO_EMAIL,
         }),
       });
+      const responseText = await r.text();
       if (!r.ok) {
-        const t = await r.text();
-        console.error('web3forms error', r.status, t);
-        // fall through to Resend / log
-      } else {
-        return NextResponse.json({ ok: true, via: 'web3forms' });
+        console.error('web3forms error', r.status, responseText);
+        return NextResponse.json({ ok: false, via: 'web3forms-error', status: r.status, body: responseText.slice(0, 500) }, { status: 200 });
       }
+      return NextResponse.json({ ok: true, via: 'web3forms', body: responseText.slice(0, 200) });
     }
 
     // Fallback to Resend if configured
