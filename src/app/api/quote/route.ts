@@ -40,7 +40,13 @@ ${data.message || ''}`;
 
       const r = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'User-Agent': 'Mozilla/5.0 (compatible; ArihantPackagingWebsite/1.0)',
+          'Origin': 'https://arihantpackagingindia.com',
+          'Referer': 'https://arihantpackagingindia.com/contact',
+        },
         body: JSON.stringify({
           access_key: w3fKey,
           subject: `Website Inquiry — ${data.name} (${data.company || data.phone})`,
@@ -48,7 +54,6 @@ ${data.message || ''}`;
           email: data.email || 'no-reply@arihantpackagingindia.com',
           replyto: data.email || '',
           message,
-          to: TO_EMAIL,
         }),
       });
       const responseText = await r.text();
