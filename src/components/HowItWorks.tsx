@@ -1,6 +1,3 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import { MessageSquare, CheckSquare, Cog, Settings, Layers, Scissors, PackageOpen, Truck } from 'lucide-react';
 
 const STEPS = [
@@ -32,20 +29,17 @@ export default function HowItWorks() {
           <div className="hidden xl:block absolute top-7 left-0 right-0 h-px border-t border-dashed border-brand-300/50 mx-[6%]" aria-hidden="true" />
 
           {STEPS.map((s, i) => (
-            <motion.div
+            <div
               key={s.title}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.5, delay: i * 0.06 }}
-              className="text-center flex flex-col items-center relative"
+              className="text-center flex flex-col items-center relative animate-fade-up"
+              style={{ animationDelay: `${i * 60}ms` }}
             >
               <div className="w-14 h-14 rounded-full bg-white border border-brand-100 shadow-card grid place-items-center text-brand-600 relative z-10">
                 <s.icon className="w-6 h-6" strokeWidth={1.8} />
               </div>
               <div className="mt-4 font-semibold text-ink-900 text-sm sm:text-base">{i + 1}. {s.title}</div>
               <p className="mt-2 text-xs sm:text-[13px] text-ink-500 leading-snug max-w-[180px]">{s.desc}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

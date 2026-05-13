@@ -15,6 +15,7 @@ export default function ApplicationCard({ app }: { app: Application }) {
           alt={app.title}
           fill
           sizes="(min-width:1024px) 25vw, (min-width:640px) 33vw, 50vw"
+          loading="lazy"
           className="object-cover group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute top-3 right-3 bg-white/95 backdrop-blur rounded-full p-2 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">

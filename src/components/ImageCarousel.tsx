@@ -58,6 +58,7 @@ export default function ImageCarousel({ images, alt, priority = false, sizes = '
               src={src}
               alt={`${alt} — image ${i + 1} of ${total}`}
               fill
+              loading={i === 0 ? 'eager' : 'lazy'}
               priority={priority && i === 0}
               sizes={sizes}
               className="object-cover"

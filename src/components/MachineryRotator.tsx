@@ -31,6 +31,7 @@ export default function MachineryRotator() {
             fill
             sizes="(min-width:1024px) 50vw, 100vw"
             className="object-cover"
+            loading={i === 0 ? 'eager' : 'lazy'}
             priority={i === 0}
           />
         </div>

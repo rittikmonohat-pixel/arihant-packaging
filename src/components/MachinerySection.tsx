@@ -1,7 +1,4 @@
-'use client';
-
 import Image from 'next/image';
-import { motion } from 'framer-motion';
 
 const MACHINES = [
   {
@@ -38,14 +35,7 @@ export default function MachinerySection() {
 
         <div className="mt-12 grid md:grid-cols-3 gap-6">
           {MACHINES.map((m, i) => (
-            <motion.div
-              key={m.name}
-              className="card overflow-hidden"
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-80px' }}
-              transition={{ duration: 0.6, delay: i * 0.08 }}
-            >
+            <div key={m.name} className="card overflow-hidden animate-fade-up" style={{ animationDelay: `${i * 80}ms` }}>
               <div className="relative aspect-[4/3] bg-ink-100">
                 <Image
                   src={m.image}
@@ -59,7 +49,7 @@ export default function MachinerySection() {
                 <h3 className="font-semibold text-lg text-ink-900">{m.name}</h3>
                 <p className="text-sm text-ink-600 mt-2 leading-relaxed">{m.desc}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
