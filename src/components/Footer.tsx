@@ -16,7 +16,7 @@ export default function Footer() {
           <div className="col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-4">
               <div className="bg-white rounded-2xl p-1.5">
-                <Image src="/images/logo.png" alt="Arihant Packaging" width={48} height={48} className="object-contain" />
+                <Image src="/images/logo.svg" alt="Arihant Packaging" width={48} height={48} className="object-contain" />
               </div>
               <div className="leading-tight">
                 <div className="text-white font-bold text-lg">ARIHANT</div>

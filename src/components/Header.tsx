@@ -61,7 +61,7 @@ export default function Header() {
         <div className="flex items-center gap-4 lg:gap-6 justify-between py-3 lg:py-4">
           <Link href="/" className="flex items-center gap-2.5 group flex-shrink-0" aria-label="Arihant Packaging - Home">
             <Image
-              src="/images/logo-mark.svg"
+              src="/images/logo.svg"
               alt="Arihant Packaging"
               width={56}
               height={56}

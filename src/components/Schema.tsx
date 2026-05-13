@@ -19,7 +19,7 @@ export function OrganizationSchema() {
         name: SITE.name,
         legalName: SITE.legalName,
         url: SITE.url,
-        logo: `${SITE.url}/images/logo.png`,
+        logo: `${SITE.url}/images/logo.svg`,
         foundingDate: '2016',
         email: SITE.contact.email,
         telephone: SITE.contact.phone,
@@ -53,7 +53,7 @@ export function LocalBusinessSchema() {
         '@type': 'LocalBusiness',
         '@id': `${SITE.url}/#localbusiness`,
         name: SITE.name,
-        image: `${SITE.url}/images/logo.png`,
+        image: `${SITE.url}/images/logo.svg`,
         url: SITE.url,
         telephone: SITE.contact.phone,
         email: SITE.contact.email,
@@ -165,7 +165,7 @@ export function ArticleSchema({
         publisher: {
           '@type': 'Organization',
           name: SITE.name,
-          logo: { '@type': 'ImageObject', url: `${SITE.url}/images/logo.png` },
+          logo: { '@type': 'ImageObject', url: `${SITE.url}/images/logo.svg` },
         },
       }}
     />
