@@ -11,7 +11,7 @@ const MACHINES = [
   },
   {
     name: 'Solventless Lamination',
-    desc: 'Low-VOC solventless multi-layer lamination machine - faster turnaround, eco-friendlier, and food-contact compliant.',
+    desc: 'Low-VOC solventless multi-layer lamination designed for efficient, high-speed production.',
     image: '/images/factory/solventless-lamination.jpg',
   },
   {
@@ -32,7 +32,7 @@ export default function MachinerySection() {
           </h2>
           <p className="lede mt-4">
             Printing, lamination, slitting, and pouching all happen at our Madhyamgram, Kolkata facility -
-            shorter lead times, tighter QC, and a single accountable partner.
+            ensuring shorter lead times.
           </p>
         </div>
 

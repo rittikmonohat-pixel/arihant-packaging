@@ -121,14 +121,16 @@ img { max-width: 100%; height: auto; }
 
   .heading-xl {
     font-size: clamp(40px, 5.4vw, 72px);
-    line-height: 1.02;
+    line-height: 1.12;
+    padding-bottom: 0.08em;
     letter-spacing: -0.035em;
     @apply font-bold tracking-tight text-ink-900;
     text-wrap: balance;
   }
   .heading-lg {
     font-size: clamp(32px, 3.6vw, 48px);
-    line-height: 1.05;
+    line-height: 1.15;
+    padding-bottom: 0.08em;
     letter-spacing: -0.03em;
     @apply font-bold tracking-tight text-ink-900;
     text-wrap: balance;
@@ -136,6 +138,8 @@ img { max-width: 100%; height: auto; }
   .heading-md {
     @apply text-2xl sm:text-3xl font-bold tracking-tight text-ink-900;
     letter-spacing: -0.02em;
+    line-height: 1.2;
+    padding-bottom: 0.06em;
   }
   .heading-sm {
     @apply text-xl sm:text-2xl font-semibold text-ink-900;
@@ -154,6 +158,8 @@ img { max-width: 100%; height: auto; }
     background-clip: text;
     color: transparent;
     letter-spacing: -0.02em;
+    padding-right: 0.06em;
+    display: inline-block;
   }
 
   .input-field {

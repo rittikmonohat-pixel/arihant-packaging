@@ -33,7 +33,7 @@ export default function CustomPrintedPouches() {
                 'Up to 8-colour photo-quality printing',
                 'Stand-up, zipper, 3-side, center seal formats',
                 'Window / glossy / milky finishes',
-                'Bring your artwork (AI / EPS / PDF) or rough sketches',
+                'Bring your artwork or rough sketches',
                 'MOQ 300 kg per design',
                 'Pan-India delivery',
               ].map((b) => (

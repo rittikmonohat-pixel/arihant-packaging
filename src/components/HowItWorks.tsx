@@ -1,16 +1,17 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { MessageSquare, CheckSquare, Settings, Layers, Scissors, PackageOpen, Truck } from 'lucide-react';
+import { MessageSquare, CheckSquare, Cog, Settings, Layers, Scissors, PackageOpen, Truck } from 'lucide-react';
 
 const STEPS = [
-  { icon: MessageSquare, title: 'Brief & quote', desc: 'WhatsApp us your product, target qty, and any reference photos.' },
-  { icon: CheckSquare,   title: 'Design approval', desc: 'We share artwork + soft proof. You approve or revise.' },
-  { icon: Settings,      title: 'Printing',        desc: 'Rotogravure on calibrated cylinders, up to 8 colours.' },
-  { icon: Layers,        title: 'Lamination',      desc: 'Solvent or solventless multi-layer lamination.' },
-  { icon: Scissors,      title: 'Slitting',        desc: 'Precise width slitting for FFS film rolls.' },
-  { icon: PackageOpen,   title: 'Pouching',        desc: 'Pre-made stand-up, zipper, side-seal, or D-cut pouches.' },
-  { icon: Truck,         title: 'Dispatch',        desc: 'Shipped anywhere in India.' },
+  { icon: MessageSquare, title: 'Brief & quote',    desc: 'WhatsApp us your product, target qty, and any reference photos.' },
+  { icon: CheckSquare,   title: 'Design approval',  desc: 'The artwork is prepared and aligned with your product specifications.' },
+  { icon: Cog,           title: 'Cylinder making',  desc: 'Engraved rotogravure cylinders are produced from the approved artwork.' },
+  { icon: Settings,      title: 'Printing',         desc: 'Rotogravure on calibrated cylinders, up to 8 colours.' },
+  { icon: Layers,        title: 'Lamination',       desc: 'Solvent or solventless multi-layer lamination.' },
+  { icon: Scissors,      title: 'Slitting',         desc: 'Precise width slitting for FFS film rolls.' },
+  { icon: PackageOpen,   title: 'Pouching',         desc: 'Pre-made stand-up, zipper, side-seal, or D-cut pouches.' },
+  { icon: Truck,         title: 'Dispatch',         desc: 'Shipped anywhere in India.' },
 ];
 
 export default function HowItWorks() {
@@ -23,13 +24,12 @@ export default function HowItWorks() {
             How it works
           </span>
           <h2 className="heading-lg mt-4">
-            From brief to <span className="serif-accent">delivered</span> pouches in seven steps.
+            From brief to <span className="serif-accent">delivered</span> pouches in eight steps.
           </h2>
         </div>
 
-        <div className="mt-12 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-7 gap-y-8 gap-x-4 relative">
-          {/* Dashed connector line on xl+ */}
-          <div className="hidden xl:block absolute top-7 left-0 right-0 h-px border-t border-dashed border-brand-300/50 mx-[7%]" aria-hidden="true" />
+        <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-8 gap-y-8 gap-x-4 relative">
+          <div className="hidden xl:block absolute top-7 left-0 right-0 h-px border-t border-dashed border-brand-300/50 mx-[6%]" aria-hidden="true" />
 
           {STEPS.map((s, i) => (
             <motion.div

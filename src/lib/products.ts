@@ -51,8 +51,8 @@ export const PRODUCTS: Product[] = [
   },
   {
     slug: 'aluminium-laminated-roll',
-    title: 'Aluminium / Metal Polyester Laminated Rolls',
-    shortTitle: 'Aluminium Laminated Roll',
+    title: 'Metal Polyester / Aluminium Laminated Rolls',
+    shortTitle: 'Metal Polyester / Aluminium Roll',
     oneLiner: 'Premium glossy 3-layer laminate with metal polyester for longer shelf life.',
     description:
       'Three-layer laminated packaging rolls with PET + MET PET + LDPE — high gloss, full barrier, and protection from sunlight. The premium finish for products where shelf life and visual impact both matter.',

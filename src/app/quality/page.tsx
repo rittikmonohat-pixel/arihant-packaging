@@ -54,8 +54,8 @@ export default function QualityPage() {
         <h2 className="heading-md">Our QC process</h2>
         <div className="grid md:grid-cols-2 gap-6 mt-6">
           {[
-            { icon: FlaskConical, title: 'Incoming Material Inspection', desc: 'Every batch of PET, BOPP, LDPE, and ink is tested for thickness, COF, and consistency before it touches our line.' },
-            { icon: Award, title: 'In-Line Print QC', desc: 'Every reel is inspected for print registration, color match, and ink rub-resistance during rotogravure printing.' },
+            { icon: FlaskConical, title: 'Incoming Material Inspection', desc: 'LDPE film is tested for thickness, consistency and strength before it touches our line.' },
+            { icon: Award, title: 'In-Line Print QC', desc: 'Reel is inspected for print registration and color match during rotogravure printing.' },
             { icon: ShieldCheck, title: 'Lamination Bond Test', desc: 'Bond strength tested per reel — both solvent and solventless laminates are verified before slitting.' },
             { icon: BadgeCheck, title: 'Final Pouch QC + Sample Retention', desc: 'Random pouches per batch are seal-tested and retained for 6 months for any retrospective check.' },
           ].map((s) => (

@@ -100,7 +100,7 @@ export default function HomePage() {
               {[
                 { icon: Award, label: 'MSME / Udyam', value: 'Registered' },
                 { icon: Factory, label: 'Capability', value: 'In-house' },
-                { icon: Layers, label: 'Lamination', value: '2 / 2 / 3 layer' },
+                { icon: Layers, label: 'Lamination', value: '2 / 2½ / 3 layers' },
                 { icon: Sparkles, label: 'Print colours', value: 'Up to 8' },
               ].map((s) => (
                 <div key={s.label} className="flex items-start gap-3">
