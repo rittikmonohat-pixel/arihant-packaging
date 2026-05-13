@@ -23,9 +23,8 @@ export async function POST(req: Request) {
     // Honeypot — silently succeed for bots
     if (data.hp) return NextResponse.json({ ok: true });
 
-    // Try Web3Forms first (no domain verification needed, delivers to any inbox)
+    // Primary: Web3Forms (free, no domain verification required)
     const w3fKey = process.env.WEB3FORMS_ACCESS_KEY;
-    console.log('[quote] env present? w3f=', !!w3fKey, 'resend=', !!process.env.RESEND_API_KEY, 'len=', w3fKey?.length);
     if (w3fKey) {
       const message = `Page: ${data.context || '—'}
 Name: ${data.name}
@@ -56,15 +55,12 @@ ${data.message || ''}`;
           message,
         }),
       });
-      const responseText = await r.text();
-      if (!r.ok) {
-        console.error('web3forms error', r.status, responseText);
-        return NextResponse.json({ ok: false, via: 'web3forms-error', status: r.status, body: responseText.slice(0, 500) }, { status: 200 });
-      }
-      return NextResponse.json({ ok: true, via: 'web3forms', body: responseText.slice(0, 200) });
+      if (r.ok) return NextResponse.json({ ok: true });
+      console.error('web3forms error', r.status, await r.text());
+      // fall through to Resend / log
     }
 
-    // Fallback to Resend if configured
+    // Fallback: Resend
     const resendKey = process.env.RESEND_API_KEY;
     if (resendKey) {
       const from = process.env.INQUIRY_FROM_EMAIL || 'Arihant Packaging <onboarding@resend.dev>';
@@ -91,21 +87,13 @@ ${data.message || ''}`;
         subject: `Inquiry — ${data.name} (${data.company || data.phone})`,
         html,
       });
-      return NextResponse.json({ ok: true, via: 'resend' });
+      return NextResponse.json({ ok: true });
     }
 
-    // No backend configured — log and accept silently so users get the success state
+    // No backend configured — log and silently succeed
     console.warn('No email backend configured');
     console.log('Quote inquiry (logged only):', data);
-    return NextResponse.json({
-      ok: true,
-      via: 'log',
-      _debug: {
-        w3fEnvPresent: !!process.env.WEB3FORMS_ACCESS_KEY,
-        resendEnvPresent: !!process.env.RESEND_API_KEY,
-        envCount: Object.keys(process.env).filter(k => !k.startsWith('VERCEL') && !k.startsWith('NEXT_') && !k.startsWith('AWS_') && !k.startsWith('NODE_')).length,
-      }
-    });
+    return NextResponse.json({ ok: true });
   } catch (e) {
     console.error('quote error', e);
     return NextResponse.json({ error: 'Could not send' }, { status: 400 });
