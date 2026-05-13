@@ -173,7 +173,7 @@ export const PRODUCTS: Product[] = [
     description:
       'Center seal (back seal) is one of the most economical pouch formats — sealed at the back, open at the top for filling. Available as pre-made pouches for hand-fill and semi-auto operations, or as laminated rolls (including PET + Milky LDPE) for Form-Fill-Seal machines. Common across atta, snacks, namkeen, and small spice packs.',
     metaDescription:
-      'Center seal pouches & rolls — pre-made for hand-fill, or laminated rolls (PET + MET PET + LDPE, PET + Milky LDPE) for FFS machines. Manufactured in Kolkata.',
+      'Center seal pouches & rolls — pre-made for hand-fill, or laminated rolls (PET + MET PET + LDPE, PET + LDPE, PET + Milky LDPE) for FFS machines. Manufactured in Kolkata.',
     keywords: ['center seal pouch manufacturer', 'center seal roll', 'back seal packaging', 'FFS center seal roll'],
     image: '/images/products/center-seal-pouch.jpg',
     gallery: [
@@ -182,7 +182,7 @@ export const PRODUCTS: Product[] = [
     ],
     specs: [
       { label: 'MOQ', value: '300 kg' },
-      { label: 'Material', value: 'PET + MET PET (optional) + LDPE, or PET + Milky LDPE' },
+      { label: 'Material', value: 'PET + MET PET + LDPE, PET + LDPE, PET + Milky LDPE' },
       { label: 'Format', value: 'Pre-made pouches or FFS rolls' },
       { label: 'Finish', value: 'Window / Milky / Glossy' },
       { label: 'Print Colors', value: 'Up to 8' },
@@ -190,7 +190,7 @@ export const PRODUCTS: Product[] = [
     finish: ['Window', 'Milky', 'Glossy'],
     applicationsSlugs: ['namkeen-packaging-pouch', 'tea-packaging-pouch', 'masala-packaging-pouch', 'atta-packaging-pouch', 'ice-cream-packaging-pouch'],
     faq: [
-      { q: 'Do you offer center seal as both pouches and rolls?', a: 'Yes. Pre-made center seal pouches are for hand-fill and semi-auto operations. Laminated rolls (including PET + Milky LDPE) are slit and printed for Form-Fill-Seal machines.' },
+      { q: 'Do you offer center seal as both pouches and rolls?', a: 'Yes. Pre-made center seal pouches are for hand-fill and semi-auto operations.' },
     ],
   },
   {
