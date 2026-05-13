@@ -4,7 +4,7 @@ import ApplicationCard from '@/components/ApplicationCard';
 import { APPLICATIONS } from '@/lib/applications';
 
 export const metadata: Metadata = {
-  title: 'Packaging Applications — Foods, Dairy, Personal Care',
+  title: { absolute: 'Packaging Applications — Foods, Dairy, Personal Care' },
   description: 'Custom flexible packaging for atta, namkeen, tea, masala, ice cream, batter, dried fruits, makhana, fertilizer, seeds, sanitary pads, and more — manufactured in Kolkata.',
   alternates: { canonical: '/applications' },
 };
