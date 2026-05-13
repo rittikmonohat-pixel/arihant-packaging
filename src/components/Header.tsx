@@ -6,13 +6,14 @@ import Image from 'next/image';
 import { Menu, X, Phone } from 'lucide-react';
 import { SITE } from '@/lib/site';
 import { PRODUCTS } from '@/lib/products';
+import { APPLICATIONS } from '@/lib/applications';
 import { cn } from '@/lib/utils';
 
 const NAV = [
   { label: 'Home', href: '/' },
   { label: 'Products', href: '/products', children: PRODUCTS.map((p) => ({ label: p.shortTitle, href: `/products/${p.slug}` })) },
-  { label: 'Applications', href: '/applications' },
-  { label: 'Custom', href: '/custom-printed-pouches' },
+  { label: 'Applications', href: '/applications', children: APPLICATIONS.map((a) => ({ label: a.shortTitle, href: `/applications/${a.slug}` })) },
+  { label: 'Custom Printed', href: '/custom-printed-pouches' },
   { label: 'Quality', href: '/quality' },
   { label: 'About', href: '/about' },
   { label: 'Blog', href: '/blog' },
@@ -22,7 +23,7 @@ const NAV = [
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [productsOpen, setProductsOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -38,7 +39,7 @@ export default function Header() {
         scrolled ? 'shadow-sm' : '',
       )}
       style={{
-        background: scrolled ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.7)',
+        background: scrolled ? 'rgba(255,255,255,0.85)' : 'rgba(255,255,255,0.6)',
         backdropFilter: 'blur(20px) saturate(180%)',
         WebkitBackdropFilter: 'blur(20px) saturate(180%)',
         borderBottom: scrolled ? '1px solid rgba(186,230,253,0.6)' : '1px solid transparent',
@@ -47,59 +48,49 @@ export default function Header() {
       <div className="hidden lg:block text-white text-xs" style={{ background: 'linear-gradient(90deg, #163E61, #1F4E79 50%, #2F6FB0)' }}>
         <div className="container-x flex items-center justify-between py-1.5">
           <div className="flex items-center gap-4">
-            <span className="opacity-90">Custom flexible packaging - Kolkata since {SITE.foundedYear}</span>
+            <span className="opacity-90">Custom flexible packaging · Kolkata since {SITE.foundedYear}</span>
           </div>
           <div className="flex items-center gap-4">
             <a href={`mailto:${SITE.contact.email}`} className="hover:underline">{SITE.contact.email}</a>
-            <span className="opacity-50">-</span>
+            <span className="opacity-50">·</span>
             <a href={`tel:${SITE.contact.phone}`} className="hover:underline">{SITE.contact.phoneDisplay}</a>
           </div>
         </div>
       </div>
 
       <div className="container-x">
-        <div className="flex items-center gap-4 lg:gap-6 justify-between py-3 lg:py-4">
-          <Link href="/" className="flex items-center gap-2.5 group flex-shrink-0" aria-label="Arihant Packaging - Home">
-            <Image
-              src="/images/logo.svg"
-              alt="Arihant Packaging"
-              width={56}
-              height={56}
-              priority
-              className="h-11 sm:h-12 w-auto transition-transform group-hover:scale-105 flex-shrink-0"
-            />
-            <span className="font-bold tracking-tight text-brand-600 text-lg sm:text-xl leading-tight whitespace-nowrap">
-              Arihant <span className="text-brand-700">Packaging</span>
-            </span>
+        <div className="flex items-center justify-between py-3 lg:py-4 gap-4">
+          <Link href="/" className="flex items-center gap-2 group flex-shrink-0" aria-label="Arihant Packaging — Home">
+            <Image src="/images/logo.svg" alt="Arihant Packaging" width={56} height={56} priority className="h-10 sm:h-11 w-auto transition-transform group-hover:scale-105" />
+            <span className="text-brand-700 font-bold text-base sm:text-lg whitespace-nowrap">Arihant Packaging</span>
           </Link>
 
-          <nav className="hidden lg:flex items-center gap-0.5 xl:gap-1 flex-1 justify-center" aria-label="Primary">
+          <nav className="hidden lg:flex items-center gap-0.5 flex-1 justify-center" aria-label="Primary">
             {NAV.map((item) =>
               item.children ? (
                 <div
                   key={item.href}
                   className="relative"
-                  onMouseEnter={() => setProductsOpen(true)}
-                  onMouseLeave={() => setProductsOpen(false)}
-                  onFocus={() => setProductsOpen(true)}
-                  onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setProductsOpen(false); }}
-                  onKeyDown={(e) => { if (e.key === 'Escape') setProductsOpen(false); }}
+                  onMouseEnter={() => setOpenMenu(item.label)}
+                  onMouseLeave={() => setOpenMenu(null)}
+                  onFocus={() => setOpenMenu(item.label)}
+                  onBlur={(e) => { if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpenMenu(null); }}
+                  onKeyDown={(e) => { if (e.key === 'Escape') setOpenMenu(null); }}
                 >
                   <Link
                     href={item.href}
-                    className="px-2.5 xl:px-3 py-2 text-[13px] xl:text-sm font-medium text-ink-700 hover:text-brand-600 rounded-full hover:bg-brand-50/70 transition whitespace-nowrap"
+                    className="px-2.5 py-2 text-sm font-medium text-ink-700 hover:text-brand-600 rounded-full hover:bg-brand-50/70 transition whitespace-nowrap"
                     aria-haspopup="menu"
-                    aria-expanded={productsOpen}
-                    onClick={(e) => { if (!productsOpen) { e.preventDefault(); setProductsOpen(true); } }}
+                    aria-expanded={openMenu === item.label}
                   >
                     {item.label}
                   </Link>
-                  {productsOpen && (
-                    <div className="absolute left-0 top-full pt-2 w-72">
+                  {openMenu === item.label && (
+                    <div className={`absolute left-0 top-full pt-2 ${item.children.length > 12 ? 'w-[480px]' : 'w-72'}`}>
                       <div
-                        className="rounded-2xl p-2"
+                        className={`rounded-2xl p-2 ${item.children.length > 12 ? 'grid grid-cols-2 gap-1' : ''}`}
                         style={{
-                          background: 'rgba(255,255,255,0.96)',
+                          background: 'rgba(255,255,255,0.98)',
                           backdropFilter: 'blur(40px) saturate(180%)',
                           WebkitBackdropFilter: 'blur(40px) saturate(180%)',
                           border: '1px solid rgba(255,255,255,0.95)',
@@ -111,16 +102,17 @@ export default function Header() {
                             {c.label}
                           </Link>
                         ))}
+                        {item.children.length > 12 && (
+                          <Link href={item.href} className="col-span-2 mt-1 block px-3 py-2 text-sm font-semibold text-brand-700 hover:bg-brand-50 rounded-xl text-center">
+                            View all {item.label.toLowerCase()} →
+                          </Link>
+                        )}
                       </div>
                     </div>
                   )}
                 </div>
               ) : (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="px-2.5 xl:px-3 py-2 text-[13px] xl:text-sm font-medium text-ink-700 hover:text-brand-600 rounded-full hover:bg-brand-50/70 transition whitespace-nowrap"
-                >
+                <Link key={item.href} href={item.href} className="px-2.5 py-2 text-sm font-medium text-ink-700 hover:text-brand-600 rounded-full hover:bg-brand-50/70 transition whitespace-nowrap">
                   {item.label}
                 </Link>
               ),
@@ -128,9 +120,9 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-2 flex-shrink-0">
-            <a href={`tel:${SITE.contact.phone}`} className="hidden xl:inline-flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-600 whitespace-nowrap" aria-label={`Call ${SITE.contact.phoneDisplay}`}>
+            <a href={`tel:${SITE.contact.phone}`} className="hidden xl:inline-flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-600" aria-label={`Call ${SITE.contact.phoneDisplay}`}>
               <Phone className="w-4 h-4" />
-              {SITE.contact.phoneDisplay}
+              <span>{SITE.contact.phoneDisplay}</span>
             </a>
             <Link href="/contact" className="hidden sm:inline-flex btn-primary text-xs sm:text-sm py-2 px-4 whitespace-nowrap">Get a Quote</Link>
             <button type="button" onClick={() => setOpen(!open)} className="lg:hidden p-2 -mr-2 text-ink-700 hover:bg-brand-50/80 rounded-full" aria-label="Toggle menu" aria-expanded={open}>
@@ -142,7 +134,7 @@ export default function Header() {
 
       {open && (
         <div className="lg:hidden border-t border-brand-100/50" style={{ background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(20px)' }}>
-          <div className="container-x py-3">
+          <div className="container-x py-3 max-h-[80vh] overflow-y-auto">
             {NAV.map((item) => (
               <div key={item.href}>
                 <Link href={item.href} onClick={() => setOpen(false)} className="block px-3 py-3 text-base font-medium text-ink-800 hover:bg-brand-50/80 hover:text-brand-700 rounded-xl">
@@ -150,11 +142,16 @@ export default function Header() {
                 </Link>
                 {item.children && (
                   <div className="pl-4 border-l-2 border-brand-100 ml-3 my-1">
-                    {item.children.map((c) => (
+                    {item.children.slice(0, 8).map((c) => (
                       <Link key={c.href} href={c.href} onClick={() => setOpen(false)} className="block px-3 py-2 text-sm text-ink-600 hover:bg-brand-50/80 hover:text-brand-700 rounded-xl">
                         {c.label}
                       </Link>
                     ))}
+                    {item.children.length > 8 && (
+                      <Link href={item.href} onClick={() => setOpen(false)} className="block px-3 py-2 text-sm font-semibold text-brand-700 hover:bg-brand-50/80 rounded-xl">
+                        View all {item.label.toLowerCase()} →
+                      </Link>
+                    )}
                   </div>
                 )}
               </div>

@@ -6,6 +6,7 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import QuoteForm from '@/components/QuoteForm';
 import ProductCard from '@/components/ProductCard';
+import ImageCarousel from '@/components/ImageCarousel';
 import { ProductSchema, FAQSchema } from '@/components/Schema';
 import { PRODUCTS, getProduct, getRelatedProducts } from '@/lib/products';
 import { getApplication } from '@/lib/applications';
@@ -49,20 +50,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
       <section className="container-x pb-16">
         <div className="grid lg:grid-cols-2 gap-10 items-start">
-          <div>
-            <div className="relative aspect-square rounded-2xl overflow-hidden border border-ink-100 bg-ink-50">
-              <Image src={product.image} alt={product.title} fill priority sizes="(min-width:1024px) 45vw, 100vw" className="object-cover" />
-            </div>
-            {product.gallery.length > 1 && (
-              <div className="grid grid-cols-4 gap-2 mt-2">
-                {product.gallery.slice(0, 4).map((g, i) => (
-                  <div key={g + i} className="relative aspect-square rounded-lg overflow-hidden border border-ink-100 bg-ink-50">
-                    <Image src={g} alt={`${product.title} view ${i + 1}`} fill sizes="20vw" className="object-cover" />
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+          <ImageCarousel images={product.gallery && product.gallery.length > 0 ? product.gallery : [product.image]} alt={product.title} priority />
 
           <div>
             <span className="pill">Product</span>

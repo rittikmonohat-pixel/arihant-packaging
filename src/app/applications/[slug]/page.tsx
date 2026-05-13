@@ -6,6 +6,7 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import QuoteForm from '@/components/QuoteForm';
 import ApplicationCard from '@/components/ApplicationCard';
+import ImageCarousel from '@/components/ImageCarousel';
 import { FAQSchema } from '@/components/Schema';
 import { APPLICATIONS, getApplication, getRelatedApplications } from '@/lib/applications';
 import { getProduct } from '@/lib/products';
@@ -76,9 +77,7 @@ export default async function ApplicationPage({ params }: { params: Promise<{ sl
             </div>
           </div>
 
-          <div className="relative aspect-square rounded-2xl overflow-hidden border border-ink-100 bg-ink-50">
-            <Image src={app.image} alt={app.title} fill priority sizes="(min-width:1024px) 45vw, 100vw" className="object-cover" />
-          </div>
+          <ImageCarousel images={app.gallery && app.gallery.length > 0 ? app.gallery : [app.image]} alt={app.title} priority />
         </div>
       </section>
 
