@@ -190,7 +190,7 @@ export const PRODUCTS: Product[] = [
     finish: ['Window', 'Milky', 'Glossy'],
     applicationsSlugs: ['namkeen-packaging-pouch', 'tea-packaging-pouch', 'masala-packaging-pouch', 'atta-packaging-pouch', 'ice-cream-packaging-pouch'],
     faq: [
-      { q: 'Do you offer center seal as both pouches and rolls?', a: 'Yes. Pre-made center seal pouches are for hand-fill and semi-auto operations.' },
+      { q: 'What are center seal pouches used for?', a: 'Pre-made center seal pouches are for hand-fill and semi-auto operations.' },
     ],
   },
   {
