@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -15,6 +15,8 @@ export default function ImageCarousel({ images, alt, priority = false, sizes = '
   const [index, setIndex] = useState(0);
   const safe = images && images.length > 0 ? images : ['/images/og-default.jpg'];
   const total = safe.length;
+  const thumbStripRef = useRef<HTMLDivElement | null>(null);
+  const thumbRefs = useRef<Array<HTMLButtonElement | null>>([]);
 
   const prev = useCallback(() => setIndex((i) => (i - 1 + total) % total), [total]);
   const next = useCallback(() => setIndex((i) => (i + 1) % total), [total]);
@@ -28,6 +30,20 @@ export default function ImageCarousel({ images, alt, priority = false, sizes = '
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [prev, next, total]);
+
+  // Scroll the thumbnail strip so the active thumb is in view
+  useEffect(() => {
+    const el = thumbRefs.current[index];
+    if (el && thumbStripRef.current) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  }, [index]);
+
+  const scrollThumbs = (dir: -1 | 1) => {
+    const strip = thumbStripRef.current;
+    if (!strip) return;
+    strip.scrollBy({ left: dir * (strip.clientWidth * 0.8), behavior: 'smooth' });
+  };
 
   return (
     <div className="w-full">
@@ -85,19 +101,49 @@ export default function ImageCarousel({ images, alt, priority = false, sizes = '
       </div>
 
       {total > 1 && (
-        <div className="grid grid-cols-5 gap-2 mt-3">
-          {safe.slice(0, 5).map((src, i) => (
+        <div className="relative mt-3">
+          {total > 5 && (
             <button
-              key={src + i}
               type="button"
-              onClick={() => setIndex(i)}
-              aria-label={`Show image ${i + 1}`}
-              aria-current={i === index}
-              className={`relative aspect-square rounded-lg overflow-hidden border-2 transition ${i === index ? 'border-brand-600 ring-2 ring-brand-100' : 'border-ink-100 hover:border-brand-300'} bg-ink-50`}
+              onClick={() => scrollThumbs(-1)}
+              aria-label="Scroll thumbnails left"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 grid place-items-center rounded-full bg-white text-ink-900 shadow-md border border-ink-100 hover:bg-brand-50 transition"
             >
-              <Image src={src} alt={`${alt} thumb ${i + 1}`} fill sizes="15vw" className="object-cover" />
+              <ChevronLeft className="w-4 h-4" />
             </button>
-          ))}
+          )}
+          <div
+            ref={thumbStripRef}
+            className={`flex gap-2 overflow-x-auto scroll-smooth ${total > 5 ? 'px-10' : ''}`}
+            style={{ scrollbarWidth: 'none' as const, msOverflowStyle: 'none' as const }}
+          >
+            {safe.map((src, i) => (
+              <button
+                key={src + i}
+                ref={(el) => { thumbRefs.current[i] = el; }}
+                type="button"
+                onClick={() => setIndex(i)}
+                aria-label={`Show image ${i + 1}`}
+                aria-current={i === index}
+                className={`relative aspect-square w-[18%] min-w-[68px] flex-shrink-0 rounded-lg overflow-hidden border-2 transition ${i === index ? 'border-brand-600 ring-2 ring-brand-100' : 'border-ink-100 hover:border-brand-300'} bg-ink-50`}
+              >
+                <Image src={src} alt={`${alt} thumb ${i + 1}`} fill sizes="15vw" className="object-cover" />
+              </button>
+            ))}
+          </div>
+          {total > 5 && (
+            <button
+              type="button"
+              onClick={() => scrollThumbs(1)}
+              aria-label="Scroll thumbnails right"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-8 h-8 grid place-items-center rounded-full bg-white text-ink-900 shadow-md border border-ink-100 hover:bg-brand-50 transition"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          )}
+          <style jsx>{`
+            div::-webkit-scrollbar { display: none; }
+          `}</style>
         </div>
       )}
     </div>
