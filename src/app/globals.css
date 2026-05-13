@@ -225,3 +225,32 @@ img { max-width: 100%; height: auto; }
   100% { transform: translateX(-50%); }
 }
 .animate-marquee { animation: marquee 40s linear infinite; }
+
+/* Honour prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-marquee { animation: none !important; }
+  .animate-floaty { animation: none !important; }
+}
+
+/* Stronger focus-visible for keyboard navigation */
+.btn:focus-visible,
+.input-field:focus-visible,
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 2px solid #1F4E79;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Improved details/summary affordance */
+details summary {
+  cursor: pointer;
+}
+details summary::-webkit-details-marker { display: none; }

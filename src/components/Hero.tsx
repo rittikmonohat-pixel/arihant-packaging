@@ -31,7 +31,7 @@ export default function Hero() {
             <a
               href={whatsappLink('Hi Arihant Packaging, I would like a quote.')}
               target="_blank"
-              rel="noopener"
+              rel="noopener noreferrer"
               className="btn-secondary text-base"
             >
               <MessageCircle className="w-4 h-4" /> WhatsApp

@@ -82,7 +82,7 @@ export default function Footer() {
               ['TradeIndia', SITE.social.tradeindia],
               ['JustDial', SITE.social.justdial],
             ].map(([label, href]) => (
-              <a key={label} href={href} target="_blank" rel="noopener" className="px-3 py-1.5 rounded-full bg-white/15 hover:bg-white/25 border border-white/30 hover:border-white/50 transition text-white font-medium">
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="px-3 py-1.5 rounded-full bg-white/15 hover:bg-white/25 border border-white/30 hover:border-white/50 transition text-white font-medium">
                 {label}
               </a>
             ))}
