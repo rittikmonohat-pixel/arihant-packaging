@@ -14,14 +14,9 @@ export default function Footer() {
       <div className="container-x py-14">
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
           <div className="col-span-2">
-            <Link href="/" className="flex items-center gap-3 mb-4">
-              <div className="bg-white rounded-2xl p-1.5">
-                <Image src="/images/logo.svg" alt="Arihant Packaging" width={48} height={48} className="object-contain" />
-              </div>
-              <div className="leading-tight">
-                <div className="text-white font-bold text-lg">ARIHANT</div>
-                <div className="text-brand-200 font-semibold text-xs tracking-[0.2em]">PACKAGING</div>
-              </div>
+            <Link href="/" className="flex items-center gap-2 mb-4 group" aria-label="Arihant Packaging — Home">
+              <Image src="/images/logo.svg" alt="Arihant Packaging" width={56} height={56} className="h-11 w-auto object-contain transition-transform group-hover:scale-105" />
+              <span className="text-white font-bold text-lg sm:text-xl whitespace-nowrap">Arihant Packaging</span>
             </Link>
             <p className="text-sm text-white leading-relaxed max-w-md">
               Manufacturer of custom flexible packaging - laminated rolls, stand-up zipper pouches, and printed films. Serving brands across India since {SITE.foundedYear}.
@@ -93,7 +88,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 pt-6 border-t border-white/20 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white">
-          <div>(c) {year} Arihant Packaging. All rights reserved.</div>
+          <div>© Arihant Packaging.</div>
           <div className="flex items-center gap-4">
             <Link href="/privacy" className="hover:text-white">Privacy</Link>
             <Link href="/terms" className="hover:text-white">Terms</Link>
