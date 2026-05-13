@@ -9,7 +9,7 @@ export default function ProductCard({ product }: { product: Product }) {
       href={`/products/${product.slug}`}
       className="group card overflow-hidden flex flex-col"
     >
-      <div className="relative aspect-[4/3] bg-ink-50 overflow-hidden">
+      <div className="relative aspect-square bg-ink-50 overflow-hidden">
         <Image
           src={product.image}
           alt={product.title}

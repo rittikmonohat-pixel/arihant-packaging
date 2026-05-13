@@ -12,7 +12,7 @@ import { PRODUCTS } from '@/lib/products';
 import { APPLICATIONS } from '@/lib/applications';
 
 export default function HomePage() {
-  const featuredApps = APPLICATIONS.slice(0, 12);
+  const featuredApps = APPLICATIONS;
 
   return (
     <>
