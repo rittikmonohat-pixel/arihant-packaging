@@ -12,23 +12,23 @@ const FAQ: { category: string; items: { q: string; a: string }[] }[] = [
   {
     category: 'Pricing & MOQ',
     items: [
-      { q: 'What is your minimum order quantity (MOQ)?', a: 'Standard MOQ is 300 kg per design for laminated rolls. Stand-up zipper pouches start at 500 kg. Talk to us about smaller trial runs for new clients.' },
+      { q: 'What is your minimum order quantity (MOQ)?', a: 'Standard MOQ is 300 kg per design for laminated rolls. Stand-up zipper pouches start at 500 kg.' },
       { q: 'How is pricing calculated?', a: 'Per kilogram, based on material spec, layers, finish, and number of print colours. Larger orders get a better per-kg rate.' },
-      { q: 'What payment terms do you offer?', a: 'For new clients, 50% advance and 50% on dispatch. Established clients can negotiate credit terms.' },
+      { q: 'What payment terms do you offer?', a: 'For new clients, 70% advance and balance on dispatch.' },
     ],
   },
   {
     category: 'Lead time & samples',
     items: [
-      { q: 'How long does production take?', a: 'First-order lead time is typically 10–14 working days from artwork approval. Repeat orders ship in 7–10 days.' },
-      { q: 'Can I see samples before placing an order?', a: 'Yes — we can share our standard sample pack so you can feel the materials and see print quality. Project-specific samples are arranged on a case-by-case basis.' },
+      { q: 'How long does production take?', a: 'First-order lead time is typically 20–30 working days from artwork approval. Repeat orders ship in 10–15 days.' },
+      { q: 'Can I see samples before placing an order?', a: 'You can view our ready samples and previous work to get a clear idea of the materials and print quality.' },
     ],
   },
   {
     category: 'Customisation',
     items: [
       { q: 'How many printing colours do you support?', a: 'Up to 8 colours via rotogravure printing — sharp, photo-quality output.' },
-      { q: 'Can I bring my own design?', a: 'Yes — send us your artwork (Adobe Illustrator AI, EPS, PDF). If you do not have artwork, our team can help with adjustments.' },
+      { q: 'Can I bring my own design?', a: 'Yes — send us your artwork. If you do not have artwork, our team can help with adjustments.' },
       { q: 'Can the pouch have a window?', a: 'Yes — we offer transparent window pouches, fully transparent rolls, and even one-side window / one-side metallic.' },
     ],
   },
@@ -36,15 +36,12 @@ const FAQ: { category: string; items: { q: string; a: string }[] }[] = [
     category: 'Materials',
     items: [
       { q: 'What materials do you use?', a: 'PET, MET PET, BOPP, MET BOPP, and LDPE in various layer combinations.' },
-      { q: 'Can the pouch handle oily or spicy products?', a: 'Yes — LDPE inner is oil-resistant. For high-oil products like spice mixes, we recommend a 3-layer aluminium laminate.' },
     ],
   },
   {
     category: 'Delivery & support',
     items: [
-      { q: 'Where do you deliver?', a: 'Across India via reputable transporters. Local delivery in Kolkata is arranged as part of the order.' },
-      { q: 'Do you ship internationally?', a: 'Currently we focus on the Indian domestic market. International orders are considered case by case.' },
-      { q: 'How do I track my order?', a: 'Once dispatched, you receive transporter details and LR number on WhatsApp.' },
+      { q: 'Where do you deliver?', a: 'We deliver across India through trusted transporters or via a transporter of your choice. Freight charges may apply depending on the destination.' },
     ],
   },
 ];
