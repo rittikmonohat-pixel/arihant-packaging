@@ -77,7 +77,7 @@ export default async function ApplicationPage({ params }: { params: Promise<{ sl
             </div>
           </div>
 
-          <ImageCarousel images={app.gallery && app.gallery.length > 0 ? app.gallery : [app.image]} alt={app.title} priority />
+          <div className="max-w-sm sm:max-w-md mx-auto lg:max-w-none w-full"><ImageCarousel images={app.gallery && app.gallery.length > 0 ? app.gallery : [app.image]} alt={app.title} priority /></div>
         </div>
       </section>
 

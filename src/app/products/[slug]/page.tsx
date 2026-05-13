@@ -50,7 +50,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
       <section className="container-x pb-16">
         <div className="grid lg:grid-cols-2 gap-10 items-start">
-          <ImageCarousel images={product.gallery && product.gallery.length > 0 ? product.gallery : [product.image]} alt={product.title} priority />
+          <div className="max-w-sm sm:max-w-md mx-auto lg:max-w-none w-full"><ImageCarousel images={product.gallery && product.gallery.length > 0 ? product.gallery : [product.image]} alt={product.title} priority /></div>
 
           <div>
             <span className="pill">Product</span>
