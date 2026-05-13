@@ -6,6 +6,7 @@ import TrustStrip from '@/components/TrustStrip';
 import TrustedBy from '@/components/TrustedBy';
 import HowItWorks from '@/components/HowItWorks';
 import MachinerySection from '@/components/MachinerySection';
+import MachineryRotator from '@/components/MachineryRotator';
 import ProductCard from '@/components/ProductCard';
 import ApplicationCard from '@/components/ApplicationCard';
 import { PRODUCTS } from '@/lib/products';
@@ -118,9 +119,7 @@ export default function HomePage() {
               </Link>
             </div>
           </div>
-          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-            <Image src="/images/factory/factory-1.jpg" alt="Arihant Packaging factory floor" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
-          </div>
+          <MachineryRotator />
         </div>
       </section>
 

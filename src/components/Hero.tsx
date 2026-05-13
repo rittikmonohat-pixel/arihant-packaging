@@ -71,14 +71,14 @@ export default function Hero() {
           transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
         >
           <div className="relative aspect-[16/10] sm:aspect-[16/10] rounded-3xl overflow-hidden glass p-2 shadow-glass">
-            <div className="relative w-full h-full rounded-2xl overflow-hidden">
+            <div className="relative w-full h-full rounded-2xl overflow-hidden bg-white">
               <Image
                 src="/images/hero/hero-1.jpg"
                 alt="Arihant Packaging - custom flexible packaging manufactured in Kolkata"
                 fill
                 priority
                 sizes="(min-width:1280px) 640px, (min-width:1024px) 50vw, 100vw"
-                className="object-cover object-center"
+                className="object-contain object-center bg-white"
               />
             </div>
           </div>

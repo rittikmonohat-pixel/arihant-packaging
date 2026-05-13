@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -31,16 +32,58 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+// Render inline markdown: **bold**, *italic*, [text](url)
+function renderInline(text: string): (string | React.ReactElement)[] {
+  const parts: (string | React.ReactElement)[] = [];
+  // Combined regex: bold | italic | link
+  const re = /\*\*([^*]+)\*\*|\*([^*]+)\*|\[([^\]]+)\]\(([^)]+)\)/g;
+  let last = 0; let m: RegExpExecArray | null; let i = 0;
+  while ((m = re.exec(text)) !== null) {
+    if (m.index > last) parts.push(text.slice(last, m.index));
+    if (m[1] !== undefined) parts.push(<strong key={`b-${i++}`} className="font-semibold text-ink-900">{m[1]}</strong>);
+    else if (m[2] !== undefined) parts.push(<em key={`i-${i++}`}>{m[2]}</em>);
+    else if (m[3] !== undefined) parts.push(<a key={`l-${i++}`} href={m[4]} className="text-brand-600 hover:text-brand-700 underline" target={m[4].startsWith('http') ? '_blank' : undefined} rel={m[4].startsWith('http') ? 'noopener' : undefined}>{m[3]}</a>);
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts;
+}
+
 function renderBody(body: string) {
-  return body.split('\n\n').map((para, i) => {
-    if (para.startsWith('## ')) {
-      return <h2 key={i} className="heading-sm mt-10 mb-3">{para.slice(3)}</h2>;
+  const blocks = body.split('\n\n');
+  const out: React.ReactElement[] = [];
+  let listBuf: string[] = [];
+  const flushList = (idx: number) => {
+    if (listBuf.length === 0) return;
+    out.push(
+      <ul key={`ul-${idx}`} className="list-disc pl-6 my-4 text-ink-700 space-y-2">
+        {listBuf.map((item, j) => <li key={j} className="leading-relaxed">{renderInline(item.replace(/^[-*]\s+/, ''))}</li>)}
+      </ul>
+    );
+    listBuf = [];
+  };
+  blocks.forEach((para, i) => {
+    const trimmed = para.trim();
+    if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+      // multi-line list possible
+      trimmed.split('\n').forEach(line => {
+        if (line.trim().startsWith('- ') || line.trim().startsWith('* ')) listBuf.push(line.trim());
+      });
+      return;
     }
-    if (para.startsWith('### ')) {
-      return <h3 key={i} className="text-lg font-semibold mt-6 mb-2">{para.slice(4)}</h3>;
+    flushList(i);
+    if (trimmed.startsWith('## ')) {
+      out.push(<h2 key={i} className="heading-sm mt-10 mb-3">{renderInline(trimmed.slice(3))}</h2>);
+    } else if (trimmed.startsWith('### ')) {
+      out.push(<h3 key={i} className="text-lg font-semibold mt-6 mb-2">{renderInline(trimmed.slice(4))}</h3>);
+    } else if (trimmed.startsWith('# ')) {
+      out.push(<h2 key={i} className="heading-md mt-10 mb-3">{renderInline(trimmed.slice(2))}</h2>);
+    } else {
+      out.push(<p key={i} className="text-ink-700 leading-relaxed mb-4">{renderInline(trimmed)}</p>);
     }
-    return <p key={i} className="text-ink-700 leading-relaxed mb-4">{para}</p>;
   });
+  flushList(blocks.length);
+  return out;
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
