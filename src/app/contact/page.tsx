@@ -21,14 +21,14 @@ export default function ContactPage() {
         <div className="max-w-3xl">
           <h1 className="heading-xl">Get in touch</h1>
           <p className="lede mt-4">
-            Tell us what you need — pouch type, material, quantity, target launch date — and our team will get back to you.
+            Tell us what you need — pouch type, material, quantity — and our team will get back to you.
           </p>
         </div>
       </section>
 
       <section className="container-x pb-24 grid lg:grid-cols-3 gap-10">
-        <div className="lg:col-span-1 space-y-6">
-          <div className="rounded-2xl border border-ink-100 p-6">
+        <div className="lg:col-span-1 space-y-3 flex flex-col">
+          <div className="rounded-2xl border border-ink-100 p-4">
             <div className="flex items-start gap-3">
               <Phone className="w-5 h-5 text-brand-600 mt-0.5 flex-shrink-0" />
               <div>
@@ -39,7 +39,7 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-          <div className="rounded-2xl border border-ink-100 p-6">
+          <div className="rounded-2xl border border-ink-100 p-4">
             <div className="flex items-start gap-3">
               <Mail className="w-5 h-5 text-brand-600 mt-0.5 flex-shrink-0" />
               <div>
@@ -50,7 +50,7 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-          <div className="rounded-2xl border border-ink-100 p-6">
+          <div className="rounded-2xl border border-ink-100 p-4">
             <div className="flex items-start gap-3">
               <MapPin className="w-5 h-5 text-brand-600 mt-0.5 flex-shrink-0" />
               <div>
@@ -59,17 +59,17 @@ export default function ContactPage() {
               </div>
             </div>
           </div>
-          <div className="rounded-2xl border border-ink-100 p-6">
+          <div className="rounded-2xl border border-ink-100 p-4">
             <div className="flex items-start gap-3">
               <Clock className="w-5 h-5 text-brand-600 mt-0.5 flex-shrink-0" />
               <div>
                 <div className="text-sm text-ink-500">Working hours</div>
-                <p className="text-sm text-ink-900">Mon–Fri: {SITE.hours.monFri}<br />Sat: {SITE.hours.sat}<br />Sun: {SITE.hours.sun}</p>
+                <p className="text-sm text-ink-900">Mon–Sat: {SITE.hours.monSat}<br />Sun: {SITE.hours.sun}</p>
               </div>
             </div>
           </div>
 
-          <div className="rounded-2xl overflow-hidden border border-ink-100 aspect-[4/3]">
+          <div className="rounded-2xl overflow-hidden border border-ink-100 flex-1 min-h-[260px]">
             <iframe
               title="Arihant Packaging — Google Maps"
               src="https://www.google.com/maps?q=Arihant+Packaging+Madhyamgram+Kolkata&output=embed"

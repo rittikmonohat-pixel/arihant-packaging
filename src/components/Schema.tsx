@@ -72,8 +72,7 @@ export function LocalBusinessSchema() {
           longitude: SITE.geo.longitude,
         },
         openingHoursSpecification: [
-          { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '10:00', closes: '19:00' },
-          { '@type': 'OpeningHoursSpecification', dayOfWeek: 'Saturday', opens: '10:00', closes: '17:00' },
+          { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], opens: '11:00', closes: '18:00' },
         ],
         areaServed: { '@type': 'Country', name: 'India' },
         sameAs: [SITE.social.google, SITE.social.facebook, SITE.social.instagram],

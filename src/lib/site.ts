@@ -33,8 +33,7 @@ export const SITE = {
   },
 
   hours: {
-    monFri: '10:00 - 19:00',
-    sat: '10:00 - 17:00',
+    monSat: '11:00 - 18:00',
     sun: 'Closed',
   },
 
