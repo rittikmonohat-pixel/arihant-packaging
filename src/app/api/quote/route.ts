@@ -25,6 +25,7 @@ export async function POST(req: Request) {
 
     // Try Web3Forms first (no domain verification needed, delivers to any inbox)
     const w3fKey = process.env.WEB3FORMS_ACCESS_KEY;
+    console.log('[quote] env present? w3f=', !!w3fKey, 'resend=', !!process.env.RESEND_API_KEY, 'len=', w3fKey?.length);
     if (w3fKey) {
       const message = `Page: ${data.context || '—'}
 Name: ${data.name}
@@ -90,9 +91,17 @@ ${data.message || ''}`;
     }
 
     // No backend configured — log and accept silently so users get the success state
-    console.warn('No email backend configured (set WEB3FORMS_ACCESS_KEY or RESEND_API_KEY)');
+    console.warn('No email backend configured');
     console.log('Quote inquiry (logged only):', data);
-    return NextResponse.json({ ok: true, via: 'log' });
+    return NextResponse.json({
+      ok: true,
+      via: 'log',
+      _debug: {
+        w3fEnvPresent: !!process.env.WEB3FORMS_ACCESS_KEY,
+        resendEnvPresent: !!process.env.RESEND_API_KEY,
+        envCount: Object.keys(process.env).filter(k => !k.startsWith('VERCEL') && !k.startsWith('NEXT_') && !k.startsWith('AWS_') && !k.startsWith('NODE_')).length,
+      }
+    });
   } catch (e) {
     console.error('quote error', e);
     return NextResponse.json({ error: 'Could not send' }, { status: 400 });
