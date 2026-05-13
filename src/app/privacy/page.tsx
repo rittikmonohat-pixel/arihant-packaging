@@ -17,15 +17,16 @@ export default function PrivacyPage() {
 
       <section className="container-x pb-16 max-w-3xl">
         <h1 className="heading-xl">Privacy <span className="serif-accent">Policy</span></h1>
-        <p className="lede mt-4">Last updated: 12 May 2026</p>
+        <p className="lede mt-4">Last updated: 13 May 2026</p>
 
         <div className="prose prose-brand max-w-none mt-8 space-y-6 text-ink-700 leading-relaxed">
           <p>
             {SITE.name} (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) operates the website
             <strong> {SITE.url}</strong> (the &quot;Service&quot;). This Privacy Policy explains what
             information we collect, how we use it, and the choices you have. We comply with the
-            Information Technology Act, 2000 and the Information Technology (Reasonable Security
-            Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011 of India.
+            Digital Personal Data Protection Act, 2023 (DPDP Act), the Information Technology Act,
+            2000, and the Information Technology (Reasonable Security Practices and Procedures and
+            Sensitive Personal Data or Information) Rules, 2011 of India.
           </p>
 
           <h2 className="heading-sm mt-8">1. Information we collect</h2>
@@ -71,24 +72,32 @@ export default function PrivacyPage() {
             we cannot guarantee absolute security.
           </p>
 
-          <h2 className="heading-sm mt-8">6. Your rights</h2>
-          <p>You can ask us to:</p>
+          <h2 className="heading-sm mt-8">6. Your rights as a Data Principal</h2>
+          <p>Under the Digital Personal Data Protection Act, 2023, you can ask us to:</p>
           <ul className="list-disc pl-6 space-y-1">
             <li>Access the personal information we hold about you.</li>
-            <li>Correct any inaccurate information.</li>
-            <li>Delete your information (subject to lawful retention requirements).</li>
-            <li>Opt out of any non-essential communications.</li>
+            <li>Correct any inaccurate or incomplete information.</li>
+            <li>Erase your information (subject to lawful retention requirements).</li>
+            <li>Withdraw consent for any non-essential processing, including analytics cookies.</li>
+            <li>Nominate another person to exercise these rights on your behalf in the event of death or incapacity.</li>
+            <li>Raise a grievance about how we handle your data (see Section 11 below).</li>
           </ul>
           <p>
             To exercise any of these rights, write to us at{' '}
             <a className="text-brand-600 underline" href={`mailto:${SITE.contact.email}`}>{SITE.contact.email}</a>.
+            We will respond within 30 days as required by the DPDP Act.
           </p>
 
-          <h2 className="heading-sm mt-8">7. Cookies</h2>
+          <h2 className="heading-sm mt-8">7. Cookies and analytics</h2>
           <p>
-            This Service uses only essential cookies required for site functionality and basic
-            analytics. We do not use advertising cookies. You can block cookies through your
-            browser settings.
+            This Service uses only essential cookies required for site functionality plus
+            anonymous analytics cookies (Google Analytics 4) to understand aggregate visitor
+            behaviour. We do not use advertising cookies, retargeting cookies, or sell cookie
+            data to third parties.
+          </p>
+          <p>
+            When you first visit, you will see a cookie notice. You can also block or delete
+            cookies through your browser settings at any time without affecting site functionality.
           </p>
 
           <h2 className="heading-sm mt-8">8. Children</h2>
@@ -110,6 +119,23 @@ export default function PrivacyPage() {
             {SITE.address.full}<br />
             Email: <a className="text-brand-600 underline" href={`mailto:${SITE.contact.email}`}>{SITE.contact.email}</a><br />
             Phone: <a className="text-brand-600 underline" href={`tel:${SITE.contact.phone}`}>{SITE.contact.phoneDisplay}</a>
+          </p>
+
+          <h2 className="heading-sm mt-8">11. Grievance Officer</h2>
+          <p>
+            As required by the Digital Personal Data Protection Act, 2023, you can raise a
+            grievance about how we handle your personal data with our Grievance Officer:
+          </p>
+          <p>
+            <strong>Rittik Monohat</strong><br />
+            {SITE.name}<br />
+            {SITE.address.full}<br />
+            Email: <a className="text-brand-600 underline" href={`mailto:${SITE.contact.email}`}>{SITE.contact.email}</a><br />
+            Phone: <a className="text-brand-600 underline" href={`tel:${SITE.contact.phone}`}>{SITE.contact.phoneDisplay}</a>
+          </p>
+          <p>
+            We will acknowledge your grievance within 7 working days and resolve it within 30 days,
+            as required by the DPDP Act and its Rules.
           </p>
         </div>
       </section>

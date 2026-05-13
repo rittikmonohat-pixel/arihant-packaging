@@ -15,6 +15,24 @@ const Schema = z.object({
 
 const TO_EMAIL = process.env.INQUIRY_TO_EMAIL || 'arihantpackagingsalesenquiry@gmail.com';
 
+// Optional Slack-style webhook for fallback alerts.
+// When set, we notify on any path that doesn't reach the primary Web3Forms recipient.
+async function alertFallback(reason: string, lead: { name: string; phone: string; company?: string; email?: string }) {
+  const url = process.env.ALERT_WEBHOOK_URL;
+  if (!url) return;
+  try {
+    await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        text: `:warning: Arihant Packaging form fell back to ${reason}\nLead: ${lead.name} (${lead.company || '—'}) · ${lead.phone}${lead.email ? ' · ' + lead.email : ''}`,
+      }),
+    });
+  } catch (err) {
+    console.error('alert webhook failed', err);
+  }
+}
+
 export async function POST(req: Request) {
   try {
     const json = await req.json();
@@ -57,6 +75,7 @@ ${data.message || ''}`;
       });
       if (r.ok) return NextResponse.json({ ok: true });
       console.error('web3forms error', r.status, await r.text());
+      await alertFallback(`web3forms ${r.status}`, { name: data.name, phone: data.phone, company: data.company, email: data.email });
       // fall through to Resend / log
     }
 
@@ -90,9 +109,10 @@ ${data.message || ''}`;
       return NextResponse.json({ ok: true });
     }
 
-    // No backend configured — log and silently succeed
+    // No backend configured — log, alert, and silently succeed to the user.
     console.warn('No email backend configured');
     console.log('Quote inquiry (logged only):', data);
+    await alertFallback('log-only path (no backend configured)', { name: data.name, phone: data.phone, company: data.company, email: data.email });
     return NextResponse.json({ ok: true });
   } catch (e) {
     console.error('quote error', e);

@@ -3,7 +3,7 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import { Award, BadgeCheck, FlaskConical, Layers, ShieldCheck } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Quality, Materials & QC',
+  title: 'Quality Control Process — Arihant Packaging Kolkata',
   description: 'How Arihant Packaging engineers quality across PET, MET PET, BOPP, MET BOPP, and LDPE laminated packaging materials. MSME / Udyam registered.',
   alternates: { canonical: '/quality' },
 };

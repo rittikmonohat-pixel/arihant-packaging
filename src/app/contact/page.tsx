@@ -5,7 +5,7 @@ import { MapPin, Phone, Mail, Clock } from 'lucide-react';
 import { SITE } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Contact Us — Get a Quote',
+  title: 'Contact Arihant Packaging — Quote Request Kolkata',
   description: `Contact Arihant Packaging — Madhyamgram, Kolkata. Phone ${SITE.contact.phoneDisplay}.`,
   alternates: { canonical: '/contact' },
 };

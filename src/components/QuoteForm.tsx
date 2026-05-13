@@ -8,10 +8,10 @@ import { CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
 import { events } from '@/lib/analytics';
 
 const Schema = z.object({
-  name: z.string().min(2, 'Name is required'),
+  name: z.string().min(2, 'Please enter your name so we know how to address you.'),
   company: z.string().optional(),
-  phone: z.string().min(7, 'A valid phone is required'),
-  email: z.string().email('A valid email is required').optional().or(z.literal('')),
+  phone: z.string().min(7, 'A phone or WhatsApp number lets us reach you with your quote.'),
+  email: z.string().email('That email does not look valid — please check the format.').optional().or(z.literal('')),
   city: z.string().optional(),
   quantity: z.string().optional(),
   message: z.string().optional(),
@@ -51,13 +51,13 @@ export default function QuoteForm({
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        throw new Error(data.error || 'Could not send. Please WhatsApp us instead.');
+        throw new Error(data.error || 'Something went wrong on our end. Please try again or WhatsApp us.');
       }
       events.quoteSubmitted(values.context || 'unknown');
       setStatus('success');
       reset();
     } catch (e) {
-      setErrMessage(e instanceof Error ? e.message : 'Something went wrong');
+      setErrMessage(e instanceof Error ? e.message : 'Something went wrong on our end. Please try again or WhatsApp us.');
       setStatus('error');
     }
   }
