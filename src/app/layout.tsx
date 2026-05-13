@@ -5,6 +5,7 @@ import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppFloat from '@/components/WhatsAppFloat';
+import CookieBanner from '@/components/CookieBanner';
 import { OrganizationSchema, LocalBusinessSchema } from '@/components/Schema';
 
 const jakarta = Plus_Jakarta_Sans({
@@ -101,6 +102,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main" className="flex-1 relative z-[2]">{children}</main>
         <Footer />
         <WhatsAppFloat />
+        <CookieBanner />
 
         <OrganizationSchema />
         <LocalBusinessSchema />
