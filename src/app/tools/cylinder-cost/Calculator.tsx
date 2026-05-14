@@ -433,15 +433,15 @@ function PouchPreview({
       decorations = (
         <>
           {/* Sealing-area boundary lines, dotted, at both edges */}
-          <line x1={x + sealVis} y1={y + 4} x2={x + sealVis} y2={y + visH - 4} stroke={COLOR} strokeWidth={1} strokeDasharray={DASH} opacity={0.55} />
-          <line x1={x + visW - sealVis} y1={y + 4} x2={x + visW - sealVis} y2={y + visH - 4} stroke={COLOR} strokeWidth={1} strokeDasharray={DASH} opacity={0.55} />
+          <line x1={x + sealVis} y1={y} x2={x + sealVis} y2={y + visH} stroke={COLOR} strokeWidth={1} strokeDasharray={DASH} opacity={0.55} />
+          <line x1={x + visW - sealVis} y1={y} x2={x + visW - sealVis} y2={y + visH} stroke={COLOR} strokeWidth={1} strokeDasharray={DASH} opacity={0.55} />
 
-          {/* Centre "Front Side" dotted box */}
+          {/* Centre "Front Side" dotted box — full height of the laminate */}
           <rect
             x={x + sealVis + backVis}
-            y={y + visH * 0.18}
+            y={y}
             width={frontVis}
-            height={visH * 0.64}
+            height={visH}
             fill="rgba(31,78,121,0.10)"
             stroke={COLOR}
             strokeWidth={1}
@@ -469,33 +469,63 @@ function PouchPreview({
       );
     }
   } else if (format === 'center-seal') {
-    // Centre back seal shown as a small vertical strip (10 mm for closed
-    // width ≤ 200 mm, 15 mm above that — same threshold as the sealing
-    // margin used in the cost calculation).
-    const stripMm = wn > 200 ? 15 : 10;
-    const scale = visW / wn;
-    const stripVis = stripMm * scale;
+    // Centre back seal shown as a vertical strip running top→bottom
+    // (10 mm for closed width ≤ 200 mm, 15 mm above that). The horizontal
+    // bottom seal (always 10 mm) is shown as a strip across the base.
+    const sideStripMm = wn > 200 ? 15 : 10;
+    const bottomSealMm = 10;
+    const scaleX = visW / wn;
+    const scaleY = visH / hn;
+    const stripVis = sideStripMm * scaleX;
+    const bottomVis = bottomSealMm * scaleY;
 
     shape = (
       <rect x={x} y={y} width={visW} height={visH} fill={FILL} stroke={COLOR} strokeWidth={1.5} rx={2} />
     );
     decorations = (
       <>
+        {/* Centre back seal — full height */}
         <rect
           x={x + visW / 2 - stripVis / 2}
-          y={y + 6}
+          y={y}
           width={stripVis}
-          height={visH - 12}
-          fill="rgba(31,78,121,0.12)"
+          height={visH}
+          fill="rgba(31,78,121,0.14)"
           stroke={COLOR}
           strokeWidth={1}
           strokeDasharray={DASH}
-          opacity={0.7}
+          opacity={0.75}
         />
-        <text x={x + visW / 2} y={y + visH / 2 + 4} textAnchor="middle" fontSize={9} fill={COLOR} opacity={0.6}>
+        {/* Bottom seal — horizontal strip across the base */}
+        <rect
+          x={x}
+          y={y + visH - bottomVis}
+          width={visW}
+          height={bottomVis}
+          fill="rgba(31,78,121,0.14)"
+          stroke={COLOR}
+          strokeWidth={1}
+          strokeDasharray={DASH}
+          opacity={0.75}
+        />
+        {/* "back seal" text — rotated vertical, centred on the strip */}
+        <text
+          x={x + visW / 2}
+          y={y + visH / 2}
+          textAnchor="middle"
+          fontSize={9}
+          fill={COLOR}
+          opacity={0.7}
+          transform={`rotate(-90 ${x + visW / 2} ${y + visH / 2})`}
+        >
           back seal
         </text>
       </>
+    );
+    openMarker = (
+      <text x={x + visW / 2} y={y - 6} textAnchor="middle" fontSize={9} fill={COLOR} opacity={0.6}>
+        ↑ open (filling)
+      </text>
     );
   } else if (format === '3-side-seal') {
     shape = (
@@ -516,43 +546,60 @@ function PouchPreview({
       </text>
     );
   } else {
-    // Standup pouch: rectangle body that curves into an oval gusset at the
-    // bottom (per the reference illustration). Single SVG path makes it one
-    // continuous outline.
-    const bodyFrac = 0.82; // body is ~82% of total height; gusset is the bottom 18%
-    const bodyH = visH * bodyFrac;
-    const gussetTopY = y + bodyH;
+    // Standup pouch — outline matches the reference illustration:
+    // - vertical body with slightly rounded top corners
+    // - gentle elliptical bowl at the bottom (the visible gusset)
+    // - translucent vertical strips at the edges represent side seals
+    // - a soft horizontal dashed arc inside the bowl is the gusset fold line
+    const r = 4;
+    const gussetVisH = Math.min(visH * 0.16, 34);
+    const bodyH = visH - gussetVisH;
     const path = [
-      `M ${x} ${y}`,
-      `L ${x + visW} ${y}`,
-      `L ${x + visW} ${gussetTopY}`,
-      // Right half of gusset: smooth curve down to the centre-bottom.
-      `Q ${x + visW * 0.96} ${y + visH} ${x + visW / 2} ${y + visH}`,
-      // Left half of gusset.
-      `Q ${x + visW * 0.04} ${y + visH} ${x} ${gussetTopY}`,
+      `M ${x + r} ${y}`,
+      `L ${x + visW - r} ${y}`,
+      `Q ${x + visW} ${y} ${x + visW} ${y + r}`,
+      `L ${x + visW} ${y + bodyH}`,
+      // Bottom: elliptical arc, sweep=1 makes it bulge downward.
+      `A ${visW / 2} ${gussetVisH} 0 0 1 ${x} ${y + bodyH}`,
+      `L ${x} ${y + r}`,
+      `Q ${x} ${y} ${x + r} ${y}`,
       'Z',
     ].join(' ');
 
-    shape = (
-      <path d={path} fill={FILL} stroke={COLOR} strokeWidth={1.5} />
-    );
+    shape = <path d={path} fill={FILL} stroke={COLOR} strokeWidth={1.5} />;
 
-    const seal = 6;
+    const stripW = Math.min(visW * 0.04, 6);
     decorations = (
       <>
-        {/* Side seals — left and right of the body */}
-        <line x1={x + seal} y1={y + seal} x2={x + seal} y2={gussetTopY - 2} stroke={COLOR} strokeWidth={1} strokeDasharray={DASH} opacity={0.45} />
-        <line x1={x + visW - seal} y1={y + seal} x2={x + visW - seal} y2={gussetTopY - 2} stroke={COLOR} strokeWidth={1} strokeDasharray={DASH} opacity={0.45} />
-        {/* Gusset fold line — soft horizontal arc just inside the gusset bowl */}
+        {/* Translucent side seal strips (visible front-on, matches the reference) */}
+        <rect
+          x={x + 2}
+          y={y + r + 1}
+          width={stripW}
+          height={bodyH - r - 2}
+          fill={COLOR}
+          opacity={0.16}
+          rx={1}
+        />
+        <rect
+          x={x + visW - stripW - 2}
+          y={y + r + 1}
+          width={stripW}
+          height={bodyH - r - 2}
+          fill={COLOR}
+          opacity={0.16}
+          rx={1}
+        />
+        {/* Gusset fold line — soft horizontal arc just inside the bowl */}
         <path
-          d={`M ${x + visW * 0.12} ${gussetTopY + 2} Q ${x + visW / 2} ${gussetTopY + visH * 0.08} ${x + visW - visW * 0.12} ${gussetTopY + 2}`}
+          d={`M ${x + visW * 0.12} ${y + bodyH + gussetVisH * 0.35} Q ${x + visW / 2} ${y + visH - gussetVisH * 0.15} ${x + visW - visW * 0.12} ${y + bodyH + gussetVisH * 0.35}`}
           fill="none"
           stroke={COLOR}
           strokeWidth={1}
           strokeDasharray={DASH}
-          opacity={0.45}
+          opacity={0.4}
         />
-        <text x={x + visW / 2} y={y + visH - visH * 0.04} textAnchor="middle" fontSize={9} fill={COLOR} opacity={0.65}>
+        <text x={x + visW / 2} y={y + bodyH + gussetVisH * 0.78} textAnchor="middle" fontSize={9} fill={COLOR} opacity={0.6}>
           gusset
         </text>
       </>
