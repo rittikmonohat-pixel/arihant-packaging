@@ -31,7 +31,7 @@ export const APPLICATIONS: Application[] = [
     shortTitle: 'Atta Pouch',
     oneLiner: 'Strong moisture-barrier pouches for 1 kg, 5 kg, and 10 kg flour packs.',
     description:
-      'Custom flexible packaging engineered for atta — wheat flour, multigrain blends, and atta blends sold in Indian retail and HoReCa channels. Manufactured in Madhyamgram, Kolkata. Shipped pan-India.',
+      'Custom flexible packaging engineered for atta — wheat flour, multigrain blends, and atta blends sold in Indian retail and HoReCa channels.',
     metaDescription: 'Atta (wheat flour) packaging pouch manufacturer in Kolkata — milky LDPE laminated rolls and center-seal pouches. 1 kg / 5 kg / 10 kg sizes. MOQ from 300 kg.',
     keywords: ['atta packaging pouch manufacturer', 'wheat flour packaging India', 'milky LDPE atta pouch'],
     image: '/images/applications/atta.jpg',
@@ -67,7 +67,6 @@ export const APPLICATIONS: Application[] = [
       },
     ],
     longBody: join(
-      '## Overview',
       'Atta is one of the highest-volume FMCG categories in India and one of the toughest to package well. A typical 5 kg atta pouch is stacked, shipped, lifted, dropped, and stored next to masala blends that bleed moisture into anything porous. Get the packaging wrong and you have a burst pouch in the back of the kirana store. Get it right and your brand is what a customer reaches for next month.',
       'We manufacture milky LDPE laminated rolls and pre-made center-seal pouches purpose-built for atta — printed in your brand colours, structurally specified across the pack-size range, and dispatched from our Madhyamgram facility across India.',
       '## Why atta packaging is engineered differently',
