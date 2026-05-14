@@ -10,7 +10,7 @@ import { OrganizationSchema, LocalBusinessSchema } from '@/components/Schema';
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-jakarta',
   display: 'swap',
 });
@@ -109,8 +109,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
         {process.env.NEXT_PUBLIC_GA_ID && (
           <>
-            <Script src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`} strategy="afterInteractive" />
-            <Script id="ga-init" strategy="afterInteractive">
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`} strategy="lazyOnload" />
+            <Script id="ga-init" strategy="lazyOnload">
               {`window.dataLayer = window.dataLayer || [];
                function gtag(){dataLayer.push(arguments);}
                gtag('js', new Date());

@@ -4,10 +4,16 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
   trailingSlash: false,
+  experimental: {
+    // Tree-shake lucide-react and other heavy icon/UI packages so only the
+    // icons actually used end up in the client bundle.
+    optimizePackageImports: ['lucide-react'],
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [360, 480, 640, 768, 1024, 1280, 1536, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 31536000,
   },
   async redirects() {
     return [
