@@ -238,6 +238,48 @@ img { max-width: 100%; height: auto; }
   .animate-floaty { animation: none !important; }
 }
 
+/* Mobile performance pass — disables GPU-expensive effects below 768 px.
+   Backdrop blur + animated 80px-blur blobs + background-attachment:fixed
+   were the three largest contributors to mobile compositing cost on
+   Lighthouse audits. Visual difference at this size is minimal because
+   the cards already sit on near-white backgrounds. */
+@media (max-width: 767px) {
+  body {
+    background:
+      linear-gradient(180deg, #fafdff 0%, #f1f7fe 100%);
+    background-attachment: scroll;
+  }
+
+  .blob { display: none; }
+
+  .glass,
+  .glass-strong,
+  .card,
+  .pill,
+  .input-field,
+  .btn-secondary,
+  .btn-ghost {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  .glass,
+  .glass-strong,
+  .card {
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .pill,
+  .btn-secondary,
+  .btn-ghost {
+    background: rgba(255, 255, 255, 0.88);
+  }
+
+  .input-field {
+    background: rgba(255, 255, 255, 0.96);
+  }
+}
+
 /* Stronger focus-visible for keyboard navigation */
 .btn:focus-visible,
 .input-field:focus-visible,

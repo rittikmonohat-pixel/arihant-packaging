@@ -4,10 +4,22 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
   trailingSlash: false,
+  experimental: {
+    // Tree-shake lucide-react and other heavy icon/UI packages so only the
+    // icons actually used end up in the client bundle.
+    optimizePackageImports: ['lucide-react'],
+    // Note: experimental.optimizeCss is disabled. In Next.js 15.5 + App
+    // Router, both critters and beasties silently no-op (the flag is
+    // recognised, the build succeeds, but no <style> is inlined and the
+    // external stylesheet stays render-blocking). Verified via local build
+    // and production HTML inspection on 14 May 2026. Leave disabled until
+    // Next.js fixes this upstream or we adopt a manual inlining script.
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [360, 480, 640, 768, 1024, 1280, 1536, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 31536000,
   },
   async redirects() {
     return [

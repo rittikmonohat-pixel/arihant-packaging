@@ -12,9 +12,12 @@ import ApplicationCard from '@/components/ApplicationCard';
 import { PRODUCTS } from '@/lib/products';
 import { APPLICATIONS } from '@/lib/applications';
 
-export default function HomePage() {
-  const featuredApps = APPLICATIONS;
+// Show the first 8 of each on the homepage; full lists live on /products and
+// /applications. Cuts DOM nodes + image loads roughly in half on first paint.
+const FEATURED_PRODUCTS = PRODUCTS.slice(0, 8);
+const FEATURED_APPS = APPLICATIONS.slice(0, 8);
 
+export default function HomePage() {
   return (
     <>
       <Hero />
@@ -62,7 +65,7 @@ export default function HomePage() {
             <Link href="/products" className="btn-secondary">All Products <ArrowRight className="w-4 h-4" /></Link>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {PRODUCTS.map((p) => <ProductCard key={p.slug} product={p} />)}
+            {FEATURED_PRODUCTS.map((p) => <ProductCard key={p.slug} product={p} />)}
           </div>
         </div>
       </section>
@@ -80,7 +83,7 @@ export default function HomePage() {
           <Link href="/applications" className="btn-secondary">All Applications <ArrowRight className="w-4 h-4" /></Link>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredApps.map((a) => <ApplicationCard key={a.slug} app={a} />)}
+          {FEATURED_APPS.map((a) => <ApplicationCard key={a.slug} app={a} />)}
         </div>
       </section>
 
