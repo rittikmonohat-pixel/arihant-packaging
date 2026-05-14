@@ -45,7 +45,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="lg:col-span-6 xl:col-span-6 relative hero-fade-img">
+        <div className="lg:col-span-6 xl:col-span-6 relative">
           <div className="relative aspect-[16/10] sm:aspect-[16/10] rounded-3xl overflow-hidden glass p-2 shadow-glass">
             <div className="relative w-full h-full rounded-2xl overflow-hidden bg-white">
               <Image
@@ -55,6 +55,7 @@ export default function Hero() {
                 priority
                 fetchPriority="high"
                 sizes="(min-width:1024px) 50vw, 100vw"
+                quality={65}
                 className="object-cover object-center"
               />
 

@@ -12,9 +12,16 @@ import ApplicationCard from '@/components/ApplicationCard';
 import { PRODUCTS } from '@/lib/products';
 import { APPLICATIONS } from '@/lib/applications';
 
-export default function HomePage() {
-  const featuredApps = APPLICATIONS;
+// Products: capped at 8 on every viewport. /products carries the full list.
+const FEATURED_PRODUCTS = PRODUCTS.slice(0, 8);
 
+// Applications: 8 on mobile (perf budget), all on desktop where the wider
+// grid + faster CPU + better network make rendering the full set cheap.
+// The grid still renders one DOM node per app — cards 9+ are display:none
+// below the md breakpoint, so mobile pays no layout/image cost for them.
+const MOBILE_APP_LIMIT = 8;
+
+export default function HomePage() {
   return (
     <>
       <Hero />
@@ -62,7 +69,7 @@ export default function HomePage() {
             <Link href="/products" className="btn-secondary">All Products <ArrowRight className="w-4 h-4" /></Link>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {PRODUCTS.map((p) => <ProductCard key={p.slug} product={p} />)}
+            {FEATURED_PRODUCTS.map((p) => <ProductCard key={p.slug} product={p} />)}
           </div>
         </div>
       </section>
@@ -80,7 +87,15 @@ export default function HomePage() {
           <Link href="/applications" className="btn-secondary">All Applications <ArrowRight className="w-4 h-4" /></Link>
         </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {featuredApps.map((a) => <ApplicationCard key={a.slug} app={a} />)}
+          {APPLICATIONS.map((a, i) =>
+            i < MOBILE_APP_LIMIT ? (
+              <ApplicationCard key={a.slug} app={a} />
+            ) : (
+              <div key={a.slug} className="hidden md:block">
+                <ApplicationCard app={a} />
+              </div>
+            )
+          )}
         </div>
       </section>
 

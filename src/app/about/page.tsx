@@ -80,6 +80,30 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Factory walkthrough video */}
+      <section className="container-x py-16">
+        <div className="max-w-3xl mx-auto text-center mb-10">
+          <span className="pill">Factory walkthrough</span>
+          <h2 className="heading-md mt-3">See our facility in motion</h2>
+          <p className="lede mt-3">
+            A short walk through the Madhyamgram floor — printing, lamination, slitting, and pouching as they happen.
+          </p>
+        </div>
+        <div className="max-w-4xl mx-auto rounded-2xl overflow-hidden border border-ink-100 shadow-card aspect-video bg-ink-900">
+          <iframe
+            title="Arihant Packaging — factory walkthrough"
+            src="https://www.youtube-nocookie.com/embed/GAiCzrcBVFw"
+            loading="lazy"
+            width="100%"
+            height="100%"
+            allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+            style={{ border: 0 }}
+          />
+        </div>
+      </section>
+
       {/* Address */}
       <section className="container-x py-16 grid lg:grid-cols-2 gap-10 items-center">
         <div>
