@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -10,6 +11,65 @@ import ImageCarousel from '@/components/ImageCarousel';
 import { FAQSchema } from '@/components/Schema';
 import { APPLICATIONS, getApplication, getRelatedApplications } from '@/lib/applications';
 import { getProduct } from '@/lib/products';
+
+// Render inline **bold** and *italic* within a paragraph or list item.
+function renderInline(text: string): (string | React.ReactElement)[] {
+  const parts: (string | React.ReactElement)[] = [];
+  const re = /\*\*([^*]+)\*\*|\*([^*]+)\*/g;
+  let last = 0;
+  let m: RegExpExecArray | null;
+  let i = 0;
+  while ((m = re.exec(text)) !== null) {
+    if (m.index > last) parts.push(text.slice(last, m.index));
+    if (m[1] !== undefined) {
+      parts.push(
+        <strong key={`b-${i++}`} className="font-semibold text-ink-900">{m[1]}</strong>
+      );
+    } else if (m[2] !== undefined) {
+      parts.push(<em key={`i-${i++}`}>{m[2]}</em>);
+    }
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts;
+}
+
+// Minimal Markdown renderer for application longBody. Supports ## H2,
+// - bullets, **bold**, *italic*. Paragraphs are separated by blank lines
+// (which is what join('\n\n') produces in the data file).
+function renderLongBody(body: string): React.ReactElement[] {
+  const blocks = body.split('\n\n');
+  const out: React.ReactElement[] = [];
+  let listBuf: string[] = [];
+  const flushList = (idx: number) => {
+    if (listBuf.length === 0) return;
+    out.push(
+      <ul key={`ul-${idx}`} className="list-disc pl-6 my-4 space-y-2 text-ink-700">
+        {listBuf.map((item, j) => (
+          <li key={j} className="leading-relaxed">{renderInline(item.replace(/^[-*]\s+/, ''))}</li>
+        ))}
+      </ul>
+    );
+    listBuf = [];
+  };
+  blocks.forEach((para, i) => {
+    const trimmed = para.trim();
+    if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+      listBuf.push(trimmed);
+      return;
+    }
+    flushList(i);
+    if (trimmed.startsWith('## ')) {
+      out.push(<h2 key={i} className="heading-sm mt-10 mb-3">{trimmed.slice(3)}</h2>);
+    } else if (trimmed.startsWith('### ')) {
+      out.push(<h3 key={i} className="text-lg font-semibold mt-6 mb-2">{trimmed.slice(4)}</h3>);
+    } else {
+      out.push(<p key={i} className="text-ink-700 leading-relaxed mb-4">{renderInline(trimmed)}</p>);
+    }
+  });
+  flushList(blocks.length);
+  return out;
+}
 
 export function generateStaticParams() {
   return APPLICATIONS.map((a) => ({ slug: a.slug }));
@@ -80,6 +140,15 @@ export default async function ApplicationPage({ params }: { params: Promise<{ sl
           <div className="max-w-sm sm:max-w-md mx-auto lg:max-w-none w-full"><ImageCarousel images={app.gallery && app.gallery.length > 0 ? app.gallery : [app.image]} alt={app.title} priority /></div>
         </div>
       </section>
+
+      {/* Long-form SEO content — only rendered when the application data has it */}
+      {app.longBody && (
+        <section className="container-x pb-12">
+          <div className="max-w-4xl">
+            {renderLongBody(app.longBody)}
+          </div>
+        </section>
+      )}
 
       {/* Recommended products */}
       <section className="bg-ink-50/50 py-14">

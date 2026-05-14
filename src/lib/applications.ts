@@ -15,7 +15,14 @@ export type Application = {
   packSizes: string[];
   features: string[];
   faq: { q: string; a: string }[];
+  // Optional long-form SEO content. Rendered as a dedicated section on the
+  // application page between the hero and the recommended-products block.
+  // Supports a Markdown subset: ## H2, - bullet, **bold**, *italic*.
+  // Paragraphs separated by blank lines (use the join() helper).
+  longBody?: string;
 };
+
+const join = (...lines: string[]) => lines.join('\n\n');
 
 export const APPLICATIONS: Application[] = [
   {
@@ -24,9 +31,9 @@ export const APPLICATIONS: Application[] = [
     shortTitle: 'Atta Pouch',
     oneLiner: 'Strong moisture-barrier pouches for 1 kg, 5 kg, and 10 kg flour packs.',
     description:
-      'Atta needs packaging that locks out moisture and pests while standing up to rough handling in retail. Our milky LDPE laminated rolls and pouches with handle deliver shelf life and durability — and look sharp printed in your brand colours.',
-    metaDescription: 'Atta (wheat flour) packaging pouch manufacturer in Kolkata — milky laminated, with handle option. 1 kg / 5 kg / 10 kg sizes. MOQ 300 kg.',
-    keywords: ['atta packaging pouch manufacturer', 'wheat flour packaging India', 'atta pouch with handle'],
+      'Custom flexible packaging engineered for atta — wheat flour, multigrain blends, and atta blends sold in Indian retail and HoReCa channels. Manufactured in Madhyamgram, Kolkata. Shipped pan-India.',
+    metaDescription: 'Atta (wheat flour) packaging pouch manufacturer in Kolkata — milky LDPE laminated rolls and center-seal pouches. 1 kg / 5 kg / 10 kg sizes. MOQ from 300 kg.',
+    keywords: ['atta packaging pouch manufacturer', 'wheat flour packaging India', 'milky LDPE atta pouch'],
     image: '/images/applications/atta.jpg',
     gallery: ['/images/applications/atta.jpg', '/images/applications/atta-2.jpg'],
     category: 'foods',
@@ -34,10 +41,69 @@ export const APPLICATIONS: Application[] = [
     packSizes: ['500 g', '1 kg', '2 kg', '5 kg', '10 kg'],
     features: ['Moisture barrier', 'High burst strength', 'Heavy duty', 'Up to 8-color print'],
     faq: [
-      { q: 'What is the MOQ for atta packaging?', a: 'Standard MOQ is 300 kg of laminated film per design. For 5 kg and 10 kg packs, MOQ is 500 kg per design.' },
-      { q: 'Are the pouches suitable for heavy-duty use?', a: 'Yes, the pouches are designed to handle bulk weights with strong lamination and reinforced structures.' },
-      { q: 'Can I customize the design of my atta pouches?', a: 'Yes, we provide fully customizable designs including size, print, and finish.' },
+      {
+        q: 'What is the MOQ for atta packaging?',
+        a: 'Standard MOQ is 300 kg of laminated film per design for 1 kg packs. For 5 kg and 10 kg packs, MOQ is 500 kg per design. These are indicative; the formal MOQ for your order is stated in our quotation.',
+      },
+      {
+        q: 'Are the pouches suitable for heavy-duty use?',
+        a: 'The laminate spec scales with the pack size. For 5 kg and 10 kg packs we use heavier multi-layer structures designed for stacking and transport. Real-world performance depends on filling moisture, handling, and storage at the destination.',
+      },
+      {
+        q: 'Can I customise the design of my atta pouches?',
+        a: 'Yes — pouch size, laminate structure, and print colours (up to 8) can all be specified per SKU. Send us your artwork and we will return a press-ready proof.',
+      },
+      {
+        q: 'What is the lead time on a first order?',
+        a: 'Typical first-run lead time is 20–30 working days from artwork sign-off. Repeat orders are usually 10–15 working days because printing cylinders are ready with us. The formal lead time is stated in the quotation we issue.',
+      },
+      {
+        q: 'Will the pouch keep atta fresh on the shelf?',
+        a: 'The laminate is designed as a barrier against moisture, light, and oxygen — the three things that age atta in storage. Real-world shelf-life depends on the atta itself (moisture at packing, grind, blend), the supply chain (transit time, warehouse humidity), and storage at home. We do not provide a shelf-life warranty.',
+      },
+      {
+        q: 'Can you ship to my city?',
+        a: 'We ship pan-India through trusted transporters. Freight charges are quoted separately based on destination, weight, and delivery timeline.',
+      },
     ],
+    longBody: join(
+      '## Overview',
+      'Atta is one of the highest-volume FMCG categories in India and one of the toughest to package well. A typical 5 kg atta pouch is stacked, shipped, lifted, dropped, and stored next to masala blends that bleed moisture into anything porous. Get the packaging wrong and you have a burst pouch in the back of the kirana store. Get it right and your brand is what a customer reaches for next month.',
+      'We manufacture milky LDPE laminated rolls and pre-made center-seal pouches purpose-built for atta — printed in your brand colours, structurally specified across the pack-size range, and dispatched from our Madhyamgram facility across India.',
+      '## Why atta packaging is engineered differently',
+      'Three failure modes shape every spec on this page.',
+      '**Moisture.** Atta is hygroscopic — it pulls in water from humid air. In Indian retail conditions, ambient humidity is rarely below 70% RH from June through September. A weak laminate lets moisture in over weeks; the pouch starts smelling and clumping before the customer opens it.',
+      '**Pests.** Weevils and grain mites are present in almost every Indian warehouse. A pouch that flexes too much at the seal opens tiny gaps over a transport cycle. The pest gets in; the customer returns the pack.',
+      '**Weight and stacking.** A 10 kg atta pouch lives most of its life upside down in a stack. The bottom pouch carries much more weight above it.',
+      'These are the failure modes we design the laminate against. Real-world shelf-life depends on filling moisture, handling, transit, and storage at the destination; we engineer the pouch but cannot warranty the end product.',
+      '## Pack sizes we manufacture',
+      'The three pack sizes Indian retail expects:',
+      '- **1 kg** — kirana single-buyer SKU. A 2-layer milky LDPE pouch is sufficient for most brands at this size. Print quality is the main differentiator at the kirana shelf.',
+      '- **5 kg** — household monthly purchase. The crossover size where laminate strength becomes the main factor, not the seal. Produced either as pre-made center-seal pouches for hand-fill / semi-auto lines, or as a laminated roll on an in-house FFS line.',
+      '- **10 kg** — joint families, small caterers, B2B users. Heavy-duty multi-layer laminate (PET + Milky LDPE for retail SKUs) for burst strength under stacking.',
+      'Other pack sizes (500 g, 2 kg) can be quoted on request.',
+      '## Pouch formats available',
+      'Two formats cover the bulk of atta production at our facility.',
+      '**Center seal pouch.** The workhorse format. Available as pre-made center-seal pouches for hand-fill and semi-auto operations.',
+      '**Milky LDPE laminated roll for FFS.** For atta brands running an in-house Form-Fill-Seal line. The roll is slit to your machine’s web width. Faster line speed and lower per-kg cost; higher upfront setup.',
+      '## Material structures',
+      'The dominant atta structure is 2-layer, PET + Milky LDPE — a milky-pigmented outer layer that blocks UV. The milky layer matters for atta specifically because:',
+      '- It reflects most visible and UV light.',
+      '- Spot brand colours print on a white substrate at their target values.',
+      '## Print options',
+      '- Up to 8-colour rotogravure printing in a single pass.',
+      '- Standard finishes: milky, glossy, matte.',
+      '## MOQ and lead time',
+      '- MOQ for 1 kg packs: 300 kg of laminated film per SKU per design.',
+      '- MOQ for 5 kg and 10 kg packs: 500 kg per SKU.',
+      '- Typical first-run lead time: 20–30 working days from artwork sign-off.',
+      '- Repeat orders: 10–15 working days because cylinders are ready with us.',
+      '*Indicative only — the formal MOQ and lead time for your order are stated in the quotation we issue.*',
+      '## Why brands choose us',
+      '- **One roof.** Printing, lamination, slitting, and pouching all in-house at our facility — tighter QC and faster turnaround than a multi-vendor chain.',
+      '- **Up to 8-colour rotogravure** for sharp brand graphics on every SKU.',
+      '- **Trusted by many atta manufacturers.**'
+    ),
   },
   {
     slug: 'namkeen-packaging-pouch',
