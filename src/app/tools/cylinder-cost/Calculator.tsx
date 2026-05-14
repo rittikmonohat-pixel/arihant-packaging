@@ -240,7 +240,9 @@ export default function Calculator() {
               </div>
             )}
 
-            <button type="button" onClick={reset} className="btn-secondary mt-2 text-sm">
+            <PouchPreview format={format} w={w} h={h} gusset={g} valid={valid} />
+
+            <button type="button" onClick={reset} className="btn-secondary mt-4 text-sm">
               <RefreshCw className="w-3.5 h-3.5" /> Reset
             </button>
           </div>
@@ -338,6 +340,207 @@ function Row({ k, v }: { k: string; v: string }) {
     <div className="flex justify-between gap-4">
       <span className="text-ink-500">{k}</span>
       <span className="font-mono text-ink-900 text-right">{v}</span>
+    </div>
+  );
+}
+
+// ============================================================
+//  Pouch preview SVG
+// ============================================================
+//
+// Renders a schematic of the pouch (or roll laminate) in proportion to the
+// dimensions the operator has entered. Updates live. When inputs are invalid
+// or empty, falls back to a sample shape with a muted note so the layout
+// stays stable.
+
+function PouchPreview({
+  format,
+  w,
+  h,
+  gusset,
+  valid,
+}: {
+  format: Format;
+  w: number;
+  h: number;
+  gusset: number;
+  valid: boolean;
+}) {
+  // Fallback "sample" dimensions when the operator has not finished typing.
+  const wn = valid ? w : 200;
+  const hn = valid ? h : 250;
+  const gn = format === 'standup' ? (gusset > 0 ? gusset : 80) : 0;
+
+  // Drawing geometry. The viewBox is fixed and the pouch is scaled to fit a
+  // padded inner rectangle while preserving aspect ratio.
+  const VB_W = 320;
+  const VB_H = 280;
+  const PAD_X = 50;
+  const PAD_TOP = 30;
+  const PAD_BOTTOM = 50;
+  const DRAW_W = VB_W - 2 * PAD_X;
+  const DRAW_H = VB_H - PAD_TOP - PAD_BOTTOM;
+
+  const aspect = hn / wn;
+  const drawAspect = DRAW_H / DRAW_W;
+  let visW: number;
+  let visH: number;
+  if (aspect > drawAspect) {
+    visH = DRAW_H;
+    visW = visH / aspect;
+  } else {
+    visW = DRAW_W;
+    visH = visW * aspect;
+  }
+  const x = (VB_W - visW) / 2;
+  const y = PAD_TOP + (DRAW_H - visH) / 2;
+
+  const COLOR = '#1F4E79';
+  const FILL = 'rgba(31,78,121,0.06)';
+  const DASH = '4,3';
+  const LABEL_STROKE = '#94a3b8';
+
+  // Format-specific shape + decorations
+  let shape: React.ReactNode = null;
+  let decorations: React.ReactNode = null;
+  let openMarker: React.ReactNode = null;
+
+  if (format === 'roll') {
+    shape = (
+      <rect x={x} y={y} width={visW} height={visH} fill={FILL} stroke={COLOR} strokeWidth={1.5} rx={2} />
+    );
+    decorations = (
+      <text x={x + visW / 2} y={y + visH / 2 + 4} textAnchor="middle" fontSize={10} fill={COLOR} opacity={0.55}>
+        laminate
+      </text>
+    );
+  } else if (format === 'center-seal') {
+    shape = (
+      <rect x={x} y={y} width={visW} height={visH} fill={FILL} stroke={COLOR} strokeWidth={1.5} rx={2} />
+    );
+    // Center-back seal: vertical dashed line down the centre, with a label.
+    decorations = (
+      <>
+        <line x1={x + visW / 2} y1={y + 6} x2={x + visW / 2} y2={y + visH - 6} stroke={COLOR} strokeWidth={1} strokeDasharray={DASH} opacity={0.5} />
+        <text x={x + visW / 2} y={y + visH / 2 + 4} textAnchor="middle" fontSize={9} fill={COLOR} opacity={0.55}>
+          back seal
+        </text>
+      </>
+    );
+  } else if (format === '3-side-seal') {
+    shape = (
+      <rect x={x} y={y} width={visW} height={visH} fill={FILL} stroke={COLOR} strokeWidth={1.5} rx={2} />
+    );
+    // Inner dashed seal lines on left, right, and bottom (3-side seal).
+    const seal = 6;
+    decorations = (
+      <>
+        <line x1={x + seal} y1={y + seal} x2={x + seal} y2={y + visH - seal} stroke={COLOR} strokeWidth={1} strokeDasharray={DASH} opacity={0.45} />
+        <line x1={x + visW - seal} y1={y + seal} x2={x + visW - seal} y2={y + visH - seal} stroke={COLOR} strokeWidth={1} strokeDasharray={DASH} opacity={0.45} />
+        <line x1={x + seal} y1={y + visH - seal} x2={x + visW - seal} y2={y + visH - seal} stroke={COLOR} strokeWidth={1} strokeDasharray={DASH} opacity={0.45} />
+      </>
+    );
+    openMarker = (
+      <text x={x + visW / 2} y={y - 6} textAnchor="middle" fontSize={9} fill={COLOR} opacity={0.6}>
+        ↑ open (filling)
+      </text>
+    );
+  } else {
+    // standup: body rectangle + a trapezoidal gusset visible at the bottom.
+    const gussetVis = Math.min(visH * 0.18, 28);
+    const bodyH = visH - gussetVis;
+    const inset = visW * 0.08;
+    shape = (
+      <>
+        <rect x={x} y={y} width={visW} height={bodyH} fill={FILL} stroke={COLOR} strokeWidth={1.5} rx={2} />
+        <path
+          d={`M ${x + inset} ${y + bodyH} L ${x + visW - inset} ${y + bodyH} L ${x + visW - inset * 0.4} ${y + visH} L ${x + inset * 0.4} ${y + visH} Z`}
+          fill={FILL}
+          stroke={COLOR}
+          strokeWidth={1.5}
+        />
+      </>
+    );
+    const seal = 6;
+    decorations = (
+      <>
+        <line x1={x + seal} y1={y + seal} x2={x + seal} y2={y + bodyH - 2} stroke={COLOR} strokeWidth={1} strokeDasharray={DASH} opacity={0.45} />
+        <line x1={x + visW - seal} y1={y + seal} x2={x + visW - seal} y2={y + bodyH - 2} stroke={COLOR} strokeWidth={1} strokeDasharray={DASH} opacity={0.45} />
+        <text x={x + visW / 2} y={y + visH - gussetVis / 2 + 3} textAnchor="middle" fontSize={9} fill={COLOR} opacity={0.6}>
+          gusset
+        </text>
+      </>
+    );
+    openMarker = (
+      <text x={x + visW / 2} y={y - 6} textAnchor="middle" fontSize={9} fill={COLOR} opacity={0.6}>
+        ↑ open (filling)
+      </text>
+    );
+  }
+
+  // Dimension labels (only when valid, so we don't fake numbers).
+  const widthLabel = valid ? `${fmtNum(w, 0)} mm` : '— mm';
+  const heightLabel = valid ? `${fmtNum(h, 0)} mm` : '— mm';
+
+  const widthCaption =
+    format === 'roll' ? 'open width' :
+    format === 'center-seal' ? 'closed width' :
+    'pouch width';
+
+  return (
+    <div className="bg-white/60 rounded-xl border border-ink-100 p-3 mt-5">
+      <svg viewBox={`0 0 ${VB_W} ${VB_H}`} className="w-full" style={{ maxHeight: 240 }} aria-hidden="true">
+        {shape}
+        {decorations}
+        {openMarker}
+
+        {/* Width dimension (below) */}
+        <g>
+          <line x1={x} y1={y + visH + 14} x2={x + visW} y2={y + visH + 14} stroke={LABEL_STROKE} strokeWidth={1} />
+          <line x1={x} y1={y + visH + 10} x2={x} y2={y + visH + 18} stroke={LABEL_STROKE} strokeWidth={1} />
+          <line x1={x + visW} y1={y + visH + 10} x2={x + visW} y2={y + visH + 18} stroke={LABEL_STROKE} strokeWidth={1} />
+          <text x={x + visW / 2} y={y + visH + 30} textAnchor="middle" fontSize={11} fill="#475569" fontWeight={500}>
+            {widthLabel}
+          </text>
+          <text x={x + visW / 2} y={y + visH + 42} textAnchor="middle" fontSize={9} fill="#94a3b8">
+            {widthCaption}
+          </text>
+        </g>
+
+        {/* Height dimension (left) */}
+        <g>
+          <line x1={x - 14} y1={y} x2={x - 14} y2={y + visH} stroke={LABEL_STROKE} strokeWidth={1} />
+          <line x1={x - 18} y1={y} x2={x - 10} y2={y} stroke={LABEL_STROKE} strokeWidth={1} />
+          <line x1={x - 18} y1={y + visH} x2={x - 10} y2={y + visH} stroke={LABEL_STROKE} strokeWidth={1} />
+          <text
+            x={x - 22}
+            y={y + visH / 2}
+            textAnchor="middle"
+            fontSize={11}
+            fill="#475569"
+            fontWeight={500}
+            transform={`rotate(-90 ${x - 22} ${y + visH / 2})`}
+          >
+            {heightLabel}
+          </text>
+        </g>
+      </svg>
+
+      <div className="text-xs text-center mt-1">
+        {format === 'roll' && <span className="text-ink-500">Roll laminate · open width × height</span>}
+        {format === 'center-seal' && <span className="text-ink-500">Center seal pouch · back seal shown dashed</span>}
+        {format === '3-side-seal' && <span className="text-ink-500">3-side seal pouch · sealed left / right / bottom, open top</span>}
+        {format === 'standup' && (
+          <span className="text-ink-500">
+            Standup pouch · gusset {gn > 0 ? `${fmtNum(gn, 0)} mm` : '—'} (×2)
+          </span>
+        )}
+      </div>
+      {!valid && (
+        <p className="text-center text-[11px] text-ink-400 italic mt-0.5">
+          Sample shape — preview updates as you enter dimensions
+        </p>
+      )}
     </div>
   );
 }
