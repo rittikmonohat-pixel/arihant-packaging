@@ -8,9 +8,12 @@ const nextConfig = {
     // Tree-shake lucide-react and other heavy icon/UI packages so only the
     // icons actually used end up in the client bundle.
     optimizePackageImports: ['lucide-react'],
-    // Inline above-the-fold CSS via critters so the initial CSS file stops
-    // being a render-blocking request. Big LCP win on mobile.
-    optimizeCss: true,
+    // Note: experimental.optimizeCss is disabled. In Next.js 15.5 + App
+    // Router, both critters and beasties silently no-op (the flag is
+    // recognised, the build succeeds, but no <style> is inlined and the
+    // external stylesheet stays render-blocking). Verified via local build
+    // and production HTML inspection on 14 May 2026. Leave disabled until
+    // Next.js fixes this upstream or we adopt a manual inlining script.
   },
   images: {
     formats: ['image/avif', 'image/webp'],
