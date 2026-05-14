@@ -145,7 +145,7 @@ export const POSTS: BlogPost[] = [
       '## Laminate structures: what milky LDPE gets you',
       'The single most asked question on our quote line for atta is: why milky LDPE and not clear? Two reasons.',
       '**1. The milky layer blocks UV.** Atta sitting in a shop window for a week under fluorescent light yellows in a clear pouch. The milky additive reflects most visible and UV light. Your atta looks the colour you packed it as.',
-      '**2. Better print contrast.** Pantone colours printed on a white milky substrate hit their target values. The same inks on a clear substrate look duller because the brown of the atta bleeds through visually.',
+      '**2. Better print contrast.** Spot colours printed on a white milky substrate hit their target values. The same inks on a clear substrate look duller because the brown of the atta bleeds through visually.',
       '## Reading a quote: what to specify when you ask a manufacturer',
       'Most quote requests we receive say "price for atta pouch." We then send four follow-up questions. Save yourself that round-trip by specifying these seven items in your first email.',
       '- **Laminate structure** — for example, 2-layer milky LDPE.',
