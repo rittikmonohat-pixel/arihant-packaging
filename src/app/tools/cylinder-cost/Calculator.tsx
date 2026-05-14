@@ -546,62 +546,68 @@ function PouchPreview({
       </text>
     );
   } else {
-    // Standup pouch — outline matches the reference illustration:
-    // - vertical body with slightly rounded top corners
-    // - gentle elliptical bowl at the bottom (the visible gusset)
-    // - translucent vertical strips at the edges represent side seals
-    // - a soft horizontal dashed arc inside the bowl is the gusset fold line
-    const r = 4;
-    const gussetVisH = Math.min(visH * 0.16, 34);
-    const bodyH = visH - gussetVisH;
-    const path = [
+    // Standup pouch — matches the second reference illustration:
+    // - Rectangle body with very slightly rounded top corners.
+    // - The body's actual BOTTOM EDGE arcs UPWARD (concave-up) into the
+    //   body. Together with the outer gusset arc below, this creates a
+    //   thin LENS / almond shape at the base — the visible gusset.
+    // - Side seal strips are subtle vertical translucent rectangles.
+    const r = 2;
+    // Lens geometry: upperArc dips up into the body, lowerArc bulges down
+    // below the baseline. The baseline is where the rectangle's flat bottom
+    // *would* sit if there were no gusset.
+    const lowerH = Math.min(visH * 0.06, 12); // outer gusset bulge
+    const upperH = Math.min(visH * 0.035, 7); // inner concave arc into body
+    const baselineY = y + visH - lowerH;
+
+    // Main pouch outline: body rectangle whose bottom edge is replaced by
+    // the gusset's outer arc (which extends below the baseline).
+    const outline = [
       `M ${x + r} ${y}`,
       `L ${x + visW - r} ${y}`,
       `Q ${x + visW} ${y} ${x + visW} ${y + r}`,
-      `L ${x + visW} ${y + bodyH}`,
-      // Bottom: elliptical arc, sweep=1 makes it bulge downward.
-      `A ${visW / 2} ${gussetVisH} 0 0 1 ${x} ${y + bodyH}`,
+      `L ${x + visW} ${baselineY}`,
+      // Outer gusset arc — bulges downward (sweep = 1) to reach (x, baselineY)
+      `A ${visW / 2} ${lowerH} 0 0 1 ${x} ${baselineY}`,
       `L ${x} ${y + r}`,
       `Q ${x} ${y} ${x + r} ${y}`,
       'Z',
     ].join(' ');
 
-    shape = <path d={path} fill={FILL} stroke={COLOR} strokeWidth={1.5} />;
+    // Internal "lens top" curve — the body's actual bottom edge, arcing
+    // UPWARD (concave from below, sweep = 0) into the body.
+    const lensTop = `M ${x} ${baselineY} A ${visW / 2} ${upperH} 0 0 0 ${x + visW} ${baselineY}`;
 
-    const stripW = Math.min(visW * 0.04, 6);
+    shape = (
+      <>
+        <path d={outline} fill={FILL} stroke={COLOR} strokeWidth={1.5} />
+        <path d={lensTop} fill="none" stroke={COLOR} strokeWidth={1.2} />
+      </>
+    );
+
+    const stripW = Math.min(visW * 0.035, 5);
     decorations = (
       <>
-        {/* Translucent side seal strips (visible front-on, matches the reference) */}
+        {/* Translucent side seal strips inside the body — subtle, matches the
+            faint vertical highlights in the reference illustration. */}
         <rect
-          x={x + 2}
+          x={x + 1.5}
           y={y + r + 1}
           width={stripW}
-          height={bodyH - r - 2}
+          height={baselineY - upperH - y - r - 2}
           fill={COLOR}
-          opacity={0.16}
+          opacity={0.12}
           rx={1}
         />
         <rect
-          x={x + visW - stripW - 2}
+          x={x + visW - stripW - 1.5}
           y={y + r + 1}
           width={stripW}
-          height={bodyH - r - 2}
+          height={baselineY - upperH - y - r - 2}
           fill={COLOR}
-          opacity={0.16}
+          opacity={0.12}
           rx={1}
         />
-        {/* Gusset fold line — soft horizontal arc just inside the bowl */}
-        <path
-          d={`M ${x + visW * 0.12} ${y + bodyH + gussetVisH * 0.35} Q ${x + visW / 2} ${y + visH - gussetVisH * 0.15} ${x + visW - visW * 0.12} ${y + bodyH + gussetVisH * 0.35}`}
-          fill="none"
-          stroke={COLOR}
-          strokeWidth={1}
-          strokeDasharray={DASH}
-          opacity={0.4}
-        />
-        <text x={x + visW / 2} y={y + bodyH + gussetVisH * 0.78} textAnchor="middle" fontSize={9} fill={COLOR} opacity={0.6}>
-          gusset
-        </text>
       </>
     );
     openMarker = (
