@@ -546,55 +546,66 @@ function PouchPreview({
       </text>
     );
   } else {
-    // Standup pouch — matches the second reference illustration:
-    // - Rectangle body with very slightly rounded top corners.
-    // - The body's actual BOTTOM EDGE arcs UPWARD (concave-up) into the
-    //   body. Together with the outer gusset arc below, this creates a
-    //   thin LENS / almond shape at the base — the visible gusset.
-    // - Side seal strips are subtle vertical translucent rectangles.
+    // Standup pouch — matches the latest reference illustration:
+    //
+    //   ┌──────────────┐
+    //   │              │   <- body: simple rectangle, slightly rounded top
+    //   │              │
+    //   │              │
+    //   └──────────────┘
+    //     \__________/      <- lens: thin crescent / banana hanging below
+    //      \________/
+    //
+    // The lens is a CLOSED shape attached at the body's bottom-left and
+    // bottom-right corners. Both arcs of the lens bulge DOWNWARD:
+    //   - Top arc dips down by `upperDepth`
+    //   - Bottom arc dips down by `lowerDepth` (deeper)
+    // The visible thickness in the middle is (lowerDepth - upperDepth).
     const r = 2;
-    // Lens geometry: upperArc dips up into the body, lowerArc bulges down
-    // below the baseline. The baseline is where the rectangle's flat bottom
-    // *would* sit if there were no gusset.
-    const lowerH = Math.min(visH * 0.06, 12); // outer gusset bulge
-    const upperH = Math.min(visH * 0.035, 7); // inner concave arc into body
-    const baselineY = y + visH - lowerH;
+    const upperDepth = Math.min(visH * 0.05, 12);  // top of lens dips down by
+    const lowerDepth = Math.min(visH * 0.13, 28);  // bottom of lens dips down by
+    const bodyH = visH - lowerDepth;
 
-    // Main pouch outline: body rectangle whose bottom edge is replaced by
-    // the gusset's outer arc (which extends below the baseline).
-    const outline = [
+    // Body: rectangle with slightly rounded top corners only (sharp bottom
+    // corners so they meet the lens cleanly).
+    const bodyPath = [
       `M ${x + r} ${y}`,
       `L ${x + visW - r} ${y}`,
       `Q ${x + visW} ${y} ${x + visW} ${y + r}`,
-      `L ${x + visW} ${baselineY}`,
-      // Outer gusset arc — bulges downward (sweep = 1) to reach (x, baselineY)
-      `A ${visW / 2} ${lowerH} 0 0 1 ${x} ${baselineY}`,
+      `L ${x + visW} ${y + bodyH}`,
+      `L ${x} ${y + bodyH}`,
       `L ${x} ${y + r}`,
       `Q ${x} ${y} ${x + r} ${y}`,
       'Z',
     ].join(' ');
 
-    // Internal "lens top" curve — the body's actual bottom edge, arcing
-    // UPWARD (concave from below, sweep = 0) into the body.
-    const lensTop = `M ${x} ${baselineY} A ${visW / 2} ${upperH} 0 0 0 ${x + visW} ${baselineY}`;
+    // Lens crescent: two arcs both bulging down, meeting at body's bottom
+    // corners (x, y+bodyH) and (x+visW, y+bodyH).
+    const lensPath = [
+      `M ${x} ${y + bodyH}`,
+      // Top of lens: L→R, sweep=0 → bulges DOWN by upperDepth
+      `A ${visW / 2} ${upperDepth} 0 0 0 ${x + visW} ${y + bodyH}`,
+      // Bottom of lens: R→L, sweep=1 → bulges DOWN by lowerDepth
+      `A ${visW / 2} ${lowerDepth} 0 0 1 ${x} ${y + bodyH}`,
+      'Z',
+    ].join(' ');
 
     shape = (
       <>
-        <path d={outline} fill={FILL} stroke={COLOR} strokeWidth={1.5} />
-        <path d={lensTop} fill="none" stroke={COLOR} strokeWidth={1.2} />
+        <path d={bodyPath} fill={FILL} stroke={COLOR} strokeWidth={1.5} />
+        <path d={lensPath} fill={FILL} stroke={COLOR} strokeWidth={1.5} />
       </>
     );
 
     const stripW = Math.min(visW * 0.035, 5);
     decorations = (
       <>
-        {/* Translucent side seal strips inside the body — subtle, matches the
-            faint vertical highlights in the reference illustration. */}
+        {/* Subtle translucent side seal strips inside the body */}
         <rect
           x={x + 1.5}
           y={y + r + 1}
           width={stripW}
-          height={baselineY - upperH - y - r - 2}
+          height={bodyH - r - 4}
           fill={COLOR}
           opacity={0.12}
           rx={1}
@@ -603,7 +614,7 @@ function PouchPreview({
           x={x + visW - stripW - 1.5}
           y={y + r + 1}
           width={stripW}
-          height={baselineY - upperH - y - r - 2}
+          height={bodyH - r - 4}
           fill={COLOR}
           opacity={0.12}
           rx={1}
