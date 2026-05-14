@@ -513,6 +513,7 @@ function PouchPreview({
           x={x + visW / 2}
           y={y + visH / 2}
           textAnchor="middle"
+          dominantBaseline="central"
           fontSize={9}
           fill={COLOR}
           opacity={0.7}
@@ -546,47 +547,44 @@ function PouchPreview({
       </text>
     );
   } else {
-    // Standup pouch — matches the latest reference illustration:
+    // Standup pouch — true almond / eye-shaped lens at the base.
     //
     //   ┌──────────────┐
-    //   │              │   <- body: simple rectangle, slightly rounded top
     //   │              │
+    //   │              │   <- body
     //   │              │
-    //   └──────────────┘
-    //     \__________/      <- lens: thin crescent / banana hanging below
-    //      \________/
+    //   └─\        /─┘    <- body bottom curves UP into the body (concave)
+    //      \      /        <- visible lens (almond)
+    //       \____/         <- outer seal curves DOWN (convex)
     //
-    // The lens is a CLOSED shape attached at the body's bottom-left and
-    // bottom-right corners. Both arcs of the lens bulge DOWNWARD:
-    //   - Top arc dips down by `upperDepth`
-    //   - Bottom arc dips down by `lowerDepth` (deeper)
-    // The visible thickness in the middle is (lowerDepth - upperDepth).
+    // Using quadratic Bezier curves rather than elliptical arcs — Q curves
+    // give unambiguous control: the control point's vertical offset is twice
+    // the visible peak, so `upperH` and `lowerH` directly express the
+    // up/down bulge magnitudes.
     const r = 2;
-    const upperDepth = Math.min(visH * 0.05, 12);  // top of lens dips down by
-    const lowerDepth = Math.min(visH * 0.13, 28);  // bottom of lens dips down by
-    const bodyH = visH - lowerDepth;
+    const upperH = Math.min(visH * 0.04, 10);  // body bottom curves UP into body
+    const lowerH = Math.min(visH * 0.10, 22);  // outer seal extends DOWN
+    const bodyH = visH - lowerH;
 
-    // Body: rectangle with slightly rounded top corners only (sharp bottom
-    // corners so they meet the lens cleanly).
+    // Body: top corners slightly rounded; the bottom edge is a Q curve
+    // bulging UP into the body (R→L, control point above the baseline).
     const bodyPath = [
       `M ${x + r} ${y}`,
       `L ${x + visW - r} ${y}`,
       `Q ${x + visW} ${y} ${x + visW} ${y + r}`,
       `L ${x + visW} ${y + bodyH}`,
-      `L ${x} ${y + bodyH}`,
+      `Q ${x + visW / 2} ${y + bodyH - 2 * upperH} ${x} ${y + bodyH}`,
       `L ${x} ${y + r}`,
       `Q ${x} ${y} ${x + r} ${y}`,
       'Z',
     ].join(' ');
 
-    // Lens crescent: two arcs both bulging down, meeting at body's bottom
-    // corners (x, y+bodyH) and (x+visW, y+bodyH).
+    // Lens almond: top curve matches body bottom (bulges UP into body),
+    // bottom curve is the outer seal (bulges DOWN below baseline).
     const lensPath = [
       `M ${x} ${y + bodyH}`,
-      // Top of lens: L→R, sweep=0 → bulges DOWN by upperDepth
-      `A ${visW / 2} ${upperDepth} 0 0 0 ${x + visW} ${y + bodyH}`,
-      // Bottom of lens: R→L, sweep=1 → bulges DOWN by lowerDepth
-      `A ${visW / 2} ${lowerDepth} 0 0 1 ${x} ${y + bodyH}`,
+      `Q ${x + visW / 2} ${y + bodyH - 2 * upperH} ${x + visW} ${y + bodyH}`,
+      `Q ${x + visW / 2} ${y + bodyH + 2 * lowerH} ${x} ${y + bodyH}`,
       'Z',
     ].join(' ');
 
@@ -605,7 +603,7 @@ function PouchPreview({
           x={x + 1.5}
           y={y + r + 1}
           width={stripW}
-          height={bodyH - r - 4}
+          height={bodyH - r - 6}
           fill={COLOR}
           opacity={0.12}
           rx={1}
@@ -614,7 +612,7 @@ function PouchPreview({
           x={x + visW - stripW - 1.5}
           y={y + r + 1}
           width={stripW}
-          height={bodyH - r - 4}
+          height={bodyH - r - 6}
           fill={COLOR}
           opacity={0.12}
           rx={1}
