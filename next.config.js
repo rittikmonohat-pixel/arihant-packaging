@@ -8,6 +8,9 @@ const nextConfig = {
     // Tree-shake lucide-react and other heavy icon/UI packages so only the
     // icons actually used end up in the client bundle.
     optimizePackageImports: ['lucide-react'],
+    // Inline above-the-fold CSS via critters so the initial CSS file stops
+    // being a render-blocking request. Big LCP win on mobile.
+    optimizeCss: true,
   },
   images: {
     formats: ['image/avif', 'image/webp'],
